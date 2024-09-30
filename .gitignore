@@ -1,0 +1,43 @@
+# Vivado generated files and directories
+*.jou
+*.log
+*.str
+*.nfs*
+*.tcl  # Achtung: Nur temporäre .tcl-Dateien ignorieren, projektbezogene .tcl-Skripte sollten versioniert werden.
+*.xml
+*.html
+*.xhtml
+*.backup
+*.lck
+*.pb
+*.wdb
+*.bxml
+*.sdf
+
+# Vivado specific directories
+*.runs/      # Verzeichnis für Laufdateien, z.B. Synthese und Implementierung
+*.sim/       # Simulationsverzeichnisse
+*.cache/     # Cache-Verzeichnis
+*.hw/        # Hardware-Design-Informationen
+*.hw_ila/    # ILA (Integrated Logic Analyzer)-Dateien
+*.gen/       # Generierte Dateien
+.ip_user_files/  # IP Core spezifische Dateien
+.sim/        # Simulationsverzeichnisse
+
+# Ignore project files by name, but include the general *.xpr
+# Verzeichnisse und Dateien, die nicht projektspezifisch sind
+*.xpr        # Projektdatei von Vivado. Diese sollte NICHT ignoriert werden, sondern versioniert!
+project_1.xpr  # Falls du nur ein bestimmtes Projekt ignorieren willst (ersetze `project_1` durch deinen Projektnamen)
+project_1.*   # Ignoriere alle projektspezifischen Dateien außer *.xpr, wenn nicht benötigt.
+
+# Directory for SDK workspace
+.sdk/  # SDK-Verzeichnis sollte ignoriert werden
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Operating system specific files
+.DS_Store
+Thumbs.db
