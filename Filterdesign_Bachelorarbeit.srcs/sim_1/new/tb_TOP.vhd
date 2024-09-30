@@ -44,16 +44,16 @@ architecture Behavioral of tb_TOP is
         Port (
             clk             : in STD_LOGIC;
             reset           : in STD_LOGIC;
-            audio_in_left   : in STD_LOGIC_VECTOR(23 downto 0);
-            audio_in_right  : in STD_LOGIC_VECTOR(23 downto 0);
-            audio_out_left  : out STD_LOGIC_VECTOR(23 downto 0);
-            audio_out_right : out STD_LOGIC_VECTOR(23 downto 0);
             sck             : out STD_LOGIC;
             ws              : out STD_LOGIC;
             sd_in           : in STD_LOGIC;
             sd_out          : out STD_LOGIC;
             rx_ready        : out STD_LOGIC;
-            tx_ready        : out STD_LOGIC
+            tx_ready        : out STD_LOGIC;
+            audio_in_left_trans     : in STD_LOGIC_VECTOR(23 downto 0);
+            audio_in_right_trans    : in STD_LOGIC_VECTOR(23 downto 0);
+            audio_out_left_rec      : out STD_LOGIC_VECTOR(23 downto 0);
+            audio_out_right_rec     : out STD_LOGIC_VECTOR(23 downto 0)
         );
     end component;
 
@@ -76,10 +76,10 @@ begin
     Port Map (
         clk => clk,
         reset => reset,
-        audio_in_left => tb_audio_left_in,
-        audio_in_right => tb_audio_right_in,
-        audio_out_left => tb_audio_left_out,
-        audio_out_right => tb_audio_right_out,
+        audio_in_left_trans => tb_audio_left_in,
+        audio_in_right_trans => tb_audio_right_in,
+        audio_out_left_rec => tb_audio_left_out,
+        audio_out_right_rec => tb_audio_right_out,
         sck => sck,
         ws => ws,
         sd_in => sd_in,

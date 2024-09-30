@@ -194,10 +194,10 @@ begin
         );
         
         -- send and receive signals to/from audio_processor
-        rec_l_transfer <= audio_out_left_rec;
-        rec_r_transfer <= audio_out_right_rec;
-        audio_in_left_trans <= trans_l_transfer;
-        audio_in_right_trans <= trans_r_transfer;
+        --rec_l_transfer <= audio_out_left_rec;
+        --rec_r_transfer <= audio_out_right_rec;
+        --audio_in_left_trans <= trans_l_transfer;
+        --audio_in_right_trans <= trans_r_transfer;
         
        
         
