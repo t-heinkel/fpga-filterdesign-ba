@@ -8,7 +8,7 @@
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
--- Description: 
+-- Description: Meant to apply the Audio Effects to the signal
 -- 
 -- Dependencies: 
 -- 

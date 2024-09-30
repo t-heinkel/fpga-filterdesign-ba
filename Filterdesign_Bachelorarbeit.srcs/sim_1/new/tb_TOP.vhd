@@ -91,52 +91,55 @@ begin
     -- Hauptprozess der Testbench
     tb_process : process
     begin
-        -- Initialisierung und Reset setzen
-        reset <= '1';
-        wait for 20 ns;
-        reset <= '0';   
-        tb_rx_ready <= '0';
+    
+        --if (rising_edge(clk)) then
+            -- Initialisierung und Reset setzen
+            reset <= '1';
+            wait for 20 ns;
+            reset <= '0';   
+            tb_rx_ready <= '0';
+            
+            -- Test des Senders
+            --tb_tx_ready <= '0';
+            tb_audio_left_in <= X"800000"; -- Beispielwert für den Linkskanal
+            tb_audio_right_in <= X"000000"; -- Beispielwert für den Rechtssignal-Kanal
+            wait for 5ns;
+            --tb_tx_ready <= '1';
+    
+            -- Warten auf die Übertragung
+            --wait until tx_ready = '1';
+    
+            -- Überprüfung des empfangenen Signals
+            assert (sd_in = '1')
+                report "SD-In Signal ist nicht korrekt"
+                severity warning;
+    
+    
+    
+            -- Warten auf die Empfangsübertragung
+            --wait until tb_rx_ready = '1';
+    
+            -- Überprüfung des ausgegebenen Signals
+            assert (tb_audio_left_out /= X"000000")
+                report "Audio Left Output ist leer"
+                severity failure;
+    
+            -- Simulationsende
+            wait for 100 ms;
+            wait;
         
-        -- Test des Empfängers
-        tb_rx_ready <= '0';
-        sd_in <= '1'; -- Beispielwert für das zu sendende Signal
-        tb_rx_ready <= '1';
-        
-        -- Test des Senders
-        tb_tx_ready <= '0';
-        tb_audio_left_in <= X"800000"; -- Beispielwert für den Linkskanal
-        tb_audio_right_in <= X"000000"; -- Beispielwert für den Rechtssignal-Kanal
-        tb_tx_ready <= '1';
-
-        -- Warten auf die Übertragung
-        --wait until tx_ready = '1';
-
-        -- Überprüfung des empfangenen Signals
-        assert (sd_in = '1')
-            report "SD-In Signal ist nicht korrekt"
-            severity warning;
-
-
-
-        -- Warten auf die Empfangsübertragung
-        wait until tb_rx_ready = '1';
-
-        -- Überprüfung des ausgegebenen Signals
-        assert (tb_audio_left_out /= X"000000")
-            report "Audio Left Output ist leer"
-            severity failure;
-
-        -- Simulationsende
-        wait for 100 ms;
-        wait;
+        --end if;
     end process tb_process;
+    
+    clk_process : process
+    begin
+        clk <= not clk;
+        wait for 1 ns;
+    end process clk_process;
     
     sck_clk_process : process
     begin 
-        if (rising_edge(clk)) then
-            sck <= not sck;
-        end if;
-    
+        sck <= not sck;
         wait for 10ns;
         
     end process sck_clk_process;
