@@ -4,7 +4,7 @@
 -- 
 -- Create Date: 25.09.2024 15:17:06
 -- Design Name: 
--- Module Name: I2S_TOP_tb - Behavioral
+-- Module Name: tb_TOP - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -34,7 +34,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity tb_TOP is
 end tb_TOP;
 
-architecture Behavioral of tb_TOP is
+architecture behavior of tb_TOP is
 
     component TOP is
         Generic (
@@ -58,21 +58,25 @@ architecture Behavioral of tb_TOP is
     end component;
 
     signal clk                  : STD_LOGIC := '0';
-    signal reset                : STD_LOGIC := '1';
-    signal tb_audio_left_in     : STD_LOGIC_VECTOR(23 downto 0);
-    signal tb_audio_right_in    : STD_LOGIC_VECTOR(23 downto 0);
+    signal clk_del              : STD_LOGIC;
+    signal reset                : STD_LOGIC;
+    signal tb_audio_left_in     : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
+    signal tb_audio_right_in    : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
     signal tb_audio_left_out    : STD_LOGIC_VECTOR(23 downto 0);
     signal tb_audio_right_out   : STD_LOGIC_VECTOR(23 downto 0);
-    signal sck                  : STD_LOGIC := '0';
+    signal tb_sck               : STD_LOGIC;
+    signal sck_del              : STD_LOGIC;
     signal ws                   : STD_LOGIC := '0';
     signal sd_in                : STD_LOGIC := '0';
     signal sd_out               : STD_LOGIC := '0';
     signal tb_rx_ready          : STD_LOGIC := '0';
-    signal tb_tx_ready          : STD_LOGIC := '0';
+    signal tb_tx_ready          : STD_LOGIC;
+    
+    signal sd_cnt               : STD_LOGIC_VECTOR(2 downto 0) := "000";
 
 begin
     -- Instanziierung des zu testenden Systems
-    dut : TOP
+    uut : TOP
     Port Map (
         clk => clk,
         reset => reset,
@@ -80,7 +84,7 @@ begin
         audio_in_right_trans => tb_audio_right_in,
         audio_out_left_rec => tb_audio_left_out,
         audio_out_right_rec => tb_audio_right_out,
-        sck => sck,
+        sck => tb_sck,
         ws => ws,
         sd_in => sd_in,
         sd_out => sd_out,
@@ -95,6 +99,7 @@ begin
         --if (rising_edge(clk)) then
             -- Initialisierung und Reset setzen
             reset <= '1';
+            tb_sck <= '1';
             wait for 20 ns;
             reset <= '0';   
             tb_rx_ready <= '0';
@@ -130,18 +135,56 @@ begin
         
         --end if;
     end process tb_process;
+
+    
+    tb_rx_ready <= '1';
+    
+    sd_in_process : process(clk, tb_sck)
+    begin
+        if rising_edge(clk) then
+            tb_rx_ready <= '0';
+            --tb_tx_ready <= '0';
+            --for testing
+            --sd_cnt <= std_logic_vector(unsigned(sd_cnt) + 1);
+            
+            if rising_edge(tb_sck) then
+                
+                case sd_cnt is
+                    when "000" =>
+                        sd_in <= '0';
+                    when "001" =>
+                        sd_in <= '0';
+                    when "010" =>
+                        sd_in <= '0';
+                    when "011" =>
+                        sd_in <= '1';
+                    when "100" =>
+                        sd_in <= '1';
+                    when others =>
+                        sd_in <= '1';
+                end case;
+                
+                if(sd_cnt = "101") then
+                    sd_cnt <= "000";
+                end if;
+                
+                sd_cnt <= std_logic_vector(unsigned(sd_cnt) + 1);
+            end if;
+        end if;
+    end process sd_in_process;
     
     clk_process : process
     begin
         clk <= not clk;
-        wait for 1 ns;
+        --clk_del <= clk;
+        wait for 5 ns;
     end process clk_process;
     
     sck_clk_process : process
     begin 
-        sck <= not sck;
-        wait for 10ns;
-        
+        tb_sck <= not tb_sck;
+        wait for 20ns;
     end process sck_clk_process;
+    
 
-end Behavioral;
+end behavior;
