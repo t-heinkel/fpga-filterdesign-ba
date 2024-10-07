@@ -92,12 +92,10 @@ begin
         tx_ready => tb_tx_ready
     );
 
-    -- Hauptprozess der Testbench
     tb_process : process
     begin
     
         --if (rising_edge(clk)) then
-            -- Initialisierung und Reset setzen
             reset <= '1';
             tb_sck <= '1';
             wait for 20 ns;
@@ -111,18 +109,11 @@ begin
             wait for 5ns;
             --tb_tx_ready <= '1';
     
-            -- Warten auf die Übertragung
-            --wait until tx_ready = '1';
-    
             -- Überprüfung des empfangenen Signals
             assert (sd_in = '1')
                 report "SD-In Signal ist nicht korrekt"
                 severity warning;
     
-    
-    
-            -- Warten auf die Empfangsübertragung
-            --wait until tb_rx_ready = '1';
     
             -- Überprüfung des ausgegebenen Signals
             assert (tb_audio_left_out /= X"000000")
