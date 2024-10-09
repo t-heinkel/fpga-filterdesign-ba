@@ -41,8 +41,8 @@ entity TOP is
         reset   : in STD_LOGIC;
         
         -- I2S-Signals
-        sck     : out STD_LOGIC;
-        ws      : out STD_LOGIC;
+        sck     : in STD_LOGIC;
+        ws      : in STD_LOGIC;
         sd_in   : in STD_LOGIC;
         sd_out  : out STD_LOGIC;
         
@@ -137,6 +137,9 @@ architecture Structural of TOP is
     -- I2S Receiver Signals
     signal ws_rec : STD_LOGIC;
     
+    -- I2S Transmitter Signals
+    signal ws_trans : STD_LOGIC;
+    
     -- I2S Transfer signals to/from audio processor
     signal rec_l_transfer   : STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
     signal rec_r_transfer   : STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
@@ -150,7 +153,7 @@ begin
             clk => clk,
             reset => reset,
             sck => sck_int,
-            ws => ws_int,
+            ws => ws,
             sd_in => sd_in,
             audio_left => audio_out_left_rec,
             audio_right => audio_out_right_rec,
@@ -163,7 +166,7 @@ begin
             clk => clk,
             reset => reset,
             sck => sck_int,
-            ws => ws_int,
+            ws => ws,
             audio_left => audio_in_left_trans,
             audio_right => audio_in_right_trans,
             sd_out => sd_out,
@@ -184,11 +187,11 @@ begin
             clk => clk,
             reset => reset,
             sck_in => sck_int,
-            ws_in => ws_int,
+            ws_in => ws,
             audio_left_in => rec_l_transfer,
             audio_right_in => rec_r_transfer,
             sck_out => sck_int,
-            ws_out => ws_int,
+            ws_out => ws_trans,
             audio_left_out => trans_l_transfer,
             audio_right_out => trans_r_transfer
         );

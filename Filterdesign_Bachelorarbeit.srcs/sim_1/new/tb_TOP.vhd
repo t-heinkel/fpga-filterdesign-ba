@@ -44,8 +44,8 @@ architecture behavior of tb_TOP is
         Port (
             clk             : in STD_LOGIC;
             reset           : in STD_LOGIC;
-            sck             : out STD_LOGIC;
-            ws              : out STD_LOGIC;
+            sck             : in STD_LOGIC;
+            ws              : in STD_LOGIC;
             sd_in           : in STD_LOGIC;
             sd_out          : out STD_LOGIC;
             rx_ready        : out STD_LOGIC;
@@ -64,7 +64,7 @@ architecture behavior of tb_TOP is
     signal tb_audio_right_in    : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
     signal tb_audio_left_out    : STD_LOGIC_VECTOR(23 downto 0);
     signal tb_audio_right_out   : STD_LOGIC_VECTOR(23 downto 0);
-    signal tb_sck               : STD_LOGIC;
+    signal tb_sck               : STD_LOGIC := '1';
     signal sck_del              : STD_LOGIC;
     signal ws                   : STD_LOGIC := '0';
     signal sd_in                : STD_LOGIC := '0';
@@ -97,7 +97,6 @@ begin
     
         --if (rising_edge(clk)) then
             reset <= '1';
-            tb_sck <= '1';
             wait for 20 ns;
             reset <= '0';   
             tb_rx_ready <= '0';
@@ -157,6 +156,7 @@ begin
                 
                 if(sd_cnt = "101") then
                     sd_cnt <= "000";
+                    ws <= not ws;
                 end if;
                 
                 sd_cnt <= std_logic_vector(unsigned(sd_cnt) + 1);
