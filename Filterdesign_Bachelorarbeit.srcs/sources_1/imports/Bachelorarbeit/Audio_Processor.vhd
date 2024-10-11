@@ -33,7 +33,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity audio_processor is
     Generic (
-        BIT_DEPTH : positive := 24
+        BIT_DEPTH : positive := 28
     );
     Port (
         clk             : in STD_LOGIC;

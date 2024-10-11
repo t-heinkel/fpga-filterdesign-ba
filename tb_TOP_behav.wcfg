@@ -11,14 +11,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="1,600.000 ns"></ZoomEndTime>
-      <Cursor1Time time="384.742 ns"></Cursor1Time>
+      <ZoomEndTime time="5,000.001 ns"></ZoomEndTime>
+      <Cursor1Time time="302.334 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="326"></NameColumnWidth>
+      <NameColumnWidth column_width="278"></NameColumnWidth>
       <ValueColumnWidth column_width="116"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="6" />
+   <WVObjectSize size="5" />
    <wvobject fp_name="group40" type="group">
       <obj_property name="label">TB</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -26,14 +26,6 @@
       <wvobject fp_name="/tb_TOP/clk" type="logic">
          <obj_property name="ElementShortName">clk</obj_property>
          <obj_property name="ObjectShortName">clk</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_TOP/clk_del" type="logic">
-         <obj_property name="ElementShortName">clk_del</obj_property>
-         <obj_property name="ObjectShortName">clk_del</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_TOP/reset" type="logic">
-         <obj_property name="ElementShortName">reset</obj_property>
-         <obj_property name="ObjectShortName">reset</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/tb_audio_left_in" type="array">
          <obj_property name="ElementShortName">tb_audio_left_in[23:0]</obj_property>
@@ -50,14 +42,6 @@
       <wvobject fp_name="/tb_TOP/tb_audio_right_out" type="array">
          <obj_property name="ElementShortName">tb_audio_right_out[23:0]</obj_property>
          <obj_property name="ObjectShortName">tb_audio_right_out[23:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_TOP/tb_sck" type="logic">
-         <obj_property name="ElementShortName">tb_sck</obj_property>
-         <obj_property name="ObjectShortName">tb_sck</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_TOP/sck_del" type="logic">
-         <obj_property name="ElementShortName">sck_del</obj_property>
-         <obj_property name="ObjectShortName">sck_del</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/ws" type="logic">
          <obj_property name="ElementShortName">ws</obj_property>
@@ -120,14 +104,6 @@
          <obj_property name="ElementShortName">audio_in_right_trans[23:0]</obj_property>
          <obj_property name="ObjectShortName">audio_in_right_trans[23:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/tx_ready" type="logic">
-         <obj_property name="ElementShortName">tx_ready</obj_property>
-         <obj_property name="ObjectShortName">tx_ready</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/rx_ready" type="logic">
-         <obj_property name="ElementShortName">rx_ready</obj_property>
-         <obj_property name="ObjectShortName">rx_ready</obj_property>
-      </wvobject>
       <wvobject fp_name="/tb_TOP/uut/sd_in_int" type="logic">
          <obj_property name="ElementShortName">sd_in_int</obj_property>
          <obj_property name="ObjectShortName">sd_in_int</obj_property>
@@ -159,7 +135,6 @@
       <wvobject fp_name="/tb_TOP/uut/trans_l_transfer" type="array">
          <obj_property name="ElementShortName">trans_l_transfer[23:0]</obj_property>
          <obj_property name="ObjectShortName">trans_l_transfer[23:0]</obj_property>
-         <obj_property name="isExpanded"></obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/trans_r_transfer" type="array">
          <obj_property name="ElementShortName">trans_r_transfer[23:0]</obj_property>
@@ -214,9 +189,22 @@
          <obj_property name="CustomSignalColor">#0000FF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/receiver_inst/audio_left" type="array">
+         <obj_property name="ElementShortName">audio_left[23:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_left[23:0]</obj_property>
+      </wvobject>
       <wvobject fp_name="/tb_TOP/uut/receiver_inst/current_state" type="other">
          <obj_property name="ElementShortName">current_state</obj_property>
          <obj_property name="ObjectShortName">current_state</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/receiver_inst/shift_register" type="array">
+         <obj_property name="ElementShortName">shift_register[23:0]</obj_property>
+         <obj_property name="ObjectShortName">shift_register[23:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/receiver_inst/bit_counter" type="array">
+         <obj_property name="ElementShortName">bit_counter[4:0]</obj_property>
+         <obj_property name="ObjectShortName">bit_counter[4:0]</obj_property>
+         <obj_property name="isExpanded"></obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/receiver_inst/reset" type="logic">
          <obj_property name="ElementShortName">reset</obj_property>
@@ -273,54 +261,6 @@
       <wvobject fp_name="/tb_TOP/uut/transmitter_inst/BIT_DEPTH" type="other">
          <obj_property name="ElementShortName">BIT_DEPTH</obj_property>
          <obj_property name="ObjectShortName">BIT_DEPTH</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject fp_name="group88" type="group">
-      <obj_property name="label">clock-gen</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <wvobject fp_name="/tb_TOP/uut/clock_gen_inst/clk_in" type="logic">
-         <obj_property name="ElementShortName">clk_in</obj_property>
-         <obj_property name="ObjectShortName">clk_in</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/clock_gen_inst/lrck" type="logic">
-         <obj_property name="ElementShortName">lrck</obj_property>
-         <obj_property name="ObjectShortName">lrck</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/clock_gen_inst/sclk" type="logic">
-         <obj_property name="ElementShortName">sclk</obj_property>
-         <obj_property name="ObjectShortName">sclk</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/clock_gen_inst/clk_count" type="array">
-         <obj_property name="ElementShortName">clk_count[23:0]</obj_property>
-         <obj_property name="ObjectShortName">clk_count[23:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/clock_gen_inst/lrck_int" type="logic">
-         <obj_property name="ElementShortName">lrck_int</obj_property>
-         <obj_property name="ObjectShortName">lrck_int</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/clock_gen_inst/sclk_int" type="logic">
-         <obj_property name="ElementShortName">sclk_int</obj_property>
-         <obj_property name="ObjectShortName">sclk_int</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/clock_gen_inst/BIT_DEPTH" type="other">
-         <obj_property name="ElementShortName">BIT_DEPTH</obj_property>
-         <obj_property name="ObjectShortName">BIT_DEPTH</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/clock_gen_inst/SAMPLE_RATE" type="other">
-         <obj_property name="ElementShortName">SAMPLE_RATE</obj_property>
-         <obj_property name="ObjectShortName">SAMPLE_RATE</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/clock_gen_inst/CLOCK_PERIOD" type="other">
-         <obj_property name="ElementShortName">CLOCK_PERIOD</obj_property>
-         <obj_property name="ObjectShortName">CLOCK_PERIOD</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/clock_gen_inst/LRCK_DIV" type="other">
-         <obj_property name="ElementShortName">LRCK_DIV</obj_property>
-         <obj_property name="ObjectShortName">LRCK_DIV</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/clock_gen_inst/SCLK_DIV" type="other">
-         <obj_property name="ElementShortName">SCLK_DIV</obj_property>
-         <obj_property name="ObjectShortName">SCLK_DIV</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group76" type="group">

@@ -33,7 +33,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity I2S_Transmitter is
     Generic (
-        BIT_DEPTH : positive := 24
+        BIT_DEPTH : positive := 28
     );
     Port (
         clk : in STD_LOGIC;
@@ -65,7 +65,7 @@ architecture RTL of I2S_Transmitter is
 begin
     transmitter_process : process(clk)
     begin
-        if rising_edge(clk) then
+        if rising_edge(sck) then
             if reset = '1' then
                 current_state <= IDLE;
                 bit_counter <= (others => '0');
@@ -88,6 +88,7 @@ begin
                         bit_counter <= bit_counter + 1;
                         
                         if bit_counter = BIT_DEPTH - 1 then
+                            bit_counter <= "00000";
                             current_state <= IDLE;
                             tx_ready <= '1';
                         end if;

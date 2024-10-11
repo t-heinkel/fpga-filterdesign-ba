@@ -33,7 +33,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity TOP is
     Generic (
-        BIT_DEPTH   : positive := 24;
+        BIT_DEPTH   : positive := 28;
         SAMPLE_RATE : positive := 48000
     );
     Port (
@@ -64,7 +64,7 @@ architecture Structural of TOP is
 
     component i2s_receiver is
         Generic (
-            BIT_DEPTH : positive := 24
+            BIT_DEPTH : positive := 28
         );
         Port (
             clk         : in STD_LOGIC;
@@ -80,7 +80,7 @@ architecture Structural of TOP is
     
     component i2s_transmitter is
         Generic (
-            BIT_DEPTH : positive := 24
+            BIT_DEPTH : positive := 28
         );
         Port (
             clk         : in STD_LOGIC;
@@ -100,15 +100,15 @@ architecture Structural of TOP is
             SAMPLE_RATE : positive
         );
         Port (
-            clk_in  : in STD_LOGIC;
-            lrck    : out STD_LOGIC;
-            sclk    : out STD_LOGIC
+            clk_in      : in STD_LOGIC;
+            clk_100     : out STD_LOGIC;
+            clk_24      : out STD_LOGIC
         );
     end component;
     
     component audio_processor is
         Generic (
-            BIT_DEPTH : positive := 24
+            BIT_DEPTH : positive := 28
         );
         Port (
             clk         : in STD_LOGIC;
@@ -152,7 +152,7 @@ begin
         port map (
             clk => clk,
             reset => reset,
-            sck => sck_int,
+            sck => sck,
             ws => ws,
             sd_in => sd_in,
             audio_left => audio_out_left_rec,
@@ -165,7 +165,7 @@ begin
         port map (
             clk => clk,
             reset => reset,
-            sck => sck_int,
+            sck => sck,
             ws => ws,
             audio_left => audio_in_left_trans,
             audio_right => audio_in_right_trans,
@@ -177,8 +177,8 @@ begin
         generic map (BIT_DEPTH => BIT_DEPTH, SAMPLE_RATE => SAMPLE_RATE)
         port map (
             clk_in => clk,
-            lrck => ws_int,
-            sclk => sck_int
+            clk_100 => ws_int,
+            clk_24 => sck_int
         );
         
      processor_inst : audio_processor
@@ -186,7 +186,7 @@ begin
         port map (
             clk => clk,
             reset => reset,
-            sck_in => sck_int,
+            sck_in => sck,
             ws_in => ws,
             audio_left_in => rec_l_transfer,
             audio_right_in => rec_r_transfer,

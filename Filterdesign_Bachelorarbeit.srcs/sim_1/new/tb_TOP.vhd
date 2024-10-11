@@ -38,7 +38,7 @@ architecture behavior of tb_TOP is
 
     component TOP is
         Generic (
-            BIT_DEPTH   : positive := 24;
+            BIT_DEPTH   : positive := 28;
             SAMPLE_RATE : positive := 48000
         );
         Port (
@@ -50,29 +50,31 @@ architecture behavior of tb_TOP is
             sd_out          : out STD_LOGIC;
             rx_ready        : out STD_LOGIC;
             tx_ready        : out STD_LOGIC;
-            audio_in_left_trans     : in STD_LOGIC_VECTOR(23 downto 0);
-            audio_in_right_trans    : in STD_LOGIC_VECTOR(23 downto 0);
-            audio_out_left_rec      : out STD_LOGIC_VECTOR(23 downto 0);
-            audio_out_right_rec     : out STD_LOGIC_VECTOR(23 downto 0)
+            audio_in_left_trans     : in STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
+            audio_in_right_trans    : in STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
+            audio_out_left_rec      : out STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
+            audio_out_right_rec     : out STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0)
         );
     end component;
 
     signal clk                  : STD_LOGIC := '0';
     signal clk_del              : STD_LOGIC;
     signal reset                : STD_LOGIC;
-    signal tb_audio_left_in     : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
-    signal tb_audio_right_in    : STD_LOGIC_VECTOR(23 downto 0) := (others => '0');
-    signal tb_audio_left_out    : STD_LOGIC_VECTOR(23 downto 0);
-    signal tb_audio_right_out   : STD_LOGIC_VECTOR(23 downto 0);
-    signal tb_sck               : STD_LOGIC := '1';
+    signal tb_audio_left_in     : STD_LOGIC_VECTOR(27 downto 0) := (others => '0');
+    signal tb_audio_right_in    : STD_LOGIC_VECTOR(27 downto 0) := (others => '0');
+    signal tb_audio_left_out    : STD_LOGIC_VECTOR(27 downto 0);
+    signal tb_audio_right_out   : STD_LOGIC_VECTOR(27 downto 0);
+    signal clk_25               : STD_LOGIC := '1';
     signal sck_del              : STD_LOGIC;
     signal ws                   : STD_LOGIC := '0';
     signal sd_in                : STD_LOGIC := '0';
     signal sd_out               : STD_LOGIC := '0';
     signal tb_rx_ready          : STD_LOGIC := '0';
     signal tb_tx_ready          : STD_LOGIC;
+    signal sd_value             : STD_LOGIC := '0';
     
     signal sd_cnt               : STD_LOGIC_VECTOR(2 downto 0) := "000";
+    signal ws_cnt               : STD_LOGIC_VECTOR(4 downto 0) := "00000";
 
 begin
     -- Instanziierung des zu testenden Systems
@@ -84,7 +86,7 @@ begin
         audio_in_right_trans => tb_audio_right_in,
         audio_out_left_rec => tb_audio_left_out,
         audio_out_right_rec => tb_audio_right_out,
-        sck => tb_sck,
+        sck => clk_25,
         ws => ws,
         sd_in => sd_in,
         sd_out => sd_out,
@@ -103,8 +105,8 @@ begin
             
             -- Test des Senders
             --tb_tx_ready <= '0';
-            tb_audio_left_in <= X"800000"; -- Beispielwert für den Linkskanal
-            tb_audio_right_in <= X"000000"; -- Beispielwert für den Rechtssignal-Kanal
+            --tb_audio_left_in <= X"800000"; -- Beispielwert für den Linkskanal
+            --tb_audio_right_in <= X"000000"; -- Beispielwert für den Rechtssignal-Kanal
             wait for 5ns;
             --tb_tx_ready <= '1';
     
@@ -129,7 +131,7 @@ begin
     
     tb_rx_ready <= '1';
     
-    sd_in_process : process(clk, tb_sck)
+    sd_in_process : process(clk, clk_25)
     begin
         if rising_edge(clk) then
             tb_rx_ready <= '0';
@@ -137,33 +139,28 @@ begin
             --for testing
             --sd_cnt <= std_logic_vector(unsigned(sd_cnt) + 1);
             
-            if rising_edge(tb_sck) then
+            if rising_edge(clk_25) then
                 
-                case sd_cnt is
-                    when "000" =>
-                        sd_in <= '0';
-                    when "001" =>
-                        sd_in <= '0';
-                    when "010" =>
-                        sd_in <= '0';
-                    when "011" =>
-                        sd_in <= '1';
-                    when "100" =>
-                        sd_in <= '1';
-                    when others =>
-                        sd_in <= '1';
-                end case;
+                if(sd_cnt = "000") then
+                    sd_value <= not sd_value;
+                end if;
                 
-                if(sd_cnt = "101") then
+                if(sd_cnt = "111") then
                     sd_cnt <= "000";
+                end if;
+                
+                if(ws_cnt = "11100") then
+                    ws_cnt <= "00000";
                     ws <= not ws;
                 end if;
                 
+                sd_in <= sd_value;
                 sd_cnt <= std_logic_vector(unsigned(sd_cnt) + 1);
+                ws_cnt <= std_logic_vector(unsigned(ws_cnt) + 1);
             end if;
         end if;
     end process sd_in_process;
-    
+        
     clk_process : process
     begin
         clk <= not clk;
@@ -173,7 +170,7 @@ begin
     
     sck_clk_process : process
     begin 
-        tb_sck <= not tb_sck;
+        clk_25 <= not clk_25;
         wait for 20ns;
     end process sck_clk_process;
     
