@@ -5,6 +5,7 @@
    <db_ref_list>
       <db_ref path="tb_TOP_behav.wdb" id="1">
          <top_modules>
+            <top_module name="glbl" />
             <top_module name="tb_TOP" />
          </top_modules>
       </db_ref>
@@ -12,10 +13,10 @@
    <zoom_setting>
       <ZoomStartTime time="0.000 ns"></ZoomStartTime>
       <ZoomEndTime time="5,000.001 ns"></ZoomEndTime>
-      <Cursor1Time time="302.334 ns"></Cursor1Time>
+      <Cursor1Time time="5,000.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="278"></NameColumnWidth>
+      <NameColumnWidth column_width="270"></NameColumnWidth>
       <ValueColumnWidth column_width="116"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="5" />
@@ -28,20 +29,20 @@
          <obj_property name="ObjectShortName">clk</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/tb_audio_left_in" type="array">
-         <obj_property name="ElementShortName">tb_audio_left_in[23:0]</obj_property>
-         <obj_property name="ObjectShortName">tb_audio_left_in[23:0]</obj_property>
+         <obj_property name="ElementShortName">tb_audio_left_in[27:0]</obj_property>
+         <obj_property name="ObjectShortName">tb_audio_left_in[27:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/tb_audio_right_in" type="array">
-         <obj_property name="ElementShortName">tb_audio_right_in[23:0]</obj_property>
-         <obj_property name="ObjectShortName">tb_audio_right_in[23:0]</obj_property>
+         <obj_property name="ElementShortName">tb_audio_right_in[27:0]</obj_property>
+         <obj_property name="ObjectShortName">tb_audio_right_in[27:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/tb_audio_left_out" type="array">
-         <obj_property name="ElementShortName">tb_audio_left_out[23:0]</obj_property>
-         <obj_property name="ObjectShortName">tb_audio_left_out[23:0]</obj_property>
+         <obj_property name="ElementShortName">tb_audio_left_out[27:0]</obj_property>
+         <obj_property name="ObjectShortName">tb_audio_left_out[27:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/tb_audio_right_out" type="array">
-         <obj_property name="ElementShortName">tb_audio_right_out[23:0]</obj_property>
-         <obj_property name="ObjectShortName">tb_audio_right_out[23:0]</obj_property>
+         <obj_property name="ElementShortName">tb_audio_right_out[27:0]</obj_property>
+         <obj_property name="ObjectShortName">tb_audio_right_out[27:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/ws" type="logic">
          <obj_property name="ElementShortName">ws</obj_property>
@@ -67,6 +68,18 @@
          <obj_property name="ElementShortName">sd_cnt[2:0]</obj_property>
          <obj_property name="ObjectShortName">sd_cnt[2:0]</obj_property>
       </wvobject>
+      <wvobject fp_name="/tb_TOP/clk_wizard/locked" type="logic">
+         <obj_property name="ElementShortName">locked</obj_property>
+         <obj_property name="ObjectShortName">locked</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/clk_wizard/reset" type="logic">
+         <obj_property name="ElementShortName">reset</obj_property>
+         <obj_property name="ObjectShortName">reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/clk_wizard/clk_out1" type="logic">
+         <obj_property name="ElementShortName">clk_out1</obj_property>
+         <obj_property name="ObjectShortName">clk_out1</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="group64" type="group">
       <obj_property name="label">TOP</obj_property>
@@ -89,20 +102,20 @@
          <obj_property name="ObjectShortName">sd_out</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/audio_out_left_rec" type="array">
-         <obj_property name="ElementShortName">audio_out_left_rec[23:0]</obj_property>
-         <obj_property name="ObjectShortName">audio_out_left_rec[23:0]</obj_property>
+         <obj_property name="ElementShortName">audio_out_left_rec[27:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_out_left_rec[27:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/audio_out_right_rec" type="array">
-         <obj_property name="ElementShortName">audio_out_right_rec[23:0]</obj_property>
-         <obj_property name="ObjectShortName">audio_out_right_rec[23:0]</obj_property>
+         <obj_property name="ElementShortName">audio_out_right_rec[27:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_out_right_rec[27:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/audio_in_left_trans" type="array">
-         <obj_property name="ElementShortName">audio_in_left_trans[23:0]</obj_property>
-         <obj_property name="ObjectShortName">audio_in_left_trans[23:0]</obj_property>
+         <obj_property name="ElementShortName">audio_in_left_trans[27:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_in_left_trans[27:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/audio_in_right_trans" type="array">
-         <obj_property name="ElementShortName">audio_in_right_trans[23:0]</obj_property>
-         <obj_property name="ObjectShortName">audio_in_right_trans[23:0]</obj_property>
+         <obj_property name="ElementShortName">audio_in_right_trans[27:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_in_right_trans[27:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/sd_in_int" type="logic">
          <obj_property name="ElementShortName">sd_in_int</obj_property>
@@ -125,20 +138,20 @@
          <obj_property name="ObjectShortName">ws_rec</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/rec_l_transfer" type="array">
-         <obj_property name="ElementShortName">rec_l_transfer[23:0]</obj_property>
-         <obj_property name="ObjectShortName">rec_l_transfer[23:0]</obj_property>
+         <obj_property name="ElementShortName">rec_l_transfer[27:0]</obj_property>
+         <obj_property name="ObjectShortName">rec_l_transfer[27:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/rec_r_transfer" type="array">
-         <obj_property name="ElementShortName">rec_r_transfer[23:0]</obj_property>
-         <obj_property name="ObjectShortName">rec_r_transfer[23:0]</obj_property>
+         <obj_property name="ElementShortName">rec_r_transfer[27:0]</obj_property>
+         <obj_property name="ObjectShortName">rec_r_transfer[27:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/trans_l_transfer" type="array">
-         <obj_property name="ElementShortName">trans_l_transfer[23:0]</obj_property>
-         <obj_property name="ObjectShortName">trans_l_transfer[23:0]</obj_property>
+         <obj_property name="ElementShortName">trans_l_transfer[27:0]</obj_property>
+         <obj_property name="ObjectShortName">trans_l_transfer[27:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/trans_r_transfer" type="array">
-         <obj_property name="ElementShortName">trans_r_transfer[23:0]</obj_property>
-         <obj_property name="ObjectShortName">trans_r_transfer[23:0]</obj_property>
+         <obj_property name="ElementShortName">trans_r_transfer[27:0]</obj_property>
+         <obj_property name="ObjectShortName">trans_r_transfer[27:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/BIT_DEPTH" type="other">
          <obj_property name="ElementShortName">BIT_DEPTH</obj_property>
@@ -184,22 +197,22 @@
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/receiver_inst/audio_right" type="array">
-         <obj_property name="ElementShortName">audio_right[23:0]</obj_property>
-         <obj_property name="ObjectShortName">audio_right[23:0]</obj_property>
+         <obj_property name="ElementShortName">audio_right[27:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_right[27:0]</obj_property>
          <obj_property name="CustomSignalColor">#0000FF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/receiver_inst/audio_left" type="array">
-         <obj_property name="ElementShortName">audio_left[23:0]</obj_property>
-         <obj_property name="ObjectShortName">audio_left[23:0]</obj_property>
+         <obj_property name="ElementShortName">audio_left[27:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_left[27:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/receiver_inst/current_state" type="other">
          <obj_property name="ElementShortName">current_state</obj_property>
          <obj_property name="ObjectShortName">current_state</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/receiver_inst/shift_register" type="array">
-         <obj_property name="ElementShortName">shift_register[23:0]</obj_property>
-         <obj_property name="ObjectShortName">shift_register[23:0]</obj_property>
+         <obj_property name="ElementShortName">shift_register[27:0]</obj_property>
+         <obj_property name="ObjectShortName">shift_register[27:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/receiver_inst/bit_counter" type="array">
          <obj_property name="ElementShortName">bit_counter[4:0]</obj_property>
@@ -231,12 +244,12 @@
          <obj_property name="ObjectShortName">ws</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/transmitter_inst/audio_left" type="array">
-         <obj_property name="ElementShortName">audio_left[23:0]</obj_property>
-         <obj_property name="ObjectShortName">audio_left[23:0]</obj_property>
+         <obj_property name="ElementShortName">audio_left[27:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_left[27:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/transmitter_inst/audio_right" type="array">
-         <obj_property name="ElementShortName">audio_right[23:0]</obj_property>
-         <obj_property name="ObjectShortName">audio_right[23:0]</obj_property>
+         <obj_property name="ElementShortName">audio_right[27:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_right[27:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/transmitter_inst/sd_out" type="logic">
          <obj_property name="ElementShortName">sd_out</obj_property>
@@ -255,8 +268,8 @@
          <obj_property name="ObjectShortName">bit_counter[4:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/transmitter_inst/shift_register" type="array">
-         <obj_property name="ElementShortName">shift_register[23:0]</obj_property>
-         <obj_property name="ObjectShortName">shift_register[23:0]</obj_property>
+         <obj_property name="ElementShortName">shift_register[27:0]</obj_property>
+         <obj_property name="ObjectShortName">shift_register[27:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/transmitter_inst/BIT_DEPTH" type="other">
          <obj_property name="ElementShortName">BIT_DEPTH</obj_property>
@@ -283,12 +296,12 @@
          <obj_property name="ObjectShortName">ws_in</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/processor_inst/audio_left_in" type="array">
-         <obj_property name="ElementShortName">audio_left_in[23:0]</obj_property>
-         <obj_property name="ObjectShortName">audio_left_in[23:0]</obj_property>
+         <obj_property name="ElementShortName">audio_left_in[27:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_left_in[27:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/processor_inst/audio_right_in" type="array">
-         <obj_property name="ElementShortName">audio_right_in[23:0]</obj_property>
-         <obj_property name="ObjectShortName">audio_right_in[23:0]</obj_property>
+         <obj_property name="ElementShortName">audio_right_in[27:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_right_in[27:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/processor_inst/sck_out" type="logic">
          <obj_property name="ElementShortName">sck_out</obj_property>
@@ -299,12 +312,12 @@
          <obj_property name="ObjectShortName">ws_out</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/processor_inst/audio_left_out" type="array">
-         <obj_property name="ElementShortName">audio_left_out[23:0]</obj_property>
-         <obj_property name="ObjectShortName">audio_left_out[23:0]</obj_property>
+         <obj_property name="ElementShortName">audio_left_out[27:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_left_out[27:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/processor_inst/audio_right_out" type="array">
-         <obj_property name="ElementShortName">audio_right_out[23:0]</obj_property>
-         <obj_property name="ObjectShortName">audio_right_out[23:0]</obj_property>
+         <obj_property name="ElementShortName">audio_right_out[27:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_right_out[27:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/processor_inst/BIT_DEPTH" type="other">
          <obj_property name="ElementShortName">BIT_DEPTH</obj_property>
