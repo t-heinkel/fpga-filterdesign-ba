@@ -43,6 +43,7 @@ entity I2S_Receiver is
         sck     : in STD_LOGIC;     -- Serial Clock
         ws      : in STD_LOGIC;     -- Word Select (Left/Right Signal)
         sd_in   : in STD_LOGIC;     -- Serial Data Input
+        ws_out  : out STD_LOGIC;
         
         -- Output for received Signals
         audio_left  : out STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
