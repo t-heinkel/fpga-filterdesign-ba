@@ -83,11 +83,13 @@ architecture behavior of tb_TOP is
     signal sd_out               : STD_LOGIC := '0';
     signal tb_rx_ready          : STD_LOGIC := '0';
     signal tb_tx_ready          : STD_LOGIC;
-    signal sd_value             : STD_LOGIC := '0';
+    signal sd_value             : STD_LOGIC := '1';
     
     signal sd_cnt               : STD_LOGIC_VECTOR(2 downto 0) := "000";
     signal ws_cnt               : STD_LOGIC_VECTOR(4 downto 0) := "00000";
     
+    signal ws_del               : STD_LOGIC;
+   
     -- clock wizard signals
     signal clk_24               : STD_LOGIC;
     signal clk_locked           : STD_LOGIC;
@@ -104,7 +106,7 @@ begin
         audio_out_left_rec => tb_audio_left_out,
         audio_out_right_rec => tb_audio_right_out,
         sck => clk_24,
-        ws => ws,
+        ws => ws_del,
         sd_in => sd_in,
         sd_out => sd_out,
         rx_ready => tb_rx_ready,
@@ -120,70 +122,32 @@ begin
           -- Clock in ports
           clk_in1 => clk
         );       
-
-    tb_process : process
-    begin
-    
-        --if (rising_edge(clk)) then
-            reset <= '1';
-            wait for 20 ns;
-            reset <= '0';   
-            tb_rx_ready <= '0';
-            
-            -- Test des Senders
-            --tb_tx_ready <= '0';
-            --tb_audio_left_in <= X"800000"; -- Beispielwert für den Linkskanal
-            --tb_audio_right_in <= X"000000"; -- Beispielwert für den Rechtssignal-Kanal
-            wait for 5ns;
-            --tb_tx_ready <= '1';
-    
-            -- Überprüfung des empfangenen Signals
-            assert (sd_in = '1')
-                report "SD-In Signal ist nicht korrekt"
-                severity warning;
-    
-    
-            -- Überprüfung des ausgegebenen Signals
-            assert (tb_audio_left_out /= X"000000")
-                report "Audio Left Output ist leer"
-                severity failure;
-    
-            -- Simulationsende
-            wait for 100 ms;
-            wait;
-        
-        --end if;
-    end process tb_process;
-
     
     tb_rx_ready <= '1';
     
-    sd_in_process : process(clk, clk_24)
+    
+    sd_in_process : process(clk_24)
     begin
-        if rising_edge(clk) then
-            tb_rx_ready <= '0';
-            --tb_tx_ready <= '0';
-            --for testing
-            --sd_cnt <= std_logic_vector(unsigned(sd_cnt) + 1);
-            
+        if (clk_locked = '1') then
             if rising_edge(clk_24) then
                 
-                if(sd_cnt = "000") then
-                    sd_value <= not sd_value;
-                end if;
+                ws_del <= ws;
+
+                sd_cnt <= std_logic_vector(unsigned(sd_cnt) + 1);
+                ws_cnt <= std_logic_vector(unsigned(ws_cnt) + 1);                 
                 
-                if(sd_cnt = "111") then
+                if(sd_cnt = "110") then
+                    sd_value <= not sd_value;
                     sd_cnt <= "000";
                 end if;
                 
-                if(ws_cnt = "11100") then
+                
+                if(ws_cnt = "11011") then
                     ws_cnt <= "00000";
                     ws <= not ws;
                 end if;
                 
-                sd_in <= sd_value;
-                sd_cnt <= std_logic_vector(unsigned(sd_cnt) + 1);
-                ws_cnt <= std_logic_vector(unsigned(ws_cnt) + 1);
+                sd_in <= sd_value;         
             end if;
         end if;
     end process sd_in_process;

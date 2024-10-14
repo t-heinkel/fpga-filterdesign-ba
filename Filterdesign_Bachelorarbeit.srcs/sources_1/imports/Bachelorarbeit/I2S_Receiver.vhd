@@ -60,12 +60,13 @@ architecture RTL of I2S_Receiver is
     signal bit_counter      : unsigned(4 downto 0) := "00000";                          -- Counter for Bit Position
     signal shift_register   : STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);     -- Shift Register for received data
     
+    signal sd_in_del           : STD_LOGIC;
     
 begin
     receiver_process : process(sck)
     begin
         if rising_edge(sck) then
-            
+                    
             if reset = '1' then
                 -- Reset internal signals
                 current_state   <= IDLE;
@@ -84,28 +85,31 @@ begin
                         
                     when RX_LEFT =>
                         -- receive data into shift register
-                        shift_register  <= sd_in & shift_register(BIT_DEPTH-1 downto 1);
+                        shift_register  <= sd_in_del & shift_register(BIT_DEPTH-1 downto 1);
                         bit_counter     <= bit_counter + 1;
                         
                         -- if every bit is received, then
                         if bit_counter = BIT_DEPTH - 1 then
                             -- assign data and switch state to idle
                             audio_left      <= shift_register;
-                            bit_counter <= "00000";
-                            current_state   <= IDLE;
+                            bit_counter <= (others => '0');
+                            current_state   <= RX_RIGHT;
                         end if;
                         
                     when RX_RIGHT =>
-                        shift_register  <= sd_in & shift_register(BIT_DEPTH-1 downto 1);
+                        shift_register  <= sd_in_del & shift_register(BIT_DEPTH-1 downto 1);
                         bit_counter     <= bit_counter + 1;
                         
                         if bit_counter = BIT_DEPTH - 1 then
                             audio_right     <= shift_register;
-                            bit_counter <= "00000";
-                            current_state   <= IDLE;
+                            bit_counter <= (others => '0');
+                            current_state   <= RX_LEFT;
                         end if;
                 end case;
             end if;
+            
+            sd_in_del <= sd_in;
+
         end if;
     end process;
 
