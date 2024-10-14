@@ -128,6 +128,18 @@ architecture Structural of TOP is
         );
     end component;
     
+    component clk_wiz_0 is
+        Port (
+          -- Clock out ports
+          clk_out1      : out STD_LOGIC;
+          -- Status and control signals
+          reset         : in STD_LOGIC;
+          locked        : out STD_LOGIC;
+          -- Clock in ports
+          clk_in1       : in STD_LOGIC         
+        );
+    end component;
+    
     --signal reset : STD_LOGIC := '1';
     signal sd_in_int : STD_LOGIC;
     signal sd_out_int : STD_LOGIC;
@@ -145,6 +157,11 @@ architecture Structural of TOP is
     signal rec_r_transfer   : STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
     signal trans_l_transfer : STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
     signal trans_r_transfer : STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
+    
+    -- clk signals
+    signal clk_24      : STD_LOGIC;
+    signal clk_reset   : STD_LOGIC;
+    signal clk_locked  : STD_LOGIC;
     
 begin
     receiver_inst : i2s_receiver
@@ -195,6 +212,17 @@ begin
             audio_left_out => trans_l_transfer,
             audio_right_out => trans_r_transfer
         );
+     
+     clk_wizard : clk_wiz_0
+        port map (
+          clk_out1 => clk_24,
+          -- Status and control signals
+          reset => clk_reset,
+          locked => clk_locked,
+          -- Clock in ports
+          clk_in1 => clk
+        );   
+        
         
         -- send and receive signals to/from audio_processor
         --rec_l_transfer <= audio_out_left_rec;
