@@ -140,7 +140,6 @@ architecture Structural of TOP is
         );
     end component;
     
-    --signal reset : STD_LOGIC := '1';
     signal sd_in_int : STD_LOGIC;
     signal sd_out_int : STD_LOGIC;
     signal sck_int : STD_LOGIC;
@@ -172,8 +171,8 @@ begin
             sck => sck,
             ws => ws,
             sd_in => sd_in,
-            audio_left => audio_out_left_rec,
-            audio_right => audio_out_right_rec,
+            audio_left => rec_l_transfer,
+            audio_right => rec_r_transfer,
             rx_ready => rx_ready
         );
     
@@ -184,8 +183,8 @@ begin
             reset => reset,
             sck => sck,
             ws => ws,
-            audio_left => audio_in_left_trans,
-            audio_right => audio_in_right_trans,
+            audio_left => trans_l_transfer,
+            audio_right => trans_r_transfer,
             sd_out => sd_out,
             tx_ready => tx_ready
         );
@@ -223,7 +222,13 @@ begin
           clk_in1 => clk
         );   
         
+
+transfer_process : process(clk)
+begin
+    if rising_edge(clk) then
         
+    end if;
+end process transfer_process;
         -- send and receive signals to/from audio_processor
         --rec_l_transfer <= audio_out_left_rec;
         --rec_r_transfer <= audio_out_right_rec;

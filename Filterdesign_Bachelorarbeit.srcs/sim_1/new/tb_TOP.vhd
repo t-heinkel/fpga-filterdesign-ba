@@ -94,13 +94,15 @@ architecture behavior of tb_TOP is
     signal clk_24               : STD_LOGIC;
     signal clk_locked           : STD_LOGIC;
     signal clk_reset            : STD_LOGIC;
+    
+    signal test                 : STD_LOGIC;
 
 begin
     -- Instanziierung des zu testenden Systems
     uut : TOP
     Port Map (
         clk => clk,
-        reset => reset,
+        reset => test,
         audio_in_left_trans => tb_audio_left_in,
         audio_in_right_trans => tb_audio_right_in,
         audio_out_left_rec => tb_audio_left_out,
@@ -125,6 +127,12 @@ begin
     
     tb_rx_ready <= '1';
     
+    tb_process : process
+    begin
+        test <= '0';
+        wait for 20ns;
+        test <= '0';
+    end process tb_process;
     
     sd_in_process : process(clk_24)
     begin

@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="8,331.043 ns"></ZoomStartTime>
-      <ZoomEndTime time="12,014.133 ns"></ZoomEndTime>
-      <Cursor1Time time="9,332.271 ns"></Cursor1Time>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="19.584877 us"></ZoomEndTime>
+      <Cursor1Time time="9.332271 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="308"></NameColumnWidth>
-      <ValueColumnWidth column_width="116"></ValueColumnWidth>
+      <NameColumnWidth column_width="353"></NameColumnWidth>
+      <ValueColumnWidth column_width="137"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="5" />
    <wvobject fp_name="group40" type="group">
@@ -189,15 +189,15 @@
          <obj_property name="ElementShortName">sd_in_del</obj_property>
          <obj_property name="ObjectShortName">sd_in_del</obj_property>
       </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/receiver_inst/audio_left" type="array">
+         <obj_property name="ElementShortName">audio_left[27:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_left[27:0]</obj_property>
+      </wvobject>
       <wvobject fp_name="/tb_TOP/uut/receiver_inst/audio_right" type="array">
          <obj_property name="ElementShortName">audio_right[27:0]</obj_property>
          <obj_property name="ObjectShortName">audio_right[27:0]</obj_property>
          <obj_property name="CustomSignalColor">#0000FF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/receiver_inst/audio_left" type="array">
-         <obj_property name="ElementShortName">audio_left[27:0]</obj_property>
-         <obj_property name="ObjectShortName">audio_left[27:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/receiver_inst/current_state" type="other">
          <obj_property name="ElementShortName">current_state</obj_property>

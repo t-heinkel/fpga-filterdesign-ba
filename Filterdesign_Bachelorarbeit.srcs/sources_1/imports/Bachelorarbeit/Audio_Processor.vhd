@@ -63,8 +63,10 @@ begin
                 audio_right_out <= (others => '0');
             else
                 -- Verdoppeln der Eingangsdaten
-                audio_left_out <= std_logic_vector(unsigned(audio_left_in) * 2);
-                audio_right_out <= std_logic_vector(unsigned(audio_right_in) * 2);
+                --audio_left_out <= std_logic_vector(unsigned(audio_left_in) * 3);
+                --audio_right_out <= std_logic_vector(unsigned(audio_right_in) * 3);
+                audio_left_out <= audio_left_in;
+                audio_right_out <= audio_right_in;
             end if;
         end if;
     end process;
