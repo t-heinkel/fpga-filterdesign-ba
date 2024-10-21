@@ -85,7 +85,7 @@ begin
 	);
 
 	Inst_I2C_Controller: I2C_Controller GENERIC MAP (
-      clk_divide => "01111000"   -- 120 (48,000/120 = 400kHz I2C clock)
+      clk_divide => "00111100"   -- 60 (24,000/120 = 400kHz I2C clock)
    ) PORT MAP(
 		clk => clk,
 		inst_address => inst_address,

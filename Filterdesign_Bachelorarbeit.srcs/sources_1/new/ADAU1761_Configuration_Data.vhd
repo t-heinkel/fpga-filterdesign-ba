@@ -32,13 +32,13 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity ADAU1761_Configuration_Date is
+entity ADAU1761_Configuration_Data is
 Port ( clk : in  STD_LOGIC;
            address : in  STD_LOGIC_VECTOR (9 downto 0);
            data : out  STD_LOGIC_VECTOR (8 downto 0));
-end ADAU1761_Configuration_Date;
+end ADAU1761_Configuration_Data;
 
-architecture Behavioral of ADAU1761_Configuration_Date is
+architecture Behavioral of ADAU1761_Configuration_Data is
 
 begin
 process(clk)

@@ -128,6 +128,18 @@ architecture Structural of TOP is
         );
     end component;
     
+    component i2c_master is
+        Port ( 
+            clk         : in  STD_LOGIC;
+            i2c_sda_i   : IN std_logic;      
+            i2c_sda_o   : OUT std_logic;      
+            i2c_sda_t   : OUT std_logic;      
+            i2c_scl     : out  STD_LOGIC;
+            sw          : in std_logic_vector(1 downto 0);
+            active      : out std_logic_vector(1 downto 0)
+        );
+    end component;
+    
     component clk_wiz_0 is
         Port (
           -- Clock out ports
@@ -156,6 +168,12 @@ architecture Structural of TOP is
     signal rec_r_transfer   : STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
     signal trans_l_transfer : STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
     signal trans_r_transfer : STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
+    
+    -- I2C Master Signals
+    signal i2c_scl   : std_logic;
+    signal i2c_sda_i : std_logic;
+    signal i2c_sda_o : std_logic;
+    signal i2c_sda_t : std_logic;
     
     -- clk signals
     signal clk_24      : STD_LOGIC;
@@ -188,14 +206,6 @@ begin
             sd_out => sd_out,
             tx_ready => tx_ready
         );
-    
-    clock_gen_inst : clock_generator
-        generic map (BIT_DEPTH => BIT_DEPTH, SAMPLE_RATE => SAMPLE_RATE)
-        port map (
-            clk_in => clk,
-            clk_100 => ws_int,
-            clk_24 => sck_int
-        );
         
      processor_inst : audio_processor
         generic map (BIT_DEPTH => BIT_DEPTH)
@@ -210,6 +220,17 @@ begin
             ws_out => ws_trans,
             audio_left_out => trans_l_transfer,
             audio_right_out => trans_r_transfer
+        );
+     
+     i2c_master_inst : i2c_master
+        port map(
+            clk       => clk_24,
+            i2c_sda_i => i2c_sda_i,
+            i2c_sda_o => i2c_sda_o,
+            i2c_sda_t => i2c_sda_t,
+            i2c_scl   => i2c_scl,
+            sw => sw,
+            active => active        
         );
      
      clk_wizard : clk_wiz_0
