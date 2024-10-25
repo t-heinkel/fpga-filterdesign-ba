@@ -46,7 +46,6 @@ entity audio_processor is
         audio_right_in  : in STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
         
         -- Ausgangssignale zum Transmitter
-        sck_out         : out STD_LOGIC;
         ws_out          : out STD_LOGIC;
         audio_left_out  : out STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
         audio_right_out : out STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0)
@@ -72,7 +71,6 @@ begin
     end process;
     
     -- Durchreichen der Timing-Signale
-    sck_out <= sck_in;
     ws_out <= ws_in;
 end Behavioral;
 

@@ -1,0 +1,467 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Fri Oct 25 13:22:52 2024
+# Process ID: 5600
+# Current directory: C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1
+# Command line: vivado.exe -log TOP.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source TOP.tcl
+# Log file: C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1/TOP.vds
+# Journal file: C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1\vivado.jou
+# Running On: TABLET-LEUQMGK6, OS: Windows, CPU Frequency: 2419 MHz, CPU Physical cores: 4, Host memory: 17005 MB
+#-----------------------------------------------------------
+source TOP.tcl -notrace
+create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:16 . Memory (MB): peak = 463.195 ; gain = 184.547
+Command: synth_design -top TOP -part xc7z020clg484-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 16804
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 1339.602 ; gain = 438.977
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'TOP' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:75]
+WARNING: [Synth 8-5640] Port 'ws_out' is missing in component declaration [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:77]
+	Parameter BIT_DEPTH bound to: 28 - type: integer 
+INFO: [Synth 8-3491] module 'I2S_Receiver' declared at 'C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Receiver.vhd:34' bound to instance 'receiver_inst' of component 'i2s_receiver' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:207]
+INFO: [Synth 8-638] synthesizing module 'I2S_Receiver' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Receiver.vhd:57]
+	Parameter BIT_DEPTH bound to: 28 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'I2S_Receiver' (0#1) [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Receiver.vhd:57]
+	Parameter BIT_DEPTH bound to: 28 - type: integer 
+INFO: [Synth 8-3491] module 'I2S_Transmitter' declared at 'C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Transmitter.vhd:34' bound to instance 'transmitter_inst' of component 'i2s_transmitter' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:220]
+INFO: [Synth 8-638] synthesizing module 'I2S_Transmitter' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Transmitter.vhd:58]
+	Parameter BIT_DEPTH bound to: 28 - type: integer 
+WARNING: [Synth 8-614] signal 'sck' is read in the process but is not in the sensitivity list [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Transmitter.vhd:66]
+INFO: [Synth 8-256] done synthesizing module 'I2S_Transmitter' (0#1) [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Transmitter.vhd:58]
+	Parameter BIT_DEPTH bound to: 28 - type: integer 
+INFO: [Synth 8-3491] module 'audio_processor' declared at 'C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/Audio_Processor.vhd:34' bound to instance 'processor_inst' of component 'audio_processor' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:233]
+INFO: [Synth 8-638] synthesizing module 'audio_processor' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/Audio_Processor.vhd:55]
+	Parameter BIT_DEPTH bound to: 28 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'audio_processor' (0#1) [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/Audio_Processor.vhd:55]
+INFO: [Synth 8-3491] module 'I2C_Master' declared at 'C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Master.vhd:34' bound to instance 'i2c_master_inst' of component 'i2c_master' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:247]
+INFO: [Synth 8-638] synthesizing module 'I2C_Master' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Master.vhd:44]
+INFO: [Synth 8-3491] module 'ADAU1761_Configuration_Data' declared at 'C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/ADAU1761_Configuration_Data.vhd:35' bound to instance 'Inst_adau1761_configuration_data' of component 'ADAU1761_Configuration_Data' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Master.vhd:81]
+INFO: [Synth 8-638] synthesizing module 'ADAU1761_Configuration_Data' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/ADAU1761_Configuration_Data.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'ADAU1761_Configuration_Data' (0#1) [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/ADAU1761_Configuration_Data.vhd:41]
+	Parameter clk_divide bound to: 8'b00111100 
+INFO: [Synth 8-3491] module 'I2C_Controller' declared at 'C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Controller.vhd:34' bound to instance 'Inst_I2C_Controller' of component 'I2C_Controller' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Master.vhd:87]
+INFO: [Synth 8-638] synthesizing module 'I2C_Controller' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Controller.vhd:54]
+	Parameter clk_divide bound to: 8'b00111100 
+INFO: [Synth 8-256] done synthesizing module 'I2C_Controller' (0#1) [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Controller.vhd:54]
+INFO: [Synth 8-256] done synthesizing module 'I2C_Master' (0#1) [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Master.vhd:44]
+INFO: [Synth 8-3491] module 'clk_wiz_0' declared at 'C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1/.Xil/Vivado-5600-TABLET-LEUQMGK6/realtime/clk_wiz_0_stub.vhdl:6' bound to instance 'clk_wizard' of component 'clk_wiz_0' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:258]
+INFO: [Synth 8-638] synthesizing module 'clk_wiz_0' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1/.Xil/Vivado-5600-TABLET-LEUQMGK6/realtime/clk_wiz_0_stub.vhdl:16]
+INFO: [Synth 8-113] binding component instance 'i_i2s_sda_obuf' to cell 'IOBUF' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:268]
+INFO: [Synth 8-256] done synthesizing module 'TOP' (0#1) [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:75]
+WARNING: [Synth 8-3848] Net ws_out in module/entity I2S_Receiver does not have driver. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Receiver.vhd:46]
+WARNING: [Synth 8-3848] Net rx_ready in module/entity I2S_Receiver does not have driver. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Receiver.vhd:52]
+WARNING: [Synth 8-3848] Net sd_out in module/entity TOP does not have driver. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:47]
+WARNING: [Synth 8-3848] Net audio_out_left_rec in module/entity TOP does not have driver. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:50]
+WARNING: [Synth 8-3848] Net audio_out_right_rec in module/entity TOP does not have driver. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:51]
+WARNING: [Synth 8-3848] Net clk_reset in module/entity TOP does not have driver. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:193]
+WARNING: [Synth 8-3917] design TOP has port AC_ADR0 driven by constant 1
+WARNING: [Synth 8-3917] design TOP has port AC_ADR1 driven by constant 1
+WARNING: [Synth 8-7129] Port sck_in in module audio_processor is either unconnected or has no load
+WARNING: [Synth 8-7129] Port clk in module I2S_Transmitter is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ws_out in module I2S_Receiver is either unconnected or has no load
+WARNING: [Synth 8-7129] Port rx_ready in module I2S_Receiver is either unconnected or has no load
+WARNING: [Synth 8-7129] Port clk in module I2S_Receiver is either unconnected or has no load
+WARNING: [Synth 8-7129] Port sd_out in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[27] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[26] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[25] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[24] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[23] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[22] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[21] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[20] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[19] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[18] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[17] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[16] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[15] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[14] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[13] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[12] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[11] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[10] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[9] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[8] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[7] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[6] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[5] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[4] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[3] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[2] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[1] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_left_rec[0] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[27] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[26] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[25] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[24] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[23] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[22] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[21] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[20] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[19] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[18] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[17] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[16] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[15] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[14] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[13] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[12] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[11] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[10] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[9] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[8] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[7] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[6] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[5] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[4] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[3] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[2] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[1] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_out_right_rec[0] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port sck in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port ws in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port sd_in in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[27] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[26] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[25] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[24] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[23] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[22] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[21] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[20] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[19] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[18] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[17] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[16] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[15] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[14] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[13] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[12] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[11] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[10] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[9] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[8] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[7] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[6] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[5] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[4] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[3] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[2] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[1] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_left_trans[0] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_right_trans[27] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_right_trans[26] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_right_trans[25] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_right_trans[24] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_right_trans[23] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_right_trans[22] in module TOP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port audio_in_right_trans[21] in module TOP is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:13 . Memory (MB): peak = 1454.797 ; gain = 554.172
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:13 . Memory (MB): peak = 1454.797 ; gain = 554.172
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:13 . Memory (MB): peak = 1454.797 ; gain = 554.172
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.024 . Memory (MB): peak = 1454.797 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'clk_wizard'
+Finished Parsing XDC File [c:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'clk_wizard'
+Parsing XDC File [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc]
+WARNING: [Vivado 12-584] No ports matched 'clk_100'. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc:2]
+WARNING: [Vivado 12-627] No clocks matched 'zed_audio_clk_48M'. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc:4]
+INFO: [Vivado 12-626] No clocks found. Please use 'create_clock' or 'create_generated_clock' command to create clocks. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc:4]
+WARNING: [Vivado 12-627] No clocks matched 'clk_100'. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc:4]
+INFO: [Vivado 12-626] No clocks found. Please use 'create_clock' or 'create_generated_clock' command to create clocks. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc:4]
+WARNING: [Vivado 12-627] No clocks matched 'clk_100'. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc:5]
+INFO: [Vivado 12-626] No clocks found. Please use 'create_clock' or 'create_generated_clock' command to create clocks. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc:5]
+WARNING: [Vivado 12-627] No clocks matched 'zed_audio_clk_48M'. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc:5]
+INFO: [Vivado 12-626] No clocks found. Please use 'create_clock' or 'create_generated_clock' command to create clocks. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc:5]
+WARNING: [Vivado 12-584] No ports matched 'clk_100'. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc:9]
+WARNING: [Vivado 12-584] No ports matched 'clk_100'. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc:10]
+Finished Parsing XDC File [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc]
+WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/TOP_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/TOP_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/TOP_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1551.551 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 1551.551 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:28 . Memory (MB): peak = 1551.551 ; gain = 650.926
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:28 . Memory (MB): peak = 1551.551 ; gain = 650.926
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for clk. (constraint file  {c:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc}, line 3).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for clk. (constraint file  {c:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc}, line 4).
+Applied set_property KEEP_HIERARCHY = SOFT for clk_wizard. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:28 . Memory (MB): peak = 1551.551 ; gain = 650.926
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'I2S_Receiver'
+INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'I2S_Transmitter'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                               00 |                               00
+                rx_right |                               01 |                               10
+                 rx_left |                               10 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'sequential' in module 'I2S_Receiver'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                               00 |                               00
+                 tx_left |                               01 |                               01
+                tx_right |                               10 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'sequential' in module 'I2S_Transmitter'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:29 . Memory (MB): peak = 1551.551 ; gain = 650.926
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   16 Bit       Adders := 1     
+	   2 Input   10 Bit       Adders := 1     
+	   2 Input    8 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 2     
+	   2 Input    4 Bit       Adders := 1     
++---XORs : 
+	   2 Input      1 Bit         XORs := 1     
++---Registers : 
+	               28 Bit    Registers := 6     
+	               16 Bit    Registers := 2     
+	               10 Bit    Registers := 1     
+	                9 Bit    Registers := 2     
+	                8 Bit    Registers := 2     
+	                5 Bit    Registers := 3     
+	                4 Bit    Registers := 2     
+	                1 Bit    Registers := 11    
++---ROMs : 
+	                    ROMs := 1     
++---Muxes : 
+	   2 Input   28 Bit        Muxes := 2     
+	  21 Input   16 Bit        Muxes := 1     
+	   2 Input   16 Bit        Muxes := 2     
+	   6 Input   16 Bit        Muxes := 1     
+	  13 Input   16 Bit        Muxes := 1     
+	   2 Input   10 Bit        Muxes := 2     
+	   6 Input   10 Bit        Muxes := 1     
+	  13 Input   10 Bit        Muxes := 1     
+	   2 Input    9 Bit        Muxes := 1     
+	   6 Input    9 Bit        Muxes := 1     
+	  13 Input    9 Bit        Muxes := 1     
+	   6 Input    8 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 2     
+	   2 Input    5 Bit        Muxes := 2     
+	   2 Input    4 Bit        Muxes := 8     
+	   4 Input    4 Bit        Muxes := 1     
+	   7 Input    4 Bit        Muxes := 1     
+	   6 Input    4 Bit        Muxes := 2     
+	  13 Input    4 Bit        Muxes := 1     
+	   3 Input    2 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 4     
+	   2 Input    1 Bit        Muxes := 39    
+	   3 Input    1 Bit        Muxes := 5     
+	  13 Input    1 Bit        Muxes := 6     
+	   6 Input    1 Bit        Muxes := 17    
+	  14 Input    1 Bit        Muxes := 2     
+	   5 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-6040] Register i2c_master_inst/Inst_I2C_Controller/pcnext_reg_rep driving address of a ROM cannot be packed in BRAM/URAM because of presence of initial value.
+WARNING: [Synth 8-3917] design TOP has port AC_ADR0 driven by constant 1
+WARNING: [Synth 8-3917] design TOP has port AC_ADR1 driven by constant 1
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:34 . Memory (MB): peak = 1551.551 ; gain = 650.926
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping Report
++------------+-----------------------------------------------------------+---------------+----------------+
+|Module Name | RTL Object                                                | Depth x Width | Implemented As | 
++------------+-----------------------------------------------------------+---------------+----------------+
+|TOP         | i2c_master_inst/Inst_adau1761_configuration_data/data_reg | 1024x9        | Block RAM      | 
++------------+-----------------------------------------------------------+---------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:29 ; elapsed = 00:00:43 . Memory (MB): peak = 1551.551 ; gain = 650.926
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:29 ; elapsed = 00:00:44 . Memory (MB): peak = 1551.551 ; gain = 650.926
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance i2c_master_inst/Inst_adau1761_configuration_data/data_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:30 ; elapsed = 00:00:44 . Memory (MB): peak = 1551.551 ; gain = 650.926
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+CRITICAL WARNING: [Synth 8-4442] BlackBox module clk_wizard has unconnected pin reset
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:36 ; elapsed = 00:00:52 . Memory (MB): peak = 1551.551 ; gain = 650.926
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:36 ; elapsed = 00:00:52 . Memory (MB): peak = 1551.551 ; gain = 650.926
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:36 ; elapsed = 00:00:52 . Memory (MB): peak = 1551.551 ; gain = 650.926
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:36 ; elapsed = 00:00:52 . Memory (MB): peak = 1551.551 ; gain = 650.926
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:36 ; elapsed = 00:00:52 . Memory (MB): peak = 1551.551 ; gain = 650.926
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:36 ; elapsed = 00:00:52 . Memory (MB): peak = 1551.551 ; gain = 650.926
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |clk_wiz_0     |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+---------------+------+
+|      |Cell           |Count |
++------+---------------+------+
+|1     |clk_wiz_0_bbox |     1|
+|2     |BUFG           |     1|
+|3     |CARRY4         |     4|
+|4     |LUT1           |    17|
+|5     |LUT2           |    17|
+|6     |LUT3           |    15|
+|7     |LUT4           |    24|
+|8     |LUT5           |    39|
+|9     |LUT6           |    94|
+|10    |RAMB18E1       |     1|
+|11    |FDRE           |   243|
+|12    |IBUF           |     6|
+|13    |IOBUF          |     1|
+|14    |OBUF           |     8|
+|15    |OBUFT          |    58|
++------+---------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:36 ; elapsed = 00:00:52 . Memory (MB): peak = 1551.551 ; gain = 650.926
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 1 critical warnings and 121 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:26 ; elapsed = 00:00:48 . Memory (MB): peak = 1551.551 ; gain = 554.172
+Synthesis Optimization Complete : Time (s): cpu = 00:00:36 ; elapsed = 00:00:52 . Memory (MB): peak = 1551.551 ; gain = 650.926
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1551.551 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 6 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1551.551 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
+
+Synth Design complete | Checksum: d738ed65
+INFO: [Common 17-83] Releasing license: Synthesis
+51 Infos, 122 Warnings, 1 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:42 ; elapsed = 00:01:18 . Memory (MB): peak = 1551.551 ; gain = 1070.039
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1551.551 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1/TOP.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file TOP_utilization_synth.rpt -pb TOP_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Fri Oct 25 13:24:40 2024...

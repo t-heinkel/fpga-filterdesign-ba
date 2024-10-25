@@ -28,8 +28,8 @@ use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
+library UNISIM;
+use UNISIM.VComponents.all;
 
 entity TOP is
     Generic (
@@ -56,7 +56,19 @@ entity TOP is
         
         -- statussignals
         tx_ready : out STD_LOGIC;
-        rx_ready : out STD_LOGIC
+        rx_ready : out STD_LOGIC;
+        
+        AC_ADR0   : out   STD_LOGIC;
+        AC_ADR1   : out   STD_LOGIC;
+        AC_GPIO0  : out   STD_LOGIC;  -- I2S Data TO ADAU1761
+        AC_GPIO1  : in    STD_LOGIC;  -- I2S Data FROM ADAU1761
+        AC_GPIO2  : in    STD_LOGIC;  -- I2S_bclk
+        AC_GPIO3  : in    STD_LOGIC;  -- I2S_LR
+        AC_MCLK   : out   STD_LOGIC;
+        AC_SCK    : out   STD_LOGIC;
+        AC_SDA    : inout STD_LOGIC;
+        sw : in std_logic_vector(1 downto 0);
+        active : out std_logic_vector(1 downto 0)
     );
 end TOP;
 
@@ -121,7 +133,6 @@ architecture Structural of TOP is
             audio_right_in : in STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
             
             -- Ausgangssignale zum Transmitter
-            sck_out     : out STD_LOGIC;
             ws_out      : out STD_LOGIC;
             audio_left_out : out STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
             audio_right_out : out STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0)
@@ -152,16 +163,18 @@ architecture Structural of TOP is
         );
     end component;
     
-    signal sd_in_int : STD_LOGIC;
-    signal sd_out_int : STD_LOGIC;
-    signal sck_int : STD_LOGIC;
+    -- I2S Signals
+    
+    signal bclk_int : STD_LOGIC;
     signal ws_int : STD_LOGIC;
     
     -- I2S Receiver Signals
     signal ws_rec : STD_LOGIC;
-    
+    signal sd_in_int : STD_LOGIC;
+
     -- I2S Transmitter Signals
     signal ws_trans : STD_LOGIC;
+    signal sd_out_int : STD_LOGIC;
     
     -- I2S Transfer signals to/from audio processor
     signal rec_l_transfer   : STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
@@ -170,10 +183,10 @@ architecture Structural of TOP is
     signal trans_r_transfer : STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
     
     -- I2C Master Signals
-    signal i2c_scl   : std_logic;
-    signal i2c_sda_i : std_logic;
-    signal i2c_sda_o : std_logic;
-    signal i2c_sda_t : std_logic;
+    signal i2c_scl      : STD_LOGIC;
+    signal i2c_sda_i    : STD_LOGIC;
+    signal i2c_sda_o    : STD_LOGIC;
+    signal i2c_sda_t    : STD_LOGIC;
     
     -- clk signals
     signal clk_24      : STD_LOGIC;
@@ -181,14 +194,24 @@ architecture Structural of TOP is
     signal clk_locked  : STD_LOGIC;
     
 begin
+
+    AC_ADR0         <= '1';
+    AC_ADR1         <= '1';
+    AC_GPIO0        <= sd_out_int;      -- Data to ADAU1761
+    sd_in_int       <= AC_GPIO1;        -- Data from ADAU1761
+    bclk_int        <= AC_GPIO2;        -- I2S BitClock
+    ws_int          <= AC_GPIO3;        -- L/R Channel select
+    AC_MCLK         <= clk_24;
+    AC_SCK          <= i2c_scl;
+
     receiver_inst : i2s_receiver
         generic map (BIT_DEPTH => BIT_DEPTH)
         port map (
             clk => clk,
             reset => reset,
-            sck => sck,
-            ws => ws,
-            sd_in => sd_in,
+            sck => bclk_int,
+            ws => ws_int,
+            sd_in => sd_in_int,
             audio_left => rec_l_transfer,
             audio_right => rec_r_transfer,
             rx_ready => rx_ready
@@ -199,11 +222,11 @@ begin
         port map (
             clk => clk,
             reset => reset,
-            sck => sck,
-            ws => ws,
+            sck => bclk_int,
+            ws => ws_int,
             audio_left => trans_l_transfer,
             audio_right => trans_r_transfer,
-            sd_out => sd_out,
+            sd_out => sd_out_int,
             tx_ready => tx_ready
         );
         
@@ -212,11 +235,10 @@ begin
         port map (
             clk => clk,
             reset => reset,
-            sck_in => sck,
-            ws_in => ws,
+            sck_in => bclk_int,
+            ws_in => ws_int,
             audio_left_in => rec_l_transfer,
             audio_right_in => rec_r_transfer,
-            sck_out => sck_int,
             ws_out => ws_trans,
             audio_left_out => trans_l_transfer,
             audio_right_out => trans_r_transfer
@@ -242,6 +264,14 @@ begin
           -- Clock in ports
           clk_in1 => clk
         );   
+        
+    i_i2s_sda_obuf : IOBUF
+       port map (
+          IO => AC_SDA,   -- Buffer inout port (connect directly to top-level port)
+          O => i2c_sda_i, -- Buffer output (to fabric)
+          I => i2c_sda_o, -- Buffer input  (from fabric)
+          T => i2c_sda_t  -- 3-state enable input, high=input, low=output 
+       );
         
 
 transfer_process : process(clk)
