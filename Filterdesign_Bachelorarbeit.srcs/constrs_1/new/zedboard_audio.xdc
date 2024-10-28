@@ -24,7 +24,7 @@ set_property PACKAGE_PIN AA7 [get_ports AC_GPIO1]
 set_property IOSTANDARD LVCMOS33 [get_ports AC_GPIO1]
 
 # i2s bit clock from ADAU1761
-set_property PACKAGE_PIN AA6 [get_ports AC_GPIO2]
+set_property PACKAGE_PIN W8 [get_ports AC_GPIO2]
 set_property IOSTANDARD LVCMOS33 [get_ports AC_GPIO2]
 
 # i2s l/r 48 khz toggling signal from ADAU1761 (sample clock)
