@@ -1,8 +1,10 @@
 # timing constraints
 create_clock -period 10.000 -name clk_100 [get_ports clk_100]
 
-set_false_path -from [get_clocks zed_audio_clk_48M] -to [get_clocks clk_100]
-set_false_path -from [get_clocks clk_100] -to [get_clocks zed_audio_clk_48M]
+set_false_path -from [get_clocks clk_24] -to [get_clocks clk_100]
+set_false_path -from [get_clocks clk_100] -to [get_clocks clk_24]
+
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets {AC_GPIO2_IBUF}]
 
 
 # 100 mhz clock
@@ -24,7 +26,7 @@ set_property PACKAGE_PIN AA7 [get_ports AC_GPIO1]
 set_property IOSTANDARD LVCMOS33 [get_ports AC_GPIO1]
 
 # i2s bit clock from ADAU1761
-set_property PACKAGE_PIN W8 [get_ports AC_GPIO2]
+set_property PACKAGE_PIN AA6 [get_ports AC_GPIO2]
 set_property IOSTANDARD LVCMOS33 [get_ports AC_GPIO2]
 
 # i2s l/r 48 khz toggling signal from ADAU1761 (sample clock)
