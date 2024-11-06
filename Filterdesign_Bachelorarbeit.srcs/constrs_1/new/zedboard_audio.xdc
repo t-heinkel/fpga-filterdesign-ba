@@ -4,12 +4,9 @@ create_clock -period 10.000 -name clk_100 [get_ports clk_100]
 set_false_path -from [get_clocks clk_24] -to [get_clocks clk_100]
 set_false_path -from [get_clocks clk_100] -to [get_clocks clk_24]
 
-set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets {AC_GPIO2_IBUF}]
-
-
 # 100 mhz clock
-set_property PACKAGE_PIN Y9 [get_ports clk_100]
-set_property IOSTANDARD LVCMOS33 [get_ports clk_100]
+set_property PACKAGE_PIN Y9 [get_ports clk]
+set_property IOSTANDARD LVCMOS33 [get_ports clk]
 
 # 24 mhz clock to audio chip
 set_property PACKAGE_PIN AB2 [get_ports AC_MCLK]
@@ -46,3 +43,5 @@ set_property IOSTANDARD LVCMOS33 [get_ports AC_ADR0]
 
 set_property PACKAGE_PIN Y5 [get_ports AC_ADR1]
 set_property IOSTANDARD LVCMOS33 [get_ports AC_ADR1]
+
+

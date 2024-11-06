@@ -38,37 +38,20 @@ entity TOP is
     );
     Port (
         clk     : in STD_LOGIC;
-        reset   : in STD_LOGIC;
         
         -- I2S-Signals
         sck     : in STD_LOGIC;
         ws      : in STD_LOGIC;
-        sd_in   : in STD_LOGIC;
-        sd_out  : out STD_LOGIC;
         
-        -- dataoutput for data received by receiver
-        audio_out_left_rec  : out STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
-        audio_out_right_rec : out STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
-        
-        -- datainput for data to send by transmitter
-        audio_in_left_trans   : in STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
-        audio_in_right_trans  : in STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
-        
-        -- statussignals
-        tx_ready : out STD_LOGIC;
-        rx_ready : out STD_LOGIC;
-        
-        AC_ADR0   : out   STD_LOGIC;
-        AC_ADR1   : out   STD_LOGIC;
-        AC_GPIO0  : out   STD_LOGIC;  -- I2S Data TO ADAU1761
-        AC_GPIO1  : in    STD_LOGIC;  -- I2S Data FROM ADAU1761
-        AC_GPIO2  : in    STD_LOGIC;  -- I2S_bclk
-        AC_GPIO3  : in    STD_LOGIC;  -- I2S_LR
-        AC_MCLK   : out   STD_LOGIC;
-        AC_SCK    : out   STD_LOGIC;
-        AC_SDA    : inout STD_LOGIC;
-        sw : in std_logic_vector(1 downto 0);
-        active : out std_logic_vector(1 downto 0)
+        AC_ADR0     : out   STD_LOGIC;
+        AC_ADR1     : out   STD_LOGIC;
+        AC_GPIO0    : out   STD_LOGIC;  -- I2S Data TO ADAU1761
+        AC_GPIO1    : in    STD_LOGIC;  -- I2S Data FROM ADAU1761
+        AC_GPIO2    : in    STD_LOGIC;  -- I2S_bclk
+        AC_GPIO3    : in    STD_LOGIC;  -- I2S_LR
+        AC_MCLK     : out   STD_LOGIC;
+        AC_SCK      : out   STD_LOGIC;
+        AC_SDA      : inout STD_LOGIC
     );
 end TOP;
 
@@ -85,8 +68,7 @@ architecture Structural of TOP is
             ws          : in STD_LOGIC;
             sd_in       : in STD_LOGIC;
             audio_left  : out STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
-            audio_right : out STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
-            rx_ready    : out STD_LOGIC
+            audio_right : out STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0)
         );
     end component;
     
@@ -101,8 +83,7 @@ architecture Structural of TOP is
             ws          : in STD_LOGIC;
             audio_left  : in STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
             audio_right : in STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
-            sd_out      : out STD_LOGIC;
-            tx_ready    : out STD_LOGIC
+            sd_out      : out STD_LOGIC
         );
     end component;
     
@@ -187,11 +168,16 @@ architecture Structural of TOP is
     signal i2c_sda_i    : STD_LOGIC;
     signal i2c_sda_o    : STD_LOGIC;
     signal i2c_sda_t    : STD_LOGIC;
+    signal sw           : STD_LOGIC_VECTOR(1 downto 0) := (others => '0');
+
     
     -- clk signals
-    signal clk_24      : STD_LOGIC;
-    signal clk_reset   : STD_LOGIC;
-    signal clk_locked  : STD_LOGIC;
+    signal clk_24       : STD_LOGIC;
+    signal clk_reset    : STD_LOGIC;
+    signal clk_locked   : STD_LOGIC;
+    
+    -- reset signal
+    signal reset        : STD_LOGIC := '1';
     
 begin
 
@@ -213,8 +199,7 @@ begin
             ws => ws_int,
             sd_in => sd_in_int,
             audio_left => rec_l_transfer,
-            audio_right => rec_r_transfer,
-            rx_ready => rx_ready
+            audio_right => rec_r_transfer
         );
     
     transmitter_inst : i2s_transmitter
@@ -226,8 +211,7 @@ begin
             ws => ws_int,
             audio_left => trans_l_transfer,
             audio_right => trans_r_transfer,
-            sd_out => sd_out_int,
-            tx_ready => tx_ready
+            sd_out => sd_out_int
         );
         
      processor_inst : audio_processor
@@ -252,7 +236,7 @@ begin
             i2c_sda_t => i2c_sda_t,
             i2c_scl   => i2c_scl,
             sw => sw,
-            active => active        
+            active => open        
         );
      
      clk_wizard : clk_wiz_0
@@ -274,20 +258,14 @@ begin
        );
         
 
-transfer_process : process(clk)
+reset_process : process(clk)
 begin
     if rising_edge(clk) then
-        
+        if reset = '1' then
+            reset <= '0';
+        end if;
     end if;
-end process transfer_process;
-        -- send and receive signals to/from audio_processor
-        --rec_l_transfer <= audio_out_left_rec;
-        --rec_r_transfer <= audio_out_right_rec;
-        --audio_in_left_trans <= trans_l_transfer;
-        --audio_in_right_trans <= trans_r_transfer;
-        
-       
-        
+end process reset_process; 
         
 end Structural;
 
