@@ -135,7 +135,7 @@ architecture Structural of TOP is
     component clk_wiz_0 is
         Port (
           -- Clock out ports
-          clk_out1      : out STD_LOGIC;
+          clk_24      : out STD_LOGIC;
           -- Status and control signals
           reset         : in STD_LOGIC;
           locked        : out STD_LOGIC;
@@ -241,7 +241,7 @@ begin
      
      clk_wizard : clk_wiz_0
         port map (
-          clk_out1 => clk_24,
+          clk_24 => clk_24,
           -- Status and control signals
           reset => clk_reset,
           locked => clk_locked,

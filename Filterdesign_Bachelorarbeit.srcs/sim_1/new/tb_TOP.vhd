@@ -42,31 +42,32 @@ architecture behavior of tb_TOP is
             SAMPLE_RATE : positive := 48000
         );
         Port (
-            clk             : in STD_LOGIC;
-            reset           : in STD_LOGIC;
-            sck             : in STD_LOGIC;
-            ws              : in STD_LOGIC;
-            sd_in           : in STD_LOGIC;
-            sd_out          : out STD_LOGIC;
-            rx_ready        : out STD_LOGIC;
-            tx_ready        : out STD_LOGIC;
-            audio_in_left_trans     : in STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
-            audio_in_right_trans    : in STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
-            audio_out_left_rec      : out STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
-            audio_out_right_rec     : out STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0)
+            clk     : in STD_LOGIC;
+            
+            -- I2S-Signals
+            sck     : in STD_LOGIC;
+            ws      : in STD_LOGIC;
+            
+            AC_ADR0     : out   STD_LOGIC;
+            AC_ADR1     : out   STD_LOGIC;
+            AC_GPIO0    : out   STD_LOGIC;  -- I2S Data TO ADAU1761
+            AC_GPIO1    : in    STD_LOGIC;  -- I2S Data FROM ADAU1761
+            AC_GPIO2    : in    STD_LOGIC;  -- I2S_bclk
+            AC_GPIO3    : in    STD_LOGIC;  -- I2S_LR
+            AC_MCLK     : out   STD_LOGIC;
+            AC_SCK      : out   STD_LOGIC;
+            AC_SDA      : inout STD_LOGIC
         );
     end component;
     
     component clk_wiz_0 is
-        Port (
-          -- Clock out ports
-          clk_out1      : out STD_LOGIC;
-          -- Status and control signals
-          reset         : in STD_LOGIC;
-          locked        : out STD_LOGIC;
-          -- Clock in ports
-          clk_in1       : in STD_LOGIC         
-        );
+          Port (
+            clk_24 : out STD_LOGIC;
+            clk_9_6 : out STD_LOGIC;
+            reset : in STD_LOGIC;
+            locked : out STD_LOGIC;
+            clk_in1 : in STD_LOGIC
+          );
     end component;
 
     signal clk                  : STD_LOGIC := '0';
@@ -92,32 +93,46 @@ architecture behavior of tb_TOP is
    
     -- clock wizard signals
     signal clk_24               : STD_LOGIC;
+    signal clk_9_6              : STD_LOGIC;
+    signal clk_khz_48           : STD_LOGIC := '0';
+    signal clk_khz_48_del       : STD_LOGIC;
     signal clk_locked           : STD_LOGIC;
     signal clk_reset            : STD_LOGIC;
     
+    signal bclk_counter         : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
+    
+    -- I2C-Signals
+    signal sck                  : STD_LOGIC;
+    signal sda                  : STD_LOGIC;
+    
+    
     signal test                 : STD_LOGIC;
+    
+    signal AC_ADR0              : STD_LOGIC := '1';
+    signal AC_ADR1              : STD_LOGIC := '1';
 
 begin
     -- Instanziierung des zu testenden Systems
     uut : TOP
     Port Map (
         clk => clk,
-        reset => test,
-        audio_in_left_trans => tb_audio_left_in,
-        audio_in_right_trans => tb_audio_right_in,
-        audio_out_left_rec => tb_audio_left_out,
-        audio_out_right_rec => tb_audio_right_out,
+        AC_ADR0 => AC_ADR0,
+        AC_ADR1 => AC_ADR1,
+        AC_GPIO0 => sd_out,  -- I2S Data TO ADAU1761
+        AC_GPIO1 => sd_in,  -- I2S Data FROM ADAU1761
+        AC_GPIO2 => clk_khz_48,  -- I2S_bclk
+        AC_GPIO3 => ws,  -- I2S_LR
+        AC_MCLK => clk_24,
+        AC_SCK => sck,
+        AC_SDA => sda,
         sck => clk_24,
-        ws => ws_del,
-        sd_in => sd_in,
-        sd_out => sd_out,
-        rx_ready => tb_rx_ready,
-        tx_ready => tb_tx_ready
+        ws => ws_del
     );
     
      clk_wizard : clk_wiz_0
         port map (
-          clk_out1 => clk_24,
+          clk_24 => clk_24,
+          clk_9_6 => clk_9_6,
           -- Status and control signals
           reset => clk_reset,
           locked => clk_locked,
@@ -126,6 +141,8 @@ begin
         );       
     
     tb_rx_ready <= '1';
+    
+    clk_khz_48_del <= clk_khz_48;
     
     tb_process : process
     begin
@@ -137,7 +154,7 @@ begin
     sd_in_process : process(clk_24)
     begin
         if (clk_locked = '1') then
-            if rising_edge(clk_24) then
+            if clk_khz_48_del = '0' AND clk_khz_48 = '1' then
                 
                 ws_del <= ws;
 
@@ -167,11 +184,18 @@ begin
         wait for 5 ns;
     end process clk_process;
     
-    sck_clk_process : process
+    bclk_process : process(clk_9_6)
     begin 
-        clk_25 <= not clk_25;
-        wait for 20ns;
-    end process sck_clk_process;
+        if (clk_locked = '1') then
+            if rising_edge(clk_9_6) then           
+                if(bclk_counter = "11001000") then
+                    bclk_counter <= (others => '0');
+                    clk_khz_48 <= not clk_khz_48;
+                end if;
+                bclk_counter <= std_logic_vector(unsigned(bclk_counter) + 1);               
+            end if;
+        end if;
+    end process bclk_process;
     
 
 end behavior;

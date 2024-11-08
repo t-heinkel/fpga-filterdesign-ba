@@ -57,7 +57,7 @@ architecture RTL of I2S_Transmitter is
     type state_type is (IDLE, TX_LEFT, TX_RIGHT);
     signal current_state : state_type := IDLE;
     
-    signal bit_counter : unsigned(4 downto 0);
+    signal bit_counter : unsigned(4 downto 0) := (others => '0');
     signal shift_register : STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
     
     signal sck_del      : STD_LOGIC;
@@ -86,12 +86,13 @@ begin
                         when TX_LEFT | TX_RIGHT =>
                             sd_out <= shift_register(BIT_DEPTH-1);
                             shift_register <= shift_register(BIT_DEPTH-2 downto 0) & '0';
-                            bit_counter <= bit_counter + 1;
                             
                             if bit_counter = BIT_DEPTH - 1 then
                                 bit_counter <= "00000";
                                 current_state <= IDLE;
                             end if;
+                            
+                            bit_counter <= bit_counter + 1;
                     end case;
                 end if;
             end if;

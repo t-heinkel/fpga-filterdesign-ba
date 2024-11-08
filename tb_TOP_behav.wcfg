@@ -12,12 +12,12 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000000 us"></ZoomStartTime>
-      <ZoomEndTime time="19.584877 us"></ZoomEndTime>
-      <Cursor1Time time="9.332271 us"></Cursor1Time>
+      <ZoomEndTime time="10,000.000001 us"></ZoomEndTime>
+      <Cursor1Time time="2.720835 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="353"></NameColumnWidth>
-      <ValueColumnWidth column_width="137"></ValueColumnWidth>
+      <ValueColumnWidth column_width="121"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="5" />
    <wvobject fp_name="group40" type="group">
@@ -60,10 +60,6 @@
          <obj_property name="ElementShortName">sd_value</obj_property>
          <obj_property name="ObjectShortName">sd_value</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_TOP/sd_out" type="logic">
-         <obj_property name="ElementShortName">sd_out</obj_property>
-         <obj_property name="ObjectShortName">sd_out</obj_property>
-      </wvobject>
       <wvobject fp_name="/tb_TOP/tb_rx_ready" type="logic">
          <obj_property name="ElementShortName">tb_rx_ready</obj_property>
          <obj_property name="ObjectShortName">tb_rx_ready</obj_property>
@@ -89,50 +85,86 @@
          <obj_property name="ElementShortName">reset</obj_property>
          <obj_property name="ObjectShortName">reset</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_TOP/clk_wizard/clk_out1" type="logic">
-         <obj_property name="ElementShortName">clk_out1</obj_property>
-         <obj_property name="ObjectShortName">clk_out1</obj_property>
+      <wvobject fp_name="/tb_TOP/clk_khz_48" type="logic">
+         <obj_property name="ElementShortName">clk_khz_48</obj_property>
+         <obj_property name="ObjectShortName">clk_khz_48</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group64" type="group">
       <obj_property name="label">TOP</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/tb_TOP/uut/reset" type="logic">
-         <obj_property name="ElementShortName">reset</obj_property>
-         <obj_property name="ObjectShortName">reset</obj_property>
+      <wvobject fp_name="/tb_TOP/uut/clk" type="logic">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/sck" type="logic">
          <obj_property name="ElementShortName">sck</obj_property>
          <obj_property name="ObjectShortName">sck</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/sd_in" type="logic">
-         <obj_property name="ElementShortName">sd_in</obj_property>
-         <obj_property name="ObjectShortName">sd_in</obj_property>
+      <wvobject fp_name="/tb_TOP/uut/ws" type="logic">
+         <obj_property name="ElementShortName">ws</obj_property>
+         <obj_property name="ObjectShortName">ws</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/sd_out" type="logic">
-         <obj_property name="ElementShortName">sd_out</obj_property>
-         <obj_property name="ObjectShortName">sd_out</obj_property>
+      <wvobject fp_name="/tb_TOP/uut/AC_ADR0" type="logic">
+         <obj_property name="ElementShortName">AC_ADR0</obj_property>
+         <obj_property name="ObjectShortName">AC_ADR0</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/audio_out_left_rec" type="array">
-         <obj_property name="ElementShortName">audio_out_left_rec[27:0]</obj_property>
-         <obj_property name="ObjectShortName">audio_out_left_rec[27:0]</obj_property>
+      <wvobject fp_name="/tb_TOP/uut/AC_ADR1" type="logic">
+         <obj_property name="ElementShortName">AC_ADR1</obj_property>
+         <obj_property name="ObjectShortName">AC_ADR1</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/audio_out_right_rec" type="array">
-         <obj_property name="ElementShortName">audio_out_right_rec[27:0]</obj_property>
-         <obj_property name="ObjectShortName">audio_out_right_rec[27:0]</obj_property>
+      <wvobject fp_name="/tb_TOP/uut/AC_GPIO0" type="logic">
+         <obj_property name="ElementShortName">AC_GPIO0</obj_property>
+         <obj_property name="ObjectShortName">AC_GPIO0</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/audio_in_left_trans" type="array">
-         <obj_property name="ElementShortName">audio_in_left_trans[27:0]</obj_property>
-         <obj_property name="ObjectShortName">audio_in_left_trans[27:0]</obj_property>
+      <wvobject fp_name="/tb_TOP/uut/AC_GPIO1" type="logic">
+         <obj_property name="ElementShortName">AC_GPIO1</obj_property>
+         <obj_property name="ObjectShortName">AC_GPIO1</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/audio_in_right_trans" type="array">
-         <obj_property name="ElementShortName">audio_in_right_trans[27:0]</obj_property>
-         <obj_property name="ObjectShortName">audio_in_right_trans[27:0]</obj_property>
+      <wvobject fp_name="/tb_TOP/uut/AC_GPIO2" type="logic">
+         <obj_property name="ElementShortName">AC_GPIO2</obj_property>
+         <obj_property name="ObjectShortName">AC_GPIO2</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/AC_GPIO3" type="logic">
+         <obj_property name="ElementShortName">AC_GPIO3</obj_property>
+         <obj_property name="ObjectShortName">AC_GPIO3</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/AC_MCLK" type="logic">
+         <obj_property name="ElementShortName">AC_MCLK</obj_property>
+         <obj_property name="ObjectShortName">AC_MCLK</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/AC_SCK" type="logic">
+         <obj_property name="ElementShortName">AC_SCK</obj_property>
+         <obj_property name="ObjectShortName">AC_SCK</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/AC_SDA" type="logic">
+         <obj_property name="ElementShortName">AC_SDA</obj_property>
+         <obj_property name="ObjectShortName">AC_SDA</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/bclk_int" type="logic">
+         <obj_property name="ElementShortName">bclk_int</obj_property>
+         <obj_property name="ObjectShortName">bclk_int</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/ws_int" type="logic">
+         <obj_property name="ElementShortName">ws_int</obj_property>
+         <obj_property name="ObjectShortName">ws_int</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/ws_rec" type="logic">
          <obj_property name="ElementShortName">ws_rec</obj_property>
          <obj_property name="ObjectShortName">ws_rec</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/sd_in_int" type="logic">
+         <obj_property name="ElementShortName">sd_in_int</obj_property>
+         <obj_property name="ObjectShortName">sd_in_int</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/ws_trans" type="logic">
+         <obj_property name="ElementShortName">ws_trans</obj_property>
+         <obj_property name="ObjectShortName">ws_trans</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/sd_out_int" type="logic">
+         <obj_property name="ElementShortName">sd_out_int</obj_property>
+         <obj_property name="ObjectShortName">sd_out_int</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/rec_l_transfer" type="array">
          <obj_property name="ElementShortName">rec_l_transfer[27:0]</obj_property>
@@ -149,6 +181,50 @@
       <wvobject fp_name="/tb_TOP/uut/trans_r_transfer" type="array">
          <obj_property name="ElementShortName">trans_r_transfer[27:0]</obj_property>
          <obj_property name="ObjectShortName">trans_r_transfer[27:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/i2c_scl" type="logic">
+         <obj_property name="ElementShortName">i2c_scl</obj_property>
+         <obj_property name="ObjectShortName">i2c_scl</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/i2c_sda_i" type="logic">
+         <obj_property name="ElementShortName">i2c_sda_i</obj_property>
+         <obj_property name="ObjectShortName">i2c_sda_i</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/i2c_sda_o" type="logic">
+         <obj_property name="ElementShortName">i2c_sda_o</obj_property>
+         <obj_property name="ObjectShortName">i2c_sda_o</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/i2c_sda_t" type="logic">
+         <obj_property name="ElementShortName">i2c_sda_t</obj_property>
+         <obj_property name="ObjectShortName">i2c_sda_t</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/sw" type="array">
+         <obj_property name="ElementShortName">sw[1:0]</obj_property>
+         <obj_property name="ObjectShortName">sw[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/clk_24" type="logic">
+         <obj_property name="ElementShortName">clk_24</obj_property>
+         <obj_property name="ObjectShortName">clk_24</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/clk_reset" type="logic">
+         <obj_property name="ElementShortName">clk_reset</obj_property>
+         <obj_property name="ObjectShortName">clk_reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/clk_locked" type="logic">
+         <obj_property name="ElementShortName">clk_locked</obj_property>
+         <obj_property name="ObjectShortName">clk_locked</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/reset" type="logic">
+         <obj_property name="ElementShortName">reset</obj_property>
+         <obj_property name="ObjectShortName">reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/BIT_DEPTH" type="other">
+         <obj_property name="ElementShortName">BIT_DEPTH</obj_property>
+         <obj_property name="ObjectShortName">BIT_DEPTH</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/SAMPLE_RATE" type="other">
+         <obj_property name="ElementShortName">SAMPLE_RATE</obj_property>
+         <obj_property name="ObjectShortName">SAMPLE_RATE</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group26" type="group">
@@ -220,6 +296,7 @@
    <wvobject fp_name="group39" type="group">
       <obj_property name="label">transmitter</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_TOP/uut/transmitter_inst/clk" type="logic">
          <obj_property name="ElementShortName">clk</obj_property>
          <obj_property name="ObjectShortName">clk</obj_property>
@@ -247,10 +324,6 @@
       <wvobject fp_name="/tb_TOP/uut/transmitter_inst/sd_out" type="logic">
          <obj_property name="ElementShortName">sd_out</obj_property>
          <obj_property name="ObjectShortName">sd_out</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/transmitter_inst/tx_ready" type="logic">
-         <obj_property name="ElementShortName">tx_ready</obj_property>
-         <obj_property name="ObjectShortName">tx_ready</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/transmitter_inst/current_state" type="other">
          <obj_property name="ElementShortName">current_state</obj_property>
@@ -295,10 +368,6 @@
       <wvobject fp_name="/tb_TOP/uut/processor_inst/audio_right_in" type="array">
          <obj_property name="ElementShortName">audio_right_in[27:0]</obj_property>
          <obj_property name="ObjectShortName">audio_right_in[27:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/processor_inst/sck_out" type="logic">
-         <obj_property name="ElementShortName">sck_out</obj_property>
-         <obj_property name="ObjectShortName">sck_out</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/processor_inst/ws_out" type="logic">
          <obj_property name="ElementShortName">ws_out</obj_property>
