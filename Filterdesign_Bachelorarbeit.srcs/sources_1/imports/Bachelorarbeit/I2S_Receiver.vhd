@@ -33,7 +33,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity I2S_Receiver is
     Generic (
-        BIT_DEPTH : positive := 28  -- size of each channel (left/right). --> left channel + right channel = 2 * BIT_DEPTH
+        BIT_DEPTH : positive := 24  -- size of each channel (left/right). --> left channel + right channel = 2 * BIT_DEPTH
     );
     Port (
         clk     : in STD_LOGIC;

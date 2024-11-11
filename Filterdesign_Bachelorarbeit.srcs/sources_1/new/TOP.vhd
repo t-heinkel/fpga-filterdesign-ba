@@ -33,7 +33,7 @@ use UNISIM.VComponents.all;
 
 entity TOP is
     Generic (
-        BIT_DEPTH   : positive := 28;
+        BIT_DEPTH   : positive := 24;
         SAMPLE_RATE : positive := 48000
     );
     Port (
@@ -59,7 +59,7 @@ architecture Structural of TOP is
 
     component i2s_receiver is
         Generic (
-            BIT_DEPTH : positive := 28
+            BIT_DEPTH : positive := 24
         );
         Port (
             clk         : in STD_LOGIC;
@@ -74,7 +74,7 @@ architecture Structural of TOP is
     
     component i2s_transmitter is
         Generic (
-            BIT_DEPTH : positive := 28
+            BIT_DEPTH : positive := 24
         );
         Port (
             clk         : in STD_LOGIC;
@@ -101,7 +101,7 @@ architecture Structural of TOP is
     
     component audio_processor is
         Generic (
-            BIT_DEPTH : positive := 28
+            BIT_DEPTH : positive := 24
         );
         Port (
             clk         : in STD_LOGIC;
