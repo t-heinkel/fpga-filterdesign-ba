@@ -30,6 +30,7 @@ use IEEE.NUMERIC_STD.ALL;
 -- any Xilinx leaf cells in this code.
 --library UNISIM;
 --use UNISIM.VComponents.all;
+--use ieee.std_logic_arith.all;
 
 entity tb_TOP is
 end tb_TOP;
@@ -38,7 +39,7 @@ architecture behavior of tb_TOP is
 
     component TOP is
         Generic (
-            BIT_DEPTH   : positive := 28;
+            BIT_DEPTH   : positive := 24;
             SAMPLE_RATE : positive := 48000
         );
         Port (
@@ -110,6 +111,12 @@ architecture behavior of tb_TOP is
     
     signal AC_ADR0              : STD_LOGIC := '1';
     signal AC_ADR1              : STD_LOGIC := '1';
+    
+    -- Clock Signals
+    constant BASE_FREQUENCY     : integer := 2304000; -- 2.304 MHz
+    constant BIT_CLOCK_PERIOD   : time := 434.0277777777778 ns;
+    signal bit_clk              : STD_LOGIC := '0';
+    signal bit_clk_del          : STD_LOGIC := '1';
 
 begin
     -- Instanziierung des zu testenden Systems
@@ -120,7 +127,7 @@ begin
         AC_ADR1 => AC_ADR1,
         AC_GPIO0 => sd_out,  -- I2S Data TO ADAU1761
         AC_GPIO1 => sd_in,  -- I2S Data FROM ADAU1761
-        AC_GPIO2 => clk_khz_48,  -- I2S_bclk
+        AC_GPIO2 => bit_clk,  -- I2S_bclk
         AC_GPIO3 => ws,  -- I2S_LR
         AC_MCLK => clk_24,
         AC_SCK => sck,
@@ -144,6 +151,8 @@ begin
     
     clk_khz_48_del <= clk_khz_48;
     
+    --bit_clk_del <= bit_clk;
+    
     tb_process : process
     begin
         test <= '0';
@@ -151,23 +160,23 @@ begin
         test <= '0';
     end process tb_process;
     
-    sd_in_process : process(clk_24)
+    sd_in_process : process(bit_clk)
     begin
         if (clk_locked = '1') then
-            if clk_khz_48_del = '0' AND clk_khz_48 = '1' then
+            if bit_clk_del = '0' AND bit_clk = '1' then
                 
                 ws_del <= ws;
 
                 sd_cnt <= std_logic_vector(unsigned(sd_cnt) + 1);
                 ws_cnt <= std_logic_vector(unsigned(ws_cnt) + 1);                 
                 
-                if(sd_cnt = "110") then
+                if(sd_cnt = "101") then
                     sd_value <= not sd_value;
                     sd_cnt <= "000";
                 end if;
                 
                 
-                if(ws_cnt = "11011") then
+                if(ws_cnt = "11000") then
                     ws_cnt <= "00000";
                     ws <= not ws;
                 end if;
@@ -183,6 +192,13 @@ begin
         --clk_del <= clk;
         wait for 5 ns;
     end process clk_process;
+    
+    bit_clock_process : process
+    begin
+        bit_clk <= not bit_clk;
+        bit_clk_del <= not bit_clk_del;
+        wait for BIT_CLOCK_PERIOD / 2;
+    end process bit_clock_process;
     
     bclk_process : process(clk_9_6)
     begin 

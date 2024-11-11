@@ -1,5 +1,5 @@
 # timing constraints
-create_clock -period 10.000 -name clk_100 [get_ports clk_100]
+create_clock -period 10.000 -name clk [get_ports clk]
 
 set_false_path -from [get_clocks clk_24] -to [get_clocks clk_100]
 set_false_path -from [get_clocks clk_100] -to [get_clocks clk_24]
