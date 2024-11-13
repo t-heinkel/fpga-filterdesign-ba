@@ -117,6 +117,9 @@ architecture behavior of tb_TOP is
     constant BIT_CLOCK_PERIOD   : time := 434.0277777777778 ns;
     signal bit_clk              : STD_LOGIC := '0';
     signal bit_clk_del          : STD_LOGIC := '1';
+    
+    signal first_sample         : STD_LOGIC := '1';
+    signal sample_cnt           : STD_LOGIC_VECTOR(1 downto 0) := "00"; 
 
 begin
     -- Instanziierung des zu testenden Systems
@@ -164,24 +167,49 @@ begin
     begin
         if (clk_locked = '1') then
             if bit_clk_del = '0' AND bit_clk = '1' then
-                
-                ws_del <= ws;
-
-                sd_cnt <= std_logic_vector(unsigned(sd_cnt) + 1);
-                ws_cnt <= std_logic_vector(unsigned(ws_cnt) + 1);                 
-                
-                if(sd_cnt = "101") then
-                    sd_value <= not sd_value;
-                    sd_cnt <= "000";
+            
+                if first_sample = '1' then
+                    ws_del <= ws;
+    
+                    sd_cnt <= std_logic_vector(unsigned(sd_cnt) + 1);
+                    ws_cnt <= std_logic_vector(unsigned(ws_cnt) + 1);                 
+                    
+                    if(sd_cnt = "001") then
+                        sd_value <= not sd_value;
+                        sd_cnt <= "000";
+                    end if;
+                    
+                    
+                    if(ws_cnt = "11000") then
+                        sample_cnt <= std_logic_vector(unsigned(sample_cnt) + 1);
+                        ws_cnt <= "00000";
+                        ws <= not ws;
+                    end if;
+                    
+                    sd_in <= sd_value;  
+                    
+                    if(sample_cnt = "10") then
+                        first_sample <= '0';
+                    end if;
+                else    
+                    ws_del <= ws;
+    
+                    sd_cnt <= std_logic_vector(unsigned(sd_cnt) + 1);
+                    ws_cnt <= std_logic_vector(unsigned(ws_cnt) + 1);                 
+                    
+                    if(sd_cnt = "101") then
+                        sd_value <= not sd_value;
+                        sd_cnt <= "000";
+                    end if;
+                    
+                    
+                    if(ws_cnt = "11000") then
+                        ws_cnt <= "00000";
+                        ws <= not ws;
+                    end if;
+                    
+                    sd_in <= sd_value;         
                 end if;
-                
-                
-                if(ws_cnt = "11000") then
-                    ws_cnt <= "00000";
-                    ws <= not ws;
-                end if;
-                
-                sd_in <= sd_value;         
             end if;
         end if;
     end process sd_in_process;
