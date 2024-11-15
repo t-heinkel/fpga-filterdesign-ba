@@ -11,12 +11,12 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="106.680000 us"></ZoomStartTime>
-      <ZoomEndTime time="140.060001 us"></ZoomEndTime>
-      <Cursor1Time time="2,000.000000 us"></Cursor1Time>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="105.000001 us"></ZoomEndTime>
+      <Cursor1Time time="10.000000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="350"></NameColumnWidth>
+      <NameColumnWidth column_width="342"></NameColumnWidth>
       <ValueColumnWidth column_width="116"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="5" />
@@ -84,14 +84,6 @@
       <wvobject fp_name="/tb_TOP/clk_wizard/reset" type="logic">
          <obj_property name="ElementShortName">reset</obj_property>
          <obj_property name="ObjectShortName">reset</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_TOP/clk_khz_48" type="logic">
-         <obj_property name="ElementShortName">clk_khz_48</obj_property>
-         <obj_property name="ObjectShortName">clk_khz_48</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_TOP/clk_khz_48_del" type="logic">
-         <obj_property name="ElementShortName">clk_khz_48_del</obj_property>
-         <obj_property name="ObjectShortName">clk_khz_48_del</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/bit_clk" type="logic">
          <obj_property name="ElementShortName">bit_clk</obj_property>
