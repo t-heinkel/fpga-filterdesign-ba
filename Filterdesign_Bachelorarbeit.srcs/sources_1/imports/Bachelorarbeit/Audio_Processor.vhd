@@ -39,7 +39,8 @@ entity audio_processor is
         MOD_FREQ : real := 5.0;
         WIDTH : real := 0.005;
         TREMOLO_FREQ : real := 5.0;
-        TREMOLO_AMPLITUDE : real := 0.5
+        TREMOLO_AMPLITUDE : real := 0.5;
+        EFFECTS_CHOICE : positive := 2
     );
     Port (
         clk             : in STD_LOGIC;
@@ -62,7 +63,7 @@ architecture Behavioral of audio_processor is
 
     component sine_lut is
         Port (
-          i_clk          : in  std_logic;
+          clk          : in  std_logic;
           i_addr         : in  std_logic_vector(7 downto 0);
           o_data         : out std_logic_vector(8 downto 0)
         );
@@ -81,15 +82,16 @@ architecture Behavioral of audio_processor is
     
     -- TREMOLO
     constant TREMOLO_PERIOD : natural := integer(real(SAMPLE_RATE) / TREMOLO_FREQ);
-    
+    signal tremolo_left_out   : STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
+    signal tremolo_right_out  : STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0); 
     
     signal sine_counter : STD_LOGIC_VECTOR(17 downto 0) := (others => '0');
 
 --    type delay_line_type is array (0 to real(DELAY) + real(WIDTH) - 1) of signed(BIT_DEPTH-1 downto 0);
 --    signal delay_line : delay_line_type := (others => (others => '0'));
     
-    type delay_line_type is array (0 to DELAY + WIDTH - 1) of signed(BIT_DEPTH-1 downto 0);
-    signal delay_line : delay_line_type := (others => (others => '0'));
+    --type delay_line_type is array (0 to DELAY + WIDTH - 1) of signed(BIT_DEPTH-1 downto 0);
+    --signal delay_line : delay_line_type := (others => (others => '0'));
 
     function apply_overdrive(input : signed) return signed is
         variable result : signed(input'range);
@@ -144,46 +146,57 @@ architecture Behavioral of audio_processor is
 --    end function apply_chorus;
 
 
-    function apply_vibrato(input : signed; n : natural) return signed is
-        variable tap : integer;
-        variable frac : real;
-        variable i : integer;
-        variable delayed_signal : signed(input'range);
-    begin
-        -- Berechne Sinuswert aus der Lookup-Tabelle
-        sin_value := real(to_integer(unsigned(sine_data))) / 256.0;
+--    function apply_vibrato(input : signed; n : natural) return signed is
+--        variable tap : integer;
+--        variable frac : real;
+--        variable i : integer;
+--        variable delayed_signal : signed(input'range);
+--        variable sine_value : integer;
+--    begin
+--        -- Berechne Sinuswert aus der Lookup-Tabelle
+--        sine_value := real(to_integer(unsigned(sine_data))) / 256.0;
         
-        -- Berechne Tap-Position
-        tap := DELAY + integer(round(WIDTH * sin_value));
+--        -- Berechne Tap-Position
+--        tap := DELAY + integer(round(WIDTH * sine_value));
         
-        -- Extrahiere ganzzahligen Teil und Bruchteil
-        i := tap;
-        frac := real(tap) - real(i);
+--        -- Extrahiere ganzzahligen Teil und Bruchteil
+--        i := tap;
+--        frac := real(tap) - real(i);
         
-        -- Lineare Interpolation
-        delayed_signal := resize(
-            signed(delay_line(i)) * (1.0 - frac) +
-            signed(delay_line((i + 1) mod (DELAY + WIDTH))) * frac,
-            input'length
-        );
+--        -- Lineare Interpolation
+--        delayed_signal := resize(
+--            signed(delay_line(i)) * (1.0 - frac) +
+--            signed(delay_line((i + 1) mod (DELAY + WIDTH))) * frac,
+--            input'length
+--        );
         
-        return delayed_signal;
-    end function apply_vibrato;
+--        return delayed_signal;
+--    end function apply_vibrato;
     
-    function apply_tremolo(input : signed; amplitude : real) return signed is
-        variable tremolo_factor : real;
-        variable result : signed(input'range);
-    begin
-        -- Berechne Tremolo-Faktor basierend auf dem aktuellen Counter-Wert
-        tremolo_factor := 1.0 - (amplitude * (real(to_integer(unsigned(sin_data))) / 128.0 - 1.0));
+--    function apply_tremolo(input : signed; amplitude : real) return signed is
+--        variable tremolo_factor : real;
+--        variable result : signed(input'range);
+--        signal test_result : std_logic_vector(BIT_DEPTH - 1 downto 0);;
+--    begin
+--        -- Berechne Tremolo-Faktor basierend auf dem aktuellen Counter-Wert
+--        tremolo_factor := 1.0 - (amplitude * (real(to_integer(unsigned(sine_data))) / 128.0 - 1.0));
         
-        -- Wende Tremolo-Effekt an
-        result := resize(input * tremolo_factor, input'length);
+--        -- Wende Tremolo-Effekt an
+--        result := resize(input * tremolo_factor, input'length);
         
-        return result;
-    end function apply_tremolo;
+--        return result;
+--    end function apply_tremolo;
 
 begin
+
+    sine_lut_inst : sine_lut
+        Port map(
+          clk => clk,
+          i_addr => sine_addr,
+          o_data => sine_data
+        );
+    
+    
     main_proc : process(clk)
         variable left_sample : signed(audio_left_in'range);
         variable right_sample : signed(audio_right_in'range);
@@ -201,16 +214,20 @@ begin
                 
                 
                 -- Wende Overdrive-Effekt an
-                audio_left_out <= STD_LOGIC_VECTOR(apply_overdrive(left_sample));
-                audio_right_out <= STD_LOGIC_VECTOR(apply_overdrive(right_sample));
-                
+                if(EFFECTS_CHOICE = 1) then
+                    audio_left_out <= STD_LOGIC_VECTOR(apply_overdrive(left_sample));
+                    audio_right_out <= STD_LOGIC_VECTOR(apply_overdrive(right_sample));
+                end if;
                 -- Wende Vibrato-Effekt an
-                audio_left_out <= STD_LOGIC_VECTOR(apply_vibrato(left_sample, sine_counter));
-                audio_right_out <= STD_LOGIC_VECTOR(apply_vibrato(right_sample, sine_counter));
+                --audio_left_out <= STD_LOGIC_VECTOR(apply_vibrato(left_sample, sine_counter));
+                --audio_right_out <= STD_LOGIC_VECTOR(apply_vibrato(right_sample, sine_counter));
                 
-                audio_left_out <= STD_LOGIC_VECTOR(apply_tremolo(left_sample, TREMOLO_AMPLITUDE));
-                audio_right_out <= STD_LOGIC_VECTOR(apply_tremolo(right_sample, TREMOLO_AMPLITUDE));
                 
+                -- Wende Tremolo-Effekt an
+                if (EFFECTS_CHOICE = 2) then
+                    audio_left_out <= tremolo_left_out;
+                    audio_right_out <= tremolo_right_out;
+                end if;
                 
                 -- Signale einfach durchreichen zum Testen
                 --audio_left_out <= audio_left_in;
@@ -219,17 +236,45 @@ begin
         end if;
     end process main_proc;
     
-    sine_counter : process(clk) -- Produces a Frequency of Around 2Hz
+    sine_count : process(clk) -- Produces a Frequency of Around 2Hz
     begin
         if rising_edge(clk) then
             sine_counter <= STD_LOGIC_VECTOR(unsigned(sine_counter) + 1);
             
-            if(sine_counter = "10 1110 0110 0011 0000") then -- 190.000  -> 100MHz / 512  - 2 volle Sinusperiode pro Sekunde
-                sine_data <= STD_LOGIC_VECTOR(unsigned(sine_data) + 1);
+            if(sine_counter = "101110011000110000") then -- 190.000  -> 100MHz / 512  - 2 volle Sinusperiode pro Sekunde
+                sine_addr <= STD_LOGIC_VECTOR(unsigned(sine_addr) + 1);
                 sine_counter <= (others => '0');
             end if;
         end if;
-    end process sine_counter;
+    end process sine_count;
+    
+    tremolo_proc : process(clk)
+        variable result_left    : INTEGER;
+        variable result_right   : INTEGER;
+    begin
+        if rising_edge(clk) then
+            result_left     := (to_integer(unsigned(audio_left_in)) * to_integer(unsigned(sine_data)));
+            result_right    := (to_integer(unsigned(audio_right_in)) * to_integer(unsigned(sine_data))) / 350;
+
+            if(result_left = 0) then
+                result_left = 1;
+            else
+                result_left := result_left / 350;
+            end if;
+            
+            if(result_right = 0) then
+                result_right = 1;
+            else
+                result_right := result_left / 350;
+            end if;
+            
+            
+            tremolo_left_out <= std_logic_vector(to_unsigned(result_left, BITDEPTH-1);
+            tremolo_right_out <= std_logic_vector(to_unsigned(result_right, BITDEPTH-1);
+            
+        end if;
+    end process tremolo_proc;    
+     
     
     -- Durchreichen der Timing-Signale
     ws_out <= ws_in;

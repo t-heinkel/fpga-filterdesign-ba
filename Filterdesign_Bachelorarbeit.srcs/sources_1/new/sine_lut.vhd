@@ -33,15 +33,15 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity sine_lut is
     Port (
-      i_clk          : in  std_logic;
-      i_addr         : in  std_logic_vector(7 downto 0);
-      o_data         : out std_logic_vector(8 downto 0)
+      clk       : in  std_logic;
+      i_addr    : in  std_logic_vector(7 downto 0);
+      o_data    : out std_logic_vector(8 downto 0)
     );
 end sine_lut;
 
 architecture rtl of sine_lut is
 
-type t_sin_table is array(0 to 31) of integer range 0 to 255;
+type t_sin_table is array(0 to 255) of integer range 0 to 350;
 constant C_SIN_TABLE : t_sin_table := (
     175, 179, 184, 188, 192, 196, 201, 205, 209, 213, 218, 222, 226, 230, 234, 238, 242, 246, 250, 254, 257, 261, 265, 269, 272, 276, 279, 283, 286,
     
@@ -55,7 +55,7 @@ constant C_SIN_TABLE : t_sin_table := (
     
     104, 100, 96, 93, 89, 85, 81, 78, 74, 71, 67, 64, 61, 57, 54, 51, 48, 45, 42, 40, 37, 34, 32, 29, 27, 25, 23, 21, 19,
     
-    17, 15, 13, 12, 10, 9, 8, 6, 5, 4, 3, 3, 2, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, 3, 3, 4, 5,
+    17, 15, 13, 12, 10, 9, 8, 6, 5, 4, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 3, 4, 5,
     
     6, 8, 9, 10, 12, 13, 15, 17, 19, 21, 23, 25, 27, 29, 32, 34, 37, 40, 42, 45, 48, 51, 54, 57, 61, 64, 67, 71, 74,
     
@@ -64,9 +64,9 @@ constant C_SIN_TABLE : t_sin_table := (
 
 begin
 
-p_table : process(i_clk)
+p_table : process(clk)
 begin
-  if(rising_edge(i_clk)) then
+  if(rising_edge(clk)) then
     o_data  <= std_logic_vector(to_unsigned(C_SIN_TABLE(to_integer(unsigned(i_addr))),8));
   end if;
 end process p_table;
