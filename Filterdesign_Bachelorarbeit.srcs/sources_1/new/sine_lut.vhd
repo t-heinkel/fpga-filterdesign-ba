@@ -67,7 +67,7 @@ begin
 p_table : process(clk)
 begin
   if(rising_edge(clk)) then
-    o_data  <= std_logic_vector(to_unsigned(C_SIN_TABLE(to_integer(unsigned(i_addr))),8));
+    o_data  <= std_logic_vector(to_unsigned(C_SIN_TABLE(to_integer(unsigned(i_addr))), o_data'length));
   end if;
 end process p_table;
 end rtl;
