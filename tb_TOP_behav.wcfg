@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
-      <ZoomEndTime time="96.050001 us"></ZoomEndTime>
-      <Cursor1Time time="15.760000 us"></Cursor1Time>
+      <ZoomStartTime time="1,968.565456 us"></ZoomStartTime>
+      <ZoomEndTime time="2,006.286909 us"></ZoomEndTime>
+      <Cursor1Time time="2,000.000000 us"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="318"></NameColumnWidth>
+      <NameColumnWidth column_width="286"></NameColumnWidth>
       <ValueColumnWidth column_width="116"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="6" />
+   <WVObjectSize size="8" />
    <wvobject fp_name="group40" type="group">
       <obj_property name="label">TB</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -406,10 +406,17 @@
    <wvobject fp_name="group399" type="group">
       <obj_property name="label">Vibrato</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/vibrato_effect_inst/clk" type="logic">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
       <wvobject fp_name="/tb_TOP/uut/processor_inst/vibrato_effect_inst/reset" type="logic">
          <obj_property name="ElementShortName">reset</obj_property>
          <obj_property name="ObjectShortName">reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/vibrato_effect_inst/ws" type="logic">
+         <obj_property name="ElementShortName">ws</obj_property>
+         <obj_property name="ObjectShortName">ws</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_TOP/uut/processor_inst/vibrato_effect_inst/audio_left_in" type="array">
          <obj_property name="ElementShortName">audio_left_in[23:0]</obj_property>
@@ -431,25 +438,162 @@
          <obj_property name="ElementShortName">sine_value[8:0]</obj_property>
          <obj_property name="ObjectShortName">sine_value[8:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/processor_inst/vibrato_effect_inst/modulated_phase_left" type="array">
-         <obj_property name="ElementShortName">modulated_phase_left[23:0]</obj_property>
-         <obj_property name="ObjectShortName">modulated_phase_left[23:0]</obj_property>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/vibrato_effect_inst/delay_line_left" type="array">
+         <obj_property name="ElementShortName">delay_line_left[0:1023][23:0]</obj_property>
+         <obj_property name="ObjectShortName">delay_line_left[0:1023][23:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/processor_inst/vibrato_effect_inst/modulated_phase_right" type="array">
-         <obj_property name="ElementShortName">modulated_phase_right[23:0]</obj_property>
-         <obj_property name="ObjectShortName">modulated_phase_right[23:0]</obj_property>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/vibrato_effect_inst/delay_line_right" type="array">
+         <obj_property name="ElementShortName">delay_line_right[0:1023][23:0]</obj_property>
+         <obj_property name="ObjectShortName">delay_line_right[0:1023][23:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/processor_inst/vibrato_effect_inst/depth_factor" type="array">
-         <obj_property name="ElementShortName">depth_factor[8:0]</obj_property>
-         <obj_property name="ObjectShortName">depth_factor[8:0]</obj_property>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/vibrato_effect_inst/write_index" type="other">
+         <obj_property name="ElementShortName">write_index</obj_property>
+         <obj_property name="ObjectShortName">write_index</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/processor_inst/vibrato_effect_inst/MAX_DEPTH" type="other">
-         <obj_property name="ElementShortName">MAX_DEPTH</obj_property>
-         <obj_property name="ObjectShortName">MAX_DEPTH</obj_property>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/vibrato_effect_inst/read_index" type="other">
+         <obj_property name="ElementShortName">read_index</obj_property>
+         <obj_property name="ObjectShortName">read_index</obj_property>
       </wvobject>
-      <wvobject fp_name="/tb_TOP/uut/processor_inst/vibrato_effect_inst/MAX_RATE" type="other">
-         <obj_property name="ElementShortName">MAX_RATE</obj_property>
-         <obj_property name="ObjectShortName">MAX_RATE</obj_property>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/vibrato_effect_inst/modulated_delay" type="other">
+         <obj_property name="ElementShortName">modulated_delay</obj_property>
+         <obj_property name="ObjectShortName">modulated_delay</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/vibrato_effect_inst/BIT_DEPTH" type="other">
+         <obj_property name="ElementShortName">BIT_DEPTH</obj_property>
+         <obj_property name="ObjectShortName">BIT_DEPTH</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/vibrato_effect_inst/DELAY_LINE_LENGTH" type="other">
+         <obj_property name="ElementShortName">DELAY_LINE_LENGTH</obj_property>
+         <obj_property name="ObjectShortName">DELAY_LINE_LENGTH</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/vibrato_effect_inst/VIBRATO_DEPTH" type="other">
+         <obj_property name="ElementShortName">VIBRATO_DEPTH</obj_property>
+         <obj_property name="ObjectShortName">VIBRATO_DEPTH</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group227" type="group">
+      <obj_property name="label">Overdrive</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/overdrive_effect_inst/clk" type="logic">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/overdrive_effect_inst/reset" type="logic">
+         <obj_property name="ElementShortName">reset</obj_property>
+         <obj_property name="ObjectShortName">reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/overdrive_effect_inst/ws" type="logic">
+         <obj_property name="ElementShortName">ws</obj_property>
+         <obj_property name="ObjectShortName">ws</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/overdrive_effect_inst/audio_left_in" type="array">
+         <obj_property name="ElementShortName">audio_left_in[23:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_left_in[23:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/overdrive_effect_inst/audio_right_in" type="array">
+         <obj_property name="ElementShortName">audio_right_in[23:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_right_in[23:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/overdrive_effect_inst/audio_left_out" type="array">
+         <obj_property name="ElementShortName">audio_left_out[23:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_left_out[23:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/overdrive_effect_inst/audio_right_out" type="array">
+         <obj_property name="ElementShortName">audio_right_out[23:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_right_out[23:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/overdrive_effect_inst/audio_left_signed" type="array">
+         <obj_property name="ElementShortName">audio_left_signed[23:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_left_signed[23:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/overdrive_effect_inst/audio_right_signed" type="array">
+         <obj_property name="ElementShortName">audio_right_signed[23:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_right_signed[23:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/overdrive_effect_inst/overdriven_left" type="array">
+         <obj_property name="ElementShortName">overdriven_left[26:0]</obj_property>
+         <obj_property name="ObjectShortName">overdriven_left[26:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/overdrive_effect_inst/overdriven_right" type="array">
+         <obj_property name="ElementShortName">overdriven_right[26:0]</obj_property>
+         <obj_property name="ObjectShortName">overdriven_right[26:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/overdrive_effect_inst/BIT_DEPTH" type="other">
+         <obj_property name="ElementShortName">BIT_DEPTH</obj_property>
+         <obj_property name="ObjectShortName">BIT_DEPTH</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/overdrive_effect_inst/OVERDRIVE_GAIN" type="other">
+         <obj_property name="ElementShortName">OVERDRIVE_GAIN</obj_property>
+         <obj_property name="ObjectShortName">OVERDRIVE_GAIN</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/overdrive_effect_inst/MAX_VALUE" type="array">
+         <obj_property name="ElementShortName">MAX_VALUE[23:0]</obj_property>
+         <obj_property name="ObjectShortName">MAX_VALUE[23:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/overdrive_effect_inst/MIN_VALUE" type="array">
+         <obj_property name="ElementShortName">MIN_VALUE[23:0]</obj_property>
+         <obj_property name="ObjectShortName">MIN_VALUE[23:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group570" type="group">
+      <obj_property name="label">Tremolo</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/tremolo_effect_inst/clk" type="logic">
+         <obj_property name="ElementShortName">clk</obj_property>
+         <obj_property name="ObjectShortName">clk</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/tremolo_effect_inst/reset" type="logic">
+         <obj_property name="ElementShortName">reset</obj_property>
+         <obj_property name="ObjectShortName">reset</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/tremolo_effect_inst/ws" type="logic">
+         <obj_property name="ElementShortName">ws</obj_property>
+         <obj_property name="ObjectShortName">ws</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/tremolo_effect_inst/audio_left_in" type="array">
+         <obj_property name="ElementShortName">audio_left_in[23:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_left_in[23:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/tremolo_effect_inst/audio_right_in" type="array">
+         <obj_property name="ElementShortName">audio_right_in[23:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_right_in[23:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/tremolo_effect_inst/sine_value" type="array">
+         <obj_property name="ElementShortName">sine_value[8:0]</obj_property>
+         <obj_property name="ObjectShortName">sine_value[8:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/tremolo_effect_inst/audio_left_out" type="array">
+         <obj_property name="ElementShortName">audio_left_out[23:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_left_out[23:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/tremolo_effect_inst/audio_right_out" type="array">
+         <obj_property name="ElementShortName">audio_right_out[23:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_right_out[23:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/tremolo_effect_inst/audio_left_signed" type="array">
+         <obj_property name="ElementShortName">audio_left_signed[23:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_left_signed[23:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/tremolo_effect_inst/audio_right_signed" type="array">
+         <obj_property name="ElementShortName">audio_right_signed[23:0]</obj_property>
+         <obj_property name="ObjectShortName">audio_right_signed[23:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/tremolo_effect_inst/tremolo_left" type="array">
+         <obj_property name="ElementShortName">tremolo_left[32:0]</obj_property>
+         <obj_property name="ObjectShortName">tremolo_left[32:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/tremolo_effect_inst/tremolo_right" type="array">
+         <obj_property name="ElementShortName">tremolo_right[32:0]</obj_property>
+         <obj_property name="ObjectShortName">tremolo_right[32:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/tremolo_effect_inst/ws_del" type="logic">
+         <obj_property name="ElementShortName">ws_del</obj_property>
+         <obj_property name="ObjectShortName">ws_del</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_TOP/uut/processor_inst/tremolo_effect_inst/BIT_DEPTH" type="other">
+         <obj_property name="ElementShortName">BIT_DEPTH</obj_property>
+         <obj_property name="ObjectShortName">BIT_DEPTH</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>

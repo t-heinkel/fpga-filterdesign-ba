@@ -70,6 +70,14 @@ architecture behavior of tb_TOP is
             clk_in1 : in STD_LOGIC
           );
     end component;
+    
+    component sine_lut is
+        Port (
+          clk       : in  std_logic;
+          i_addr    : in  std_logic_vector(7 downto 0);
+          o_data    : out std_logic_vector(8 downto 0)
+        );
+    end component;
 
     signal clk                  : STD_LOGIC := '0';
     signal clk_del              : STD_LOGIC;
@@ -120,6 +128,11 @@ architecture behavior of tb_TOP is
     
     signal first_sample         : STD_LOGIC := '1';
     signal sample_cnt           : STD_LOGIC_VECTOR(1 downto 0) := "00"; 
+    
+    -- Sine Signals
+    signal sine_counter : STD_LOGIC_VECTOR(17 downto 0) := (others => '0');
+    signal sine_data     : STD_LOGIC_VECTOR(8 downto 0);
+    signal sine_addr     : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');    
 
 begin
     -- Instanziierung des zu testenden Systems
@@ -149,6 +162,13 @@ begin
           -- Clock in ports
           clk_in1 => clk
         );       
+        
+    sine_lut_inst_2 : sine_lut
+        Port map(
+          clk => clk,
+          i_addr => sine_addr,
+          o_data => sine_data
+        );
     
     tb_rx_ready <= '1';
     
@@ -207,7 +227,7 @@ begin
                         ws_cnt <= "00000";
                         ws <= not ws;
                     end if;
-                    
+                                
                     sd_in <= sd_value;         
                 end if;
             end if;
@@ -241,5 +261,18 @@ begin
         end if;
     end process bclk_process;
     
+    -- Aktuell schwer einzubauen, weil weil einzelne Bits übertragen werden und nicht ganze Samples
+    sine_count : process(clk) -- Produces a Frequency of Around 2Hz
+    begin
+        if rising_edge(clk) then
+            sine_counter <= STD_LOGIC_VECTOR(unsigned(sine_counter) + 1);
+            
+--            if(sine_counter = "101110011000110000") then -- 190.000  -> 100MHz / 512  - 2 volle Sinusperiode pro Sekunde
+            if(sine_counter = "000000000000110000") then -- 190.000  -> 100MHz / 512  - 2 volle Sinusperiode pro Sekunde
+                sine_addr <= STD_LOGIC_VECTOR(unsigned(sine_addr) + 1);
+                sine_counter <= (others => '0');
+            end if;
+        end if;
+    end process sine_count;    
 
 end behavior;

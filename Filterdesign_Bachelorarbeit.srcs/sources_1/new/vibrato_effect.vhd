@@ -34,7 +34,8 @@ use IEEE.NUMERIC_STD.ALL;
 entity vibrato_effect is
     GENERIC (
         BIT_DEPTH : positive := 24;
-        VIBRATO_DEPTH : real := 0.5
+        DELAY_LINE_LENGTH : integer := 1024; -- Länge der Verzögerungsleitung
+        VIBRATO_DEPTH : integer := 10 -- Maximale Modulationstiefe in Samples
     );
     Port (
         clk             : in STD_LOGIC;
@@ -44,41 +45,40 @@ entity vibrato_effect is
         audio_right_in  : in STD_LOGIC_VECTOR(BIT_DEPTH - 1 downto 0);
         audio_left_out  : out STD_LOGIC_VECTOR(BIT_DEPTH - 1 downto 0);
         audio_right_out : out STD_LOGIC_VECTOR(BIT_DEPTH - 1 downto 0);
-        sine_value      : in STD_LOGIC_VECTOR(8 downto 0)
+        sine_value      : in STD_LOGIC_VECTOR(8 downto 0) -- Sinuswert zur Modulation
     );
 end vibrato_effect;
 
 architecture Behavioral of vibrato_effect is
-
-    constant MAX_DEPTH : INTEGER := 255;
-    constant MAX_RATE : INTEGER := 255;
-    
-    signal modulated_phase_left     : UNSIGNED(BIT_DEPTH - 1 downto 0) := (others => '0');
-    signal modulated_phase_right    : UNSIGNED(BIT_DEPTH - 1 downto 0) := (others => '0');
-    
-    signal depth_factor             : STD_LOGIC_VECTOR(8 downto 0) := (others => '0');
-    
-    signal ws_del                   : STD_LOGIC;
-    
+    type delay_line_type is array (0 to DELAY_LINE_LENGTH-1) of STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
+    signal delay_line_left : delay_line_type := (others => (others => '0'));
+    signal delay_line_right : delay_line_type := (others => (others => '0'));
+    signal write_index : integer := 0;
+    signal read_index : integer := 0;
+    signal modulated_delay : integer := 0;
 begin
-    
-    
-    -- Phasenmodulation
-    phase_mod : process(clk)
+    process(clk, reset)
     begin
-        if (ws = '0'AND ws_del = '1') then
-            depth_factor <= "0" & sine_value(8 downto 1);
-            modulated_phase_left <= UNSIGNED(audio_left_in) + unsigned(depth_factor);
-            modulated_phase_right <= UNSIGNED(audio_right_in) + unsigned(depth_factor);
+        if reset = '1' then
+            write_index <= 0;
+            read_index <= 0;
+        elsif rising_edge(clk) then
+            -- Berechne den modulierenden Verzögerungswert basierend auf dem Sinuswert
+            modulated_delay <= VIBRATO_DEPTH * (to_integer(signed(sine_value)) - 128) / 128;
+
+            -- Berechne den Leseindex basierend auf dem modulierenden Verzögerungswert
+            read_index <= (write_index - modulated_delay + DELAY_LINE_LENGTH) mod DELAY_LINE_LENGTH;
+
+            -- Schreibe aktuelle Samples in die Verzögerungsleitung
+            delay_line_left(write_index) <= audio_left_in;
+            delay_line_right(write_index) <= audio_right_in;
+
+            -- Inkrementiere den Schreibindex
+            write_index <= (write_index + 1) mod DELAY_LINE_LENGTH;
+
+            -- Ausgabe der verzögerten Samples
+            audio_left_out <= delay_line_left(read_index);
+            audio_right_out <= delay_line_right(read_index);
         end if;
-        ws_del <= ws;
     end process;
-    
-    audio_left_out <= std_logic_vector(modulated_phase_left);
-    audio_right_out <= std_logic_vector(modulated_phase_right);
-    
---    -- for testing
---    audio_left_out <= audio_left_in;
---    audio_right_out <= audio_right_in;
-        
 end Behavioral;

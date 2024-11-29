@@ -40,7 +40,7 @@ entity audio_processor is
         WIDTH : real := 0.005;
         TREMOLO_FREQ : real := 5.0;
         TREMOLO_AMPLITUDE : real := 0.5;
-        EFFECTS_CHOICE : positive := 1
+        EFFECTS_CHOICE : positive := 3
     );
     Port (
         clk             : in STD_LOGIC;
@@ -81,6 +81,32 @@ architecture Behavioral of audio_processor is
             sine_value      : in STD_LOGIC_VECTOR(8 downto 0)
         );
     end component;
+    
+    component overdrive_effect is
+        Port (
+            clk             : in STD_LOGIC;
+            reset           : in STD_LOGIC;
+            ws              : in STD_LOGIC;
+            audio_left_in   : in STD_LOGIC_VECTOR(BIT_DEPTH - 1 downto 0);
+            audio_right_in  : in STD_LOGIC_VECTOR(BIT_DEPTH - 1 downto 0);
+            audio_left_out  : out STD_LOGIC_VECTOR(BIT_DEPTH - 1 downto 0);
+            audio_right_out : out STD_LOGIC_VECTOR(BIT_DEPTH - 1 downto 0)
+        );
+    end component;
+    
+    component tremolo_effect is
+        Port (
+            clk             : in STD_LOGIC;
+            reset           : in STD_LOGIC;
+            ws              : in STD_LOGIC;
+            audio_left_in   : in STD_LOGIC_VECTOR(BIT_DEPTH - 1 downto 0);
+            audio_right_in  : in STD_LOGIC_VECTOR(BIT_DEPTH - 1 downto 0);
+            sine_value      : in STD_LOGIC_VECTOR(8 downto 0);
+            audio_left_out  : out STD_LOGIC_VECTOR(BIT_DEPTH - 1 downto 0);
+            audio_right_out : out STD_LOGIC_VECTOR(BIT_DEPTH - 1 downto 0)
+        );
+    end component;
+
 
     signal sine_data     : STD_LOGIC_VECTOR(8 downto 0);
     signal sine_addr     : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');    
@@ -96,28 +122,12 @@ architecture Behavioral of audio_processor is
     signal tremolo_left_out   : STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0) := (others => '0');
     signal tremolo_right_out  : STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0) := (others => '0'); 
     
+    -- OVERDRIVE
+    signal overdrive_left_out   : STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0) := (others => '0');
+    signal overdrive_right_out  : STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0) := (others => '0'); 
+    
     signal sine_counter : STD_LOGIC_VECTOR(17 downto 0) := (others => '0');
 
---    type delay_line_type is array (0 to real(DELAY) + real(WIDTH) - 1) of signed(BIT_DEPTH-1 downto 0);
---    signal delay_line : delay_line_type := (others => (others => '0'));
-    
-    --type delay_line_type is array (0 to DELAY + WIDTH - 1) of signed(BIT_DEPTH-1 downto 0);
-    --signal delay_line : delay_line_type := (others => (others => '0'));
-
-    function apply_overdrive(input : signed) return signed is
-        variable result : signed(input'range);
-        variable abs_input : unsigned(input'length-1 downto 0);
-    begin
-        abs_input := unsigned(abs(signed(input)));
-        if abs_input = unsigned(MAX_VALUE) then
-            result := MAX_VALUE;
-        elsif abs_input = unsigned(MIN_VALUE) then
-            result := MIN_VALUE;
-        else
-            result := resize(input * OVERDRIVE_GAIN, result'length);
-        end if;
-        return result;
-    end function apply_overdrive;
 
 begin
 
@@ -127,8 +137,8 @@ begin
           i_addr => sine_addr,
           o_data => sine_data
         );
-        
-     vibrato_effect_inst : vibrato_effect
+            
+    vibrato_effect_inst : vibrato_effect
         Port map(
             clk => clk,
             reset => reset,
@@ -138,6 +148,29 @@ begin
             audio_left_out => vibrato_left_out,
             audio_right_out => vibrato_right_out,
             sine_value => sine_data
+        );
+        
+    overdrive_effect_inst : overdrive_effect
+        Port map(
+            clk => clk,
+            reset => reset,
+            ws => ws_in,
+            audio_left_in => audio_left_in,
+            audio_right_in => audio_right_in,
+            audio_left_out => overdrive_left_out,
+            audio_right_out => overdrive_right_out
+        );   
+        
+    tremolo_effect_inst : tremolo_effect
+        Port map(
+            clk => clk,
+            reset => reset,
+            ws => ws_in,
+            audio_left_in => audio_left_in,
+            audio_right_in => audio_right_in,
+            sine_value => sine_data,
+            audio_left_out => tremolo_left_out,
+            audio_right_out => tremolo_right_out           
         );
     
     
@@ -159,18 +192,18 @@ begin
                 
                 -- Wende Overdrive-Effekt an
                 if(EFFECTS_CHOICE = 1) then
-                    audio_left_out <= STD_LOGIC_VECTOR(apply_overdrive(left_sample));
-                    audio_right_out <= STD_LOGIC_VECTOR(apply_overdrive(right_sample));
+                    audio_left_out <= overdrive_left_out;
+                    audio_right_out <= overdrive_right_out;
                 end if;
+                
                 -- Wende Vibrato-Effekt an
-                if(EFFECTS_CHOICE = 1) then
+                if(EFFECTS_CHOICE = 2) then
                     audio_left_out <= vibrato_left_out;
                     audio_right_out <= vibrato_right_out;
-                end if;
-                
+                end if;               
                 
                 -- Wende Tremolo-Effekt an
-                if (EFFECTS_CHOICE = 2) then
+                if (EFFECTS_CHOICE = 3) then
                     audio_left_out <= tremolo_left_out;
                     audio_right_out <= tremolo_right_out;
                 end if;
