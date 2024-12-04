@@ -54,10 +54,10 @@ entity TOP is
         AC_SDA      : inout STD_LOGIC;
         
         -- Buttons for effects
-        btnL     : in STD_LOGIC;
-        btnC     : in STD_LOGIC;
-        btnR     : in STD_LOGIC;
-        btnU     : in STD_LOGIC
+        btnL     : in STD_LOGIC := '0';
+        btnC     : in STD_LOGIC := '0';
+        btnR     : in STD_LOGIC := '0';
+        btnU     : in STD_LOGIC := '0'
     );
 end TOP;
 
@@ -190,6 +190,11 @@ architecture Structural of TOP is
     -- reset signal
     signal reset        : STD_LOGIC := '1';
     
+    signal btnL_int     : STD_LOGIC := '0';
+    signal btnC_int     : STD_LOGIC := '0';
+    signal btnR_int     : STD_LOGIC := '0';
+    signal btnU_int     : STD_LOGIC := '0';
+    
 begin
 
     AC_ADR0         <= '1';
@@ -200,6 +205,10 @@ begin
     ws_int          <= AC_GPIO3;        -- L/R Channel select
     AC_MCLK         <= clk_24;
     AC_SCK          <= i2c_scl;
+    btnL_int        <= btnL;
+    btnC_int        <= btnC;
+    btnR_int        <= btnR;
+    btnU_int        <= btnU;
 
     receiver_inst : i2s_receiver
         generic map (BIT_DEPTH => BIT_DEPTH)
@@ -237,10 +246,10 @@ begin
             ws_out => ws_trans,
             audio_left_out => trans_l_transfer,
             audio_right_out => trans_r_transfer,
-            btnL => btnL,
-            btnC => btnC,
-            btnR => btnR,
-            btnU => btnU
+            btnL => btnL_int,
+            btnC => btnC_int,
+            btnR => btnR_int,
+            btnU => btnU_int
         );
      
      i2c_master_inst : i2c_master

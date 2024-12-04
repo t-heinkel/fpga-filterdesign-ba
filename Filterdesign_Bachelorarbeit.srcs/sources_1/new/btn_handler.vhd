@@ -41,7 +41,7 @@ entity btn_handler is
         btnR    : in STD_LOGIC;
         btnU    : in STD_LOGIC;
         
-        effects_choice : out STD_LOGIC_VECTOR(3 downto 0)
+        effects_choice : out STD_LOGIC_VECTOR(3 downto 0) := (others => '0')
     );
 end btn_handler;
 
@@ -94,7 +94,7 @@ begin
             if(btnU_sync_sync = '1') then
                 debounce_counter <= debounce_counter + 1;
                 if(debounce_counter(21) = '1') then
-                    effects_choice <= "1000";
+                    effects_choice <= "0000";
                     debounce_counter <= (others => '0');
                 end if; 
             end if;
