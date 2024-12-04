@@ -70,7 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 2
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z020clg484-1
 
@@ -96,6 +95,10 @@ read_vhdl -library xil_defaultlib {
   {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Master.vhd}
   {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Receiver.vhd}
   {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Transmitter.vhd}
+  {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/overdrive_effect.vhd}
+  {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/sine_lut.vhd}
+  {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/tremolo_effect.vhd}
+  {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/vibrato_effect.vhd}
   {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd}
 }
 read_ip -quiet {{C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci}}

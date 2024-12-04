@@ -55,7 +55,13 @@ entity audio_processor is
         -- Ausgangssignale zum Transmitter
         ws_out          : out STD_LOGIC;
         audio_left_out  : out STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
-        audio_right_out : out STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0)
+        audio_right_out : out STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
+        
+        -- Buttons for effects
+        btnL     : in STD_LOGIC;
+        btnC     : in STD_LOGIC;
+        btnR     : in STD_LOGIC;
+        btnU     : in STD_LOGIC
     );
 end audio_processor;
 
@@ -106,7 +112,20 @@ architecture Behavioral of audio_processor is
             audio_right_out : out STD_LOGIC_VECTOR(BIT_DEPTH - 1 downto 0)
         );
     end component;
-
+    
+    component btn_handler is
+        Port ( 
+            clk     : in STD_LOGIC;
+        
+            -- Buttons for effects
+            btnL    : in STD_LOGIC;
+            btnC    : in STD_LOGIC;
+            btnR    : in STD_LOGIC;
+            btnU    : in STD_LOGIC;
+            
+            effects_choice : out STD_LOGIC_VECTOR(3 downto 0)
+        );
+    end component;
 
     signal sine_data     : STD_LOGIC_VECTOR(8 downto 0);
     signal sine_addr     : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');    
@@ -128,6 +147,7 @@ architecture Behavioral of audio_processor is
     
     signal sine_counter : STD_LOGIC_VECTOR(17 downto 0) := (others => '0');
 
+    signal btn_choice : STD_LOGIC_VECTOR(3 downto 0) := (others => '0');
 
 begin
 
@@ -172,6 +192,16 @@ begin
             audio_left_out => tremolo_left_out,
             audio_right_out => tremolo_right_out           
         );
+        
+    btn_handler_inst : btn_handler
+        Port map( 
+            clk => clk,        
+            btnL => btnL,
+            btnC => btnC,
+            btnR => btnR,
+            btnU => btnU,           
+            effects_choice => btn_choice
+        );
     
     
     main_proc : process(clk)
@@ -191,26 +221,28 @@ begin
                 
                 
                 -- Wende Overdrive-Effekt an
-                if(EFFECTS_CHOICE = 1) then
+                if(btn_choice = "0001") then
                     audio_left_out <= overdrive_left_out;
                     audio_right_out <= overdrive_right_out;
                 end if;
                 
                 -- Wende Vibrato-Effekt an
-                if(EFFECTS_CHOICE = 2) then
+                if(btn_choice = "0010") then
                     audio_left_out <= vibrato_left_out;
                     audio_right_out <= vibrato_right_out;
                 end if;               
                 
                 -- Wende Tremolo-Effekt an
-                if (EFFECTS_CHOICE = 3) then
+                if (btn_choice = "0100") then
                     audio_left_out <= tremolo_left_out;
                     audio_right_out <= tremolo_right_out;
                 end if;
                 
-                -- Signale einfach durchreichen zum Testen
-                --audio_left_out <= audio_left_in;
-                --audio_right_out <= audio_right_in;
+                if (btn_choice = "0000") then
+                    audio_left_out <= audio_left_in;
+                    audio_right_out <= audio_right_in;
+                end if;
+
             end if;
         end if;
     end process main_proc;

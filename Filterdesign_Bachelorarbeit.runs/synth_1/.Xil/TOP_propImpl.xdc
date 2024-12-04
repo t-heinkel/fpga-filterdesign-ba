@@ -1,6 +1,4 @@
 set_property SRC_FILE_INFO {cfile:{C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc} rfile:../../../Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc id:1} [current_design]
-set_property src_info {type:XDC file:1 line:2 export:INPUT save:INPUT read:READ} [current_design]
-create_clock -period 10.000 -name clk_100 [get_ports clk_100]
 set_property src_info {type:XDC file:1 line:4 export:INPUT save:INPUT read:READ} [current_design]
 set_false_path -from [get_clocks clk_24] -to [get_clocks clk_100]
 set_property src_info {type:XDC file:1 line:5 export:INPUT save:INPUT read:READ} [current_design]

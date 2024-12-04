@@ -14,11 +14,11 @@ set_property IOSTANDARD LVCMOS33 [get_ports AC_MCLK]
 
 
 # I2S transfers audio samples
-# i2s bit clock to ADAU1761
+# i2s data to ADAU1761
 set_property PACKAGE_PIN Y8 [get_ports AC_GPIO0]
 set_property IOSTANDARD LVCMOS33 [get_ports AC_GPIO0]
 
-# i2s bit clock from ADAU1761
+# i2s data from ADAU1761
 set_property PACKAGE_PIN AA7 [get_ports AC_GPIO1]
 set_property IOSTANDARD LVCMOS33 [get_ports AC_GPIO1]
 
@@ -44,4 +44,19 @@ set_property IOSTANDARD LVCMOS33 [get_ports AC_ADR0]
 set_property PACKAGE_PIN Y5 [get_ports AC_ADR1]
 set_property IOSTANDARD LVCMOS33 [get_ports AC_ADR1]
 
+# Button Pins for Effect Selection
+# BTNL
+set_property PACKAGE_PIN N15 [get_ports btnL]
+set_property IOSTANDARD LVCMOS33 [get_ports btnL]
 
+# BTNC
+set_property PACKAGE_PIN P16 [get_ports btnC]
+set_property IOSTANDARD LVCMOS33 [get_ports btnC]
+
+# BTNR
+set_property PACKAGE_PIN R18 [get_ports btnR]
+set_property IOSTANDARD LVCMOS33 [get_ports btnR]
+
+# BTNU
+set_property PACKAGE_PIN T18 [get_ports btnU]
+set_property IOSTANDARD LVCMOS33 [get_ports btnU]

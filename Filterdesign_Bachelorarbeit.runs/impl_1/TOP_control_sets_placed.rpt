@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Wed Nov  6 14:00:48 2024
+| Date         : Wed Dec  4 10:26:42 2024
 | Host         : TABLET-LEUQMGK6 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file TOP_control_sets_placed.rpt
 | Design       : TOP
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |    18 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    77 |
+| Unused register locations in slices containing registers |    66 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -41,9 +41,9 @@ Table of Contents
 +--------------------+-------+
 | Total control sets |    18 |
 | >= 0 to < 4        |     4 |
-| >= 4 to < 6        |     5 |
+| >= 4 to < 6        |     4 |
 | >= 6 to < 8        |     0 |
-| >= 8 to < 10       |     2 |
+| >= 8 to < 10       |     3 |
 | >= 10 to < 12      |     1 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
@@ -58,39 +58,39 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |               7 |            4 |
+| No           | No                    | No                     |               7 |            7 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              60 |           12 |
-| Yes          | No                    | No                     |             110 |           36 |
-| Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              66 |           17 |
+| No           | Yes                   | No                     |              70 |           26 |
+| Yes          | No                    | No                     |              92 |           38 |
+| Yes          | No                    | Yes                    |              48 |           24 |
+| Yes          | Yes                   | No                     |              29 |            9 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+---------------------------+--------------------------------------------------------------+---------------------+------------------+----------------+--------------+
-|        Clock Signal       |                         Enable Signal                        |   Set/Reset Signal  | Slice Load Count | Bel Load Count | Bels / Slice |
-+---------------------------+--------------------------------------------------------------+---------------------+------------------+----------------+--------------+
-|  clk_wizard/inst/clk_out1 | i2c_master_inst/Inst_I2C_Controller/i2c_sda_t_i_1_n_0        |                     |                1 |              1 |         1.00 |
-|  clk_wizard/inst/clk_out1 | i2c_master_inst/Inst_I2C_Controller/i2c_scl_i_1_n_0          |                     |                1 |              1 |         1.00 |
-|  clk_IBUF_BUFG            | transmitter_inst/sd_out2_out                                 |                     |                1 |              1 |         1.00 |
-|  clk_IBUF_BUFG            |                                                              |                     |                1 |              3 |         3.00 |
-|  clk_wizard/inst/clk_out1 |                                                              |                     |                3 |              4 |         1.33 |
-|  clk_wizard/inst/clk_out1 | i2c_master_inst/Inst_I2C_Controller/state[3]_i_1_n_0         |                     |                3 |              4 |         1.33 |
-|  clk_wizard/inst/clk_out1 | i2c_master_inst/Inst_I2C_Controller/i2c_bits_left[3]_i_1_n_0 |                     |                1 |              4 |         4.00 |
-|  clk_IBUF_BUFG            |                                                              | receiver_inst/SR[0] |                1 |              4 |         4.00 |
-|  clk_IBUF_BUFG            | transmitter_inst/bit_counter[4]_i_1__0_n_0                   | receiver_inst/SR[0] |                2 |              5 |         2.50 |
-|  clk_wizard/inst/clk_out1 | i2c_master_inst/Inst_I2C_Controller/bitcount[7]_i_1_n_0      |                     |                4 |              8 |         2.00 |
-|  clk_wizard/inst/clk_out1 | i2c_master_inst/Inst_I2C_Controller/i2c_data[8]_i_1_n_0      |                     |                4 |              9 |         2.25 |
-|  clk_wizard/inst/clk_out1 | i2c_master_inst/Inst_I2C_Controller/pcnext[9]_i_1_n_0        |                     |                3 |             10 |         3.33 |
-|  clk_wizard/inst/clk_out1 | i2c_master_inst/Inst_I2C_Controller/delay[15]_i_1_n_0        |                     |                5 |             16 |         3.20 |
-|  clk_IBUF_BUFG            | receiver_inst/audio_left[27]_i_1_n_0                         |                     |                7 |             28 |         4.00 |
-|  clk_IBUF_BUFG            | receiver_inst/audio_right[27]_i_1_n_0                        |                     |                6 |             28 |         4.67 |
-|  clk_IBUF_BUFG            | transmitter_inst/shift_register[27]_i_1_n_0                  | receiver_inst/SR[0] |                9 |             28 |         3.11 |
-|  clk_IBUF_BUFG            | receiver_inst/bit_counter[4]_i_1_n_0                         | receiver_inst/SR[0] |                6 |             33 |         5.50 |
-|  clk_IBUF_BUFG            |                                                              | reset               |               11 |             56 |         5.09 |
-+---------------------------+--------------------------------------------------------------+---------------------+------------------+----------------+--------------+
++-------------------------+---------------------------------------------------------------+--------------------------+------------------+----------------+--------------+
+|       Clock Signal      |                         Enable Signal                         |     Set/Reset Signal     | Slice Load Count | Bel Load Count | Bels / Slice |
++-------------------------+---------------------------------------------------------------+--------------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG          | processor_inst/tremolo_effect_inst/ws_del_i_1_n_0             |                          |                1 |              1 |         1.00 |
+|  clk_wizard/inst/clk_24 | i2c_master_inst/Inst_I2C_Controller/i2c_scl_i_1_n_0           |                          |                1 |              1 |         1.00 |
+|  clk_wizard/inst/clk_24 | i2c_master_inst/Inst_I2C_Controller/i2c_sda_t_i_1_n_0         |                          |                1 |              1 |         1.00 |
+|  clk_IBUF_BUFG          |                                                               |                          |                3 |              3 |         1.00 |
+|  clk_IBUF_BUFG          |                                                               | receiver_inst/SR[0]      |                2 |              4 |         2.00 |
+|  clk_wizard/inst/clk_24 |                                                               |                          |                4 |              4 |         1.00 |
+|  clk_wizard/inst/clk_24 | i2c_master_inst/Inst_I2C_Controller/i2c_bits_left[3]_i_1_n_0  |                          |                2 |              4 |         2.00 |
+|  clk_wizard/inst/clk_24 | i2c_master_inst/Inst_I2C_Controller/state[3]_i_1_n_0          |                          |                2 |              4 |         2.00 |
+|  clk_IBUF_BUFG          | processor_inst/sine_addr                                      |                          |                3 |              8 |         2.67 |
+|  clk_wizard/inst/clk_24 | i2c_master_inst/Inst_I2C_Controller/bitcount[7]_i_1_n_0       |                          |                3 |              8 |         2.67 |
+|  clk_wizard/inst/clk_24 | i2c_master_inst/Inst_I2C_Controller/i2c_data[8]_i_1_n_0       |                          |                4 |              9 |         2.25 |
+|  clk_wizard/inst/clk_24 | i2c_master_inst/Inst_I2C_Controller/pcnext[9]_i_1_n_0         |                          |                4 |             10 |         2.50 |
+|  clk_wizard/inst/clk_24 | i2c_master_inst/Inst_I2C_Controller/delay[15]_i_1_n_0         |                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG          |                                                               | processor_inst/sine_addr |                6 |             18 |         3.00 |
+|  clk_IBUF_BUFG          | receiver_inst/bit_counter[4]_i_1_n_0                          | receiver_inst/SR[0]      |                9 |             29 |         3.22 |
+|  clk_IBUF_BUFG          | transmitter_inst/bit_counter[0]_i_1_n_0                       |                          |               11 |             30 |         2.73 |
+|  clk_IBUF_BUFG          |                                                               | reset                    |               18 |             48 |         2.67 |
+|  clk_IBUF_BUFG          | processor_inst/tremolo_effect_inst/audio_left_out[23]_i_1_n_0 | reset                    |               24 |             48 |         2.00 |
++-------------------------+---------------------------------------------------------------+--------------------------+------------------+----------------+--------------+
 
 

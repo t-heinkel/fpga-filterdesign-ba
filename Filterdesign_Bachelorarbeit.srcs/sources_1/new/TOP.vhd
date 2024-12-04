@@ -51,7 +51,13 @@ entity TOP is
         AC_GPIO3    : in    STD_LOGIC;  -- I2S_LR
         AC_MCLK     : out   STD_LOGIC;
         AC_SCK      : out   STD_LOGIC;
-        AC_SDA      : inout STD_LOGIC
+        AC_SDA      : inout STD_LOGIC;
+        
+        -- Buttons for effects
+        btnL     : in STD_LOGIC;
+        btnC     : in STD_LOGIC;
+        btnR     : in STD_LOGIC;
+        btnU     : in STD_LOGIC
     );
 end TOP;
 
@@ -116,7 +122,12 @@ architecture Structural of TOP is
             -- Ausgangssignale zum Transmitter
             ws_out      : out STD_LOGIC;
             audio_left_out : out STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
-            audio_right_out : out STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0)
+            audio_right_out : out STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0);
+            
+            btnL     : in STD_LOGIC;
+            btnC     : in STD_LOGIC;
+            btnR     : in STD_LOGIC;
+            btnU     : in STD_LOGIC
         );
     end component;
     
@@ -225,7 +236,11 @@ begin
             audio_right_in => rec_r_transfer,
             ws_out => ws_trans,
             audio_left_out => trans_l_transfer,
-            audio_right_out => trans_r_transfer
+            audio_right_out => trans_r_transfer,
+            btnL => btnL,
+            btnC => btnC,
+            btnR => btnR,
+            btnU => btnU
         );
      
      i2c_master_inst : i2c_master

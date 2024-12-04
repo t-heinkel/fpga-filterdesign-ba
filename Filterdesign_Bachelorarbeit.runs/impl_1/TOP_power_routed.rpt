@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Wed Nov  6 14:01:36 2024
+| Date             : Wed Dec  4 10:29:30 2024
 | Host             : TABLET-LEUQMGK6 running 64-bit major release  (build 9200)
 | Command          : report_power -file TOP_power_routed.rpt -pb TOP_power_summary_routed.pb -rpx TOP_power_routed.rpx
 | Design           : TOP
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.234        |
+| Total On-Chip Power (W)  | 0.275        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.126        |
+| Dynamic (W)              | 0.166        |
 | Device Static (W)        | 0.108        |
 | Effective TJA (C/W)      | 11.5         |
-| Max Ambient (C)          | 82.3         |
-| Junction Temperature (C) | 27.7         |
+| Max Ambient (C)          | 81.8         |
+| Junction Temperature (C) | 28.2         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,18 +52,20 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.002 |        5 |       --- |             --- |
-| Slice Logic    |    <0.001 |      462 |       --- |             --- |
-|   LUT as Logic |    <0.001 |      169 |     53200 |            0.32 |
-|   CARRY4       |    <0.001 |        4 |     13300 |            0.03 |
-|   Register     |    <0.001 |      243 |    106400 |            0.23 |
-|   Others       |     0.000 |       16 |       --- |             --- |
-| Signals        |    <0.001 |      370 |       --- |             --- |
+| Clocks         |     0.002 |        6 |       --- |             --- |
+| Slice Logic    |     0.024 |     2396 |       --- |             --- |
+|   LUT as Logic |     0.022 |     1705 |     53200 |            3.20 |
+|   CARRY4       |     0.001 |      233 |     13300 |            1.75 |
+|   Register     |    <0.001 |      246 |    106400 |            0.23 |
+|   F7/F8 Muxes  |    <0.001 |       18 |     53200 |            0.03 |
+|   Others       |     0.000 |       21 |       --- |             --- |
+| Signals        |     0.033 |     2059 |       --- |             --- |
 | Block RAM      |    <0.001 |      0.5 |       140 |            0.36 |
-| MMCM           |     0.122 |        1 |         4 |           25.00 |
+| MMCM           |     0.103 |        1 |         4 |           25.00 |
+| DSPs           |     0.002 |        2 |       220 |            0.91 |
 | I/O            |     0.003 |       10 |       200 |            5.00 |
 | Static Power   |     0.108 |          |           |                 |
-| Total          |     0.234 |          |           |                 |
+| Total          |     0.275 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,8 +75,8 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.010 |       0.002 |      0.008 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.078 |       0.068 |      0.011 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.069 |       0.061 |      0.008 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.068 |       0.057 |      0.011 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.002 |       0.001 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -133,13 +135,14 @@ Table of Contents
 2.2 Clock Constraints
 ---------------------
 
-+-------------------------+------------------------------------+-----------------+
-| Clock                   | Domain                             | Constraint (ns) |
-+-------------------------+------------------------------------+-----------------+
-| clk_out1_clk_wiz_0      | clk_wizard/inst/clk_out1_clk_wiz_0 |            41.7 |
-| clk_wizard/inst/clk_in1 | clk_IBUF_BUFG                      |            10.0 |
-| clkfbout_clk_wiz_0      | clk_wizard/inst/clkfbout_clk_wiz_0 |            50.0 |
-+-------------------------+------------------------------------+-----------------+
++--------------------+------------------------------------+-----------------+
+| Clock              | Domain                             | Constraint (ns) |
++--------------------+------------------------------------+-----------------+
+| clk                | clk                                |            10.0 |
+| clk                | clk_IBUF_BUFG                      |            10.0 |
+| clk_24_clk_wiz_0   | clk_wizard/inst/clk_24_clk_wiz_0   |            41.7 |
+| clkfbout_clk_wiz_0 | clk_wizard/inst/clkfbout_clk_wiz_0 |            50.0 |
++--------------------+------------------------------------+-----------------+
 
 
 3. Detailed Reports
@@ -148,12 +151,14 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+--------------+-----------+
-| Name         | Power (W) |
-+--------------+-----------+
-| TOP          |     0.126 |
-|   clk_wizard |     0.122 |
-|     inst     |     0.122 |
-+--------------+-----------+
++-------------------------+-----------+
+| Name                    | Power (W) |
++-------------------------+-----------+
+| TOP                     |     0.166 |
+|   clk_wizard            |     0.103 |
+|     inst                |     0.103 |
+|   processor_inst        |     0.059 |
+|     tremolo_effect_inst |     0.058 |
++-------------------------+-----------+
 
 

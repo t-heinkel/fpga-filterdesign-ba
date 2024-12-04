@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Wed Nov  6 13:58:21 2024
-# Process ID: 4064
+# Start of session at: Wed Dec  4 10:22:28 2024
+# Process ID: 2428
 # Current directory: C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1
 # Command line: vivado.exe -log TOP.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source TOP.tcl
 # Log file: C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1/TOP.vds
@@ -12,7 +12,7 @@
 # Running On: TABLET-LEUQMGK6, OS: Windows, CPU Frequency: 2419 MHz, CPU Physical cores: 4, Host memory: 17005 MB
 #-----------------------------------------------------------
 source TOP.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 463.957 ; gain = 183.898
+create_project: Time (s): cpu = 00:00:04 ; elapsed = 00:00:09 . Memory (MB): peak = 462.781 ; gain = 182.559
 Command: read_checkpoint -auto_incremental -incremental {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/utils_1/imports/synth_1/TOP.dcp}
 INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/utils_1/imports/synth_1/TOP.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -25,27 +25,39 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 16216
+INFO: [Synth 8-7075] Helper process launched with PID 12092
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 1342.812 ; gain = 441.008
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 1341.586 ; gain = 440.703
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'TOP' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:58]
 WARNING: [Synth 8-5640] Port 'ws_out' is missing in component declaration [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:60]
-	Parameter BIT_DEPTH bound to: 28 - type: integer 
+	Parameter BIT_DEPTH bound to: 24 - type: integer 
 INFO: [Synth 8-3491] module 'I2S_Receiver' declared at 'C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Receiver.vhd:34' bound to instance 'receiver_inst' of component 'i2s_receiver' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:193]
 INFO: [Synth 8-638] synthesizing module 'I2S_Receiver' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Receiver.vhd:55]
-	Parameter BIT_DEPTH bound to: 28 - type: integer 
+	Parameter BIT_DEPTH bound to: 24 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'I2S_Receiver' (0#1) [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Receiver.vhd:55]
-	Parameter BIT_DEPTH bound to: 28 - type: integer 
+	Parameter BIT_DEPTH bound to: 24 - type: integer 
 INFO: [Synth 8-3491] module 'I2S_Transmitter' declared at 'C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Transmitter.vhd:34' bound to instance 'transmitter_inst' of component 'i2s_transmitter' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:205]
 INFO: [Synth 8-638] synthesizing module 'I2S_Transmitter' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Transmitter.vhd:56]
-	Parameter BIT_DEPTH bound to: 28 - type: integer 
+	Parameter BIT_DEPTH bound to: 24 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'I2S_Transmitter' (0#1) [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Transmitter.vhd:56]
-	Parameter BIT_DEPTH bound to: 28 - type: integer 
+	Parameter BIT_DEPTH bound to: 24 - type: integer 
 INFO: [Synth 8-3491] module 'audio_processor' declared at 'C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/Audio_Processor.vhd:34' bound to instance 'processor_inst' of component 'audio_processor' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:217]
-INFO: [Synth 8-638] synthesizing module 'audio_processor' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/Audio_Processor.vhd:55]
-	Parameter BIT_DEPTH bound to: 28 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'audio_processor' (0#1) [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/Audio_Processor.vhd:55]
+INFO: [Synth 8-638] synthesizing module 'audio_processor' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/Audio_Processor.vhd:62]
+	Parameter BIT_DEPTH bound to: 24 - type: integer 
+INFO: [Synth 8-3491] module 'sine_lut' declared at 'C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/sine_lut.vhd:34' bound to instance 'sine_lut_inst' of component 'sine_lut' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/Audio_Processor.vhd:134]
+INFO: [Synth 8-638] synthesizing module 'sine_lut' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/sine_lut.vhd:42]
+INFO: [Synth 8-256] done synthesizing module 'sine_lut' (0#1) [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/sine_lut.vhd:42]
+INFO: [Synth 8-3491] module 'vibrato_effect' declared at 'C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/vibrato_effect.vhd:34' bound to instance 'vibrato_effect_inst' of component 'vibrato_effect' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/Audio_Processor.vhd:141]
+INFO: [Synth 8-638] synthesizing module 'vibrato_effect' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/vibrato_effect.vhd:52]
+INFO: [Synth 8-256] done synthesizing module 'vibrato_effect' (0#1) [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/vibrato_effect.vhd:52]
+INFO: [Synth 8-3491] module 'overdrive_effect' declared at 'C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/overdrive_effect.vhd:34' bound to instance 'overdrive_effect_inst' of component 'overdrive_effect' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/Audio_Processor.vhd:153]
+INFO: [Synth 8-638] synthesizing module 'overdrive_effect' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/overdrive_effect.vhd:50]
+INFO: [Synth 8-256] done synthesizing module 'overdrive_effect' (0#1) [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/overdrive_effect.vhd:50]
+INFO: [Synth 8-3491] module 'tremolo_effect' declared at 'C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/tremolo_effect.vhd:34' bound to instance 'tremolo_effect_inst' of component 'tremolo_effect' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/Audio_Processor.vhd:164]
+INFO: [Synth 8-638] synthesizing module 'tremolo_effect' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/tremolo_effect.vhd:50]
+INFO: [Synth 8-256] done synthesizing module 'tremolo_effect' (0#1) [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/tremolo_effect.vhd:50]
+INFO: [Synth 8-256] done synthesizing module 'audio_processor' (0#1) [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/Audio_Processor.vhd:62]
 INFO: [Synth 8-3491] module 'I2C_Master' declared at 'C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Master.vhd:34' bound to instance 'i2c_master_inst' of component 'i2c_master' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:231]
 INFO: [Synth 8-638] synthesizing module 'I2C_Master' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Master.vhd:44]
 INFO: [Synth 8-3491] module 'ADAU1761_Configuration_Data' declared at 'C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/ADAU1761_Configuration_Data.vhd:35' bound to instance 'Inst_adau1761_configuration_data' of component 'ADAU1761_Configuration_Data' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Master.vhd:81]
@@ -57,31 +69,35 @@ INFO: [Synth 8-638] synthesizing module 'I2C_Controller' [C:/Users/timoh/Hochsch
 	Parameter clk_divide bound to: 8'b00111100 
 INFO: [Synth 8-256] done synthesizing module 'I2C_Controller' (0#1) [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Controller.vhd:54]
 INFO: [Synth 8-256] done synthesizing module 'I2C_Master' (0#1) [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Master.vhd:44]
-INFO: [Synth 8-3491] module 'clk_wiz_0' declared at 'C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1/.Xil/Vivado-4064-TABLET-LEUQMGK6/realtime/clk_wiz_0_stub.vhdl:6' bound to instance 'clk_wizard' of component 'clk_wiz_0' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:242]
-INFO: [Synth 8-638] synthesizing module 'clk_wiz_0' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1/.Xil/Vivado-4064-TABLET-LEUQMGK6/realtime/clk_wiz_0_stub.vhdl:16]
+WARNING: [Synth 8-5640] Port 'clk_9_6' is missing in component declaration [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:135]
+INFO: [Synth 8-3491] module 'clk_wiz_0' declared at 'C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1/.Xil/Vivado-2428-TABLET-LEUQMGK6/realtime/clk_wiz_0_stub.vhdl:6' bound to instance 'clk_wizard' of component 'clk_wiz_0' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:242]
+INFO: [Synth 8-638] synthesizing module 'clk_wiz_0' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1/.Xil/Vivado-2428-TABLET-LEUQMGK6/realtime/clk_wiz_0_stub.vhdl:17]
 INFO: [Synth 8-113] binding component instance 'i_i2s_sda_obuf' to cell 'IOBUF' [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:252]
 INFO: [Synth 8-256] done synthesizing module 'TOP' (0#1) [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:58]
 WARNING: [Synth 8-3848] Net ws_out in module/entity I2S_Receiver does not have driver. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Receiver.vhd:46]
+WARNING: [Synth 8-5863] Implementing Library version of Mod/Rem due to signed path. This typically leads to poor QOR. Check RTL to see if unsigned path for the operator is possible  [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/vibrato_effect.vhd:77]
+WARNING: [Synth 8-5863] Implementing Library version of Mod/Rem due to signed path. This typically leads to poor QOR. Check RTL to see if unsigned path for the operator is possible  [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/vibrato_effect.vhd:70]
 WARNING: [Synth 8-3848] Net clk_reset in module/entity TOP does not have driver. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:176]
 WARNING: [Synth 8-3917] design TOP has port AC_ADR0 driven by constant 1
 WARNING: [Synth 8-3917] design TOP has port AC_ADR1 driven by constant 1
+WARNING: [Synth 8-7129] Port ws in module vibrato_effect is either unconnected or has no load
 WARNING: [Synth 8-7129] Port sck_in in module audio_processor is either unconnected or has no load
 WARNING: [Synth 8-7129] Port ws_out in module I2S_Receiver is either unconnected or has no load
 WARNING: [Synth 8-7129] Port sck in module TOP is either unconnected or has no load
 WARNING: [Synth 8-7129] Port ws in module TOP is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:11 . Memory (MB): peak = 1457.785 ; gain = 555.980
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 1462.613 ; gain = 561.730
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:12 . Memory (MB): peak = 1457.785 ; gain = 555.980
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 1462.613 ; gain = 561.730
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:12 . Memory (MB): peak = 1457.785 ; gain = 555.980
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:12 . Memory (MB): peak = 1462.613 ; gain = 561.730
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1462.387 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.030 . Memory (MB): peak = 1462.613 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -91,7 +107,7 @@ Initializing timing engine
 Parsing XDC File [c:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'clk_wizard'
 Finished Parsing XDC File [c:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'clk_wizard'
 Parsing XDC File [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc]
-WARNING: [Vivado 12-584] No ports matched 'clk_100'. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc:2]
+WARNING: [Constraints 18-619] A clock with name 'clk' already exists, overwriting the previous clock with the same name. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc:2]
 WARNING: [Vivado 12-627] No clocks matched 'clk_24'. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc:4]
 INFO: [Vivado 12-626] No clocks found. Please use 'create_clock' or 'create_generated_clock' command to create clocks. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc:4]
 WARNING: [Vivado 12-627] No clocks matched 'clk_100'. [C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc:4]
@@ -106,32 +122,32 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/TOP_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1569.098 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1564.602 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 1 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1569.098 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1564.602 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:16 ; elapsed = 00:00:25 . Memory (MB): peak = 1569.098 ; gain = 667.293
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:26 . Memory (MB): peak = 1564.602 ; gain = 663.719
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:16 ; elapsed = 00:00:25 . Memory (MB): peak = 1569.098 ; gain = 667.293
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:26 . Memory (MB): peak = 1564.602 ; gain = 663.719
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property IO_BUFFER_TYPE = NONE for clk. (constraint file  {c:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc}, line 3).
-Applied set_property CLOCK_BUFFER_TYPE = NONE for clk. (constraint file  {c:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc}, line 4).
+Applied set_property IO_BUFFER_TYPE = NONE for clk. (constraint file  {c:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc}, line 4).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for clk. (constraint file  {c:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc}, line 5).
 Applied set_property KEEP_HIERARCHY = SOFT for clk_wizard. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:25 . Memory (MB): peak = 1569.098 ; gain = 667.293
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:26 . Memory (MB): peak = 1564.602 ; gain = 663.719
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'I2S_Receiver'
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'I2S_Transmitter'
@@ -147,42 +163,56 @@ INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using e
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
                     idle |                               00 |                               00
-                 tx_left |                               01 |                               01
-                tx_right |                               10 |                               10
+                tx_right |                               01 |                               10
+                 tx_left |                               10 |                               01
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'sequential' in module 'I2S_Transmitter'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:26 . Memory (MB): peak = 1569.098 ; gain = 667.293
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:27 . Memory (MB): peak = 1564.602 ; gain = 663.719
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
+	   2 Input   32 Bit       Adders := 2     
+	   3 Input   32 Bit       Adders := 1     
+	   2 Input   31 Bit       Adders := 3     
+	   2 Input   24 Bit       Adders := 2     
+	   2 Input   18 Bit       Adders := 1     
 	   2 Input   16 Bit       Adders := 1     
+	   2 Input   12 Bit       Adders := 4     
 	   2 Input   10 Bit       Adders := 1     
-	   2 Input    8 Bit       Adders := 1     
+	   2 Input    8 Bit       Adders := 2     
 	   2 Input    5 Bit       Adders := 2     
 	   2 Input    4 Bit       Adders := 1     
 +---XORs : 
 	   2 Input      1 Bit         XORs := 1     
 +---Registers : 
-	               28 Bit    Registers := 6     
+	               32 Bit    Registers := 1     
+	               24 Bit    Registers := 16    
+	               18 Bit    Registers := 1     
 	               16 Bit    Registers := 2     
 	               10 Bit    Registers := 1     
-	                9 Bit    Registers := 2     
-	                8 Bit    Registers := 2     
+	                9 Bit    Registers := 3     
+	                8 Bit    Registers := 3     
 	                5 Bit    Registers := 3     
 	                4 Bit    Registers := 2     
-	                1 Bit    Registers := 13    
+	                1 Bit    Registers := 15    
++---RAMs : 
+	              24K Bit	(1024 X 24 bit)          RAMs := 2     
 +---ROMs : 
-	                    ROMs := 1     
+	                    ROMs := 2     
 +---Muxes : 
-	   2 Input   28 Bit        Muxes := 2     
+	   2 Input   32 Bit        Muxes := 1     
+	   2 Input   31 Bit        Muxes := 3     
+	   3 Input   24 Bit        Muxes := 1     
+	   2 Input   24 Bit        Muxes := 4     
 	  21 Input   16 Bit        Muxes := 1     
 	   2 Input   16 Bit        Muxes := 2     
 	   6 Input   16 Bit        Muxes := 1     
 	  13 Input   16 Bit        Muxes := 1     
+	   2 Input   12 Bit        Muxes := 10    
 	   2 Input   10 Bit        Muxes := 2     
 	   6 Input   10 Bit        Muxes := 1     
 	  13 Input   10 Bit        Muxes := 1     
@@ -197,10 +227,10 @@ Detailed RTL Component Info :
 	   7 Input    4 Bit        Muxes := 1     
 	   6 Input    4 Bit        Muxes := 2     
 	  13 Input    4 Bit        Muxes := 1     
-	   3 Input    2 Bit        Muxes := 1     
-	   2 Input    2 Bit        Muxes := 4     
-	   2 Input    1 Bit        Muxes := 38    
-	   3 Input    1 Bit        Muxes := 5     
+	   3 Input    2 Bit        Muxes := 2     
+	   2 Input    2 Bit        Muxes := 3     
+	   2 Input    1 Bit        Muxes := 35    
+	   3 Input    1 Bit        Muxes := 7     
 	  13 Input    1 Bit        Muxes := 6     
 	   6 Input    1 Bit        Muxes := 17    
 	  14 Input    1 Bit        Muxes := 2     
@@ -221,46 +251,83 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+DSP Report: Generating DSP overdriven_left_reg, operation Mode is: (A2*(B:0x32))'.
+DSP Report: register audio_left_signed_reg is absorbed into DSP overdriven_left_reg.
+DSP Report: register overdriven_left_reg is absorbed into DSP overdriven_left_reg.
+DSP Report: operator multOp is absorbed into DSP overdriven_left_reg.
+DSP Report: Generating DSP overdriven_right_reg, operation Mode is: (A2*(B:0x32))'.
+DSP Report: register audio_right_signed_reg is absorbed into DSP overdriven_right_reg.
+DSP Report: register overdriven_right_reg is absorbed into DSP overdriven_right_reg.
+DSP Report: operator multOp is absorbed into DSP overdriven_right_reg.
+DSP Report: Generating DSP result_left2, operation Mode is: A2*B.
+DSP Report: register audio_left_signed_reg is absorbed into DSP result_left2.
+DSP Report: operator result_left2 is absorbed into DSP result_left2.
+DSP Report: Generating DSP result_right2, operation Mode is: A2*B.
+DSP Report: register audio_right_signed_reg is absorbed into DSP result_right2.
+DSP Report: operator result_right2 is absorbed into DSP result_right2.
+WARNING: [Synth 8-6040] Register sine_addr_reg_rep driving address of a ROM cannot be packed in BRAM/URAM because of presence of initial value.
 WARNING: [Synth 8-6040] Register i2c_master_inst/Inst_I2C_Controller/pcnext_reg_rep driving address of a ROM cannot be packed in BRAM/URAM because of presence of initial value.
 WARNING: [Synth 8-3917] design TOP has port AC_ADR0 driven by constant 1
 WARNING: [Synth 8-3917] design TOP has port AC_ADR1 driven by constant 1
+WARNING: [Synth 8-7129] Port ws in module vibrato_effect is either unconnected or has no load
+WARNING: [Synth 8-7129] Port sck_in in module audio_processor is either unconnected or has no load
 WARNING: [Synth 8-7129] Port sck in module TOP is either unconnected or has no load
 WARNING: [Synth 8-7129] Port ws in module TOP is either unconnected or has no load
+WARNING: [Synth 8-6014] Unused sequential element processor_inst/vibrato_effect_inst/delay_line_left_reg was removed. 
+WARNING: [Synth 8-6014] Unused sequential element processor_inst/vibrato_effect_inst/delay_line_right_reg was removed. 
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:31 . Memory (MB): peak = 1569.098 ; gain = 667.293
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:00:38 . Memory (MB): peak = 1564.602 ; gain = 663.719
 ---------------------------------------------------------------------------------
+ Sort Area is  result_left2_3 : 0 0 : 1402 1402 : Used 1 time 0
+ Sort Area is  result_right2_5 : 0 0 : 1402 1402 : Used 1 time 0
+ Sort Area is  overdriven_left_reg_0 : 0 0 : 375 375 : Used 1 time 0
+ Sort Area is  overdriven_right_reg_2 : 0 0 : 375 375 : Used 1 time 0
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 
 ROM: Preliminary Mapping Report
-+------------+-----------------------------------------------------------+---------------+----------------+
-|Module Name | RTL Object                                                | Depth x Width | Implemented As | 
-+------------+-----------------------------------------------------------+---------------+----------------+
-|TOP         | i2c_master_inst/Inst_adau1761_configuration_data/data_reg | 1024x9        | Block RAM      | 
-+------------+-----------------------------------------------------------+---------------+----------------+
++----------------+-----------------------------------------------------------+---------------+----------------+
+|Module Name     | RTL Object                                                | Depth x Width | Implemented As | 
++----------------+-----------------------------------------------------------+---------------+----------------+
+|audio_processor | sine_lut_inst/o_data_reg                                  | 256x9         | Block RAM      | 
+|TOP             | i2c_master_inst/Inst_adau1761_configuration_data/data_reg | 1024x9        | Block RAM      | 
++----------------+-----------------------------------------------------------+---------------+----------------+
 
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++-----------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name      | DSP Mapping    | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++-----------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|overdrive_effect | (A2*(B:0x32))' | 24     | 7      | -      | -      | 31     | 1    | 0    | -    | -    | -     | 1    | 0    | 
+|overdrive_effect | (A2*(B:0x32))' | 24     | 7      | -      | -      | 31     | 1    | 0    | -    | -    | -     | 1    | 0    | 
+|tremolo_effect   | A2*B           | 24     | 9      | -      | -      | 33     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|tremolo_effect   | A2*B           | 24     | 9      | -      | -      | 33     | 1    | 0    | -    | -    | -     | 0    | 0    | 
++-----------------+----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
 ---------------------------------------------------------------------------------
 Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
+WARNING: [Synth 8-565] redefining clock 'clk'
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:25 ; elapsed = 00:00:40 . Memory (MB): peak = 1569.098 ; gain = 667.293
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:30 ; elapsed = 00:00:53 . Memory (MB): peak = 1564.602 ; gain = 663.719
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:41 . Memory (MB): peak = 1569.098 ; gain = 667.293
+Finished Timing Optimization : Time (s): cpu = 00:00:36 ; elapsed = 00:01:04 . Memory (MB): peak = 1613.051 ; gain = 712.168
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-7052] The timing for the instance i2c_master_inst/Inst_adau1761_configuration_data/data_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:26 ; elapsed = 00:00:41 . Memory (MB): peak = 1569.098 ; gain = 667.293
+Finished Technology Mapping : Time (s): cpu = 00:00:37 ; elapsed = 00:01:07 . Memory (MB): peak = 1613.051 ; gain = 712.168
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -279,41 +346,50 @@ Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 CRITICAL WARNING: [Synth 8-4442] BlackBox module clk_wizard has unconnected pin reset
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:31 ; elapsed = 00:00:49 . Memory (MB): peak = 1569.098 ; gain = 667.293
+Finished IO Insertion : Time (s): cpu = 00:00:41 ; elapsed = 00:01:15 . Memory (MB): peak = 1613.051 ; gain = 712.168
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:31 ; elapsed = 00:00:49 . Memory (MB): peak = 1569.098 ; gain = 667.293
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:41 ; elapsed = 00:01:15 . Memory (MB): peak = 1613.051 ; gain = 712.168
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:32 ; elapsed = 00:00:49 . Memory (MB): peak = 1569.098 ; gain = 667.293
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:41 ; elapsed = 00:01:16 . Memory (MB): peak = 1613.051 ; gain = 712.168
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:32 ; elapsed = 00:00:49 . Memory (MB): peak = 1569.098 ; gain = 667.293
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:41 ; elapsed = 00:01:16 . Memory (MB): peak = 1613.051 ; gain = 712.168
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:32 ; elapsed = 00:00:49 . Memory (MB): peak = 1569.098 ; gain = 667.293
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:41 ; elapsed = 00:01:16 . Memory (MB): peak = 1613.051 ; gain = 712.168
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:32 ; elapsed = 00:00:49 . Memory (MB): peak = 1569.098 ; gain = 667.293
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:41 ; elapsed = 00:01:16 . Memory (MB): peak = 1613.051 ; gain = 712.168
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
 ---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++---------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name    | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++---------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|tremolo_effect | A''*B'      | 30     | 18     | -      | -      | 33     | 2    | 1    | -    | -    | -     | 0    | 0    | 
+|tremolo_effect | A''*B'      | 30     | 18     | -      | -      | 33     | 2    | 1    | -    | -    | -     | 0    | 0    | 
++---------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
 
 Report BlackBoxes: 
 +------+--------------+----------+
@@ -327,44 +403,48 @@ Report Cell Usage:
 |      |Cell           |Count |
 +------+---------------+------+
 |1     |clk_wiz_0_bbox |     1|
-|2     |CARRY4         |     4|
-|3     |LUT1           |    17|
-|4     |LUT2           |    10|
-|5     |LUT3           |    14|
-|6     |LUT4           |    25|
-|7     |LUT5           |    34|
-|8     |LUT6           |    99|
-|9     |RAMB18E1       |     1|
-|10    |FDRE           |   242|
-|11    |IBUF           |     3|
-|12    |IOBUF          |     1|
-|13    |OBUF           |     5|
+|2     |CARRY4         |   233|
+|3     |DSP48E1        |     2|
+|4     |LUT1           |   104|
+|5     |LUT2           |    96|
+|6     |LUT3           |   404|
+|7     |LUT4           |   109|
+|8     |LUT5           |   393|
+|9     |LUT6           |   742|
+|10    |MUXF7          |    13|
+|11    |MUXF8          |     5|
+|12    |RAMB18E1       |     1|
+|13    |FDCE           |    48|
+|14    |FDRE           |   197|
+|15    |IBUF           |     3|
+|16    |IOBUF          |     1|
+|17    |OBUF           |     5|
 +------+---------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:32 ; elapsed = 00:00:49 . Memory (MB): peak = 1569.098 ; gain = 667.293
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:41 ; elapsed = 00:01:16 . Memory (MB): peak = 1613.051 ; gain = 712.168
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 1 critical warnings and 6 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:22 ; elapsed = 00:00:46 . Memory (MB): peak = 1569.098 ; gain = 555.980
-Synthesis Optimization Complete : Time (s): cpu = 00:00:32 ; elapsed = 00:00:49 . Memory (MB): peak = 1569.098 ; gain = 667.293
+Synthesis finished with 0 errors, 1 critical warnings and 12 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:34 ; elapsed = 00:01:12 . Memory (MB): peak = 1613.051 ; gain = 610.180
+Synthesis Optimization Complete : Time (s): cpu = 00:00:42 ; elapsed = 00:01:16 . Memory (MB): peak = 1613.051 ; gain = 712.168
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1569.098 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 6 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.027 . Memory (MB): peak = 1613.051 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 255 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1569.098 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1613.051 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 1 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
 
-Synth Design complete | Checksum: dcb88a87
+Synth Design complete | Checksum: 493dd762
 INFO: [Common 17-83] Releasing license: Synthesis
-56 Infos, 21 Warnings, 1 Critical Warnings and 0 Errors encountered.
+68 Infos, 31 Warnings, 1 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:35 ; elapsed = 00:00:58 . Memory (MB): peak = 1569.098 ; gain = 1086.922
+synth_design: Time (s): cpu = 00:00:46 ; elapsed = 00:01:25 . Memory (MB): peak = 1613.051 ; gain = 1130.152
 INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1569.098 ; gain = 0.000
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 1613.051 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1/TOP.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file TOP_utilization_synth.rpt -pb TOP_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Nov  6 13:59:32 2024...
+INFO: [Common 17-206] Exiting Vivado at Wed Dec  4 10:24:07 2024...
