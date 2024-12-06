@@ -155,10 +155,14 @@ architecture Structural of TOP is
         );
     end component;
     
-    -- I2S Signals
-    
+    -- I2S Signals    
     signal bclk_int : STD_LOGIC;
+    signal sck_sync : STD_LOGIC;
+    signal sck_del : STD_LOGIC;
     signal ws_int : STD_LOGIC;
+    signal ws_sync : STD_LOGIC;
+    signal ws_del : STD_LOGIC;
+
     
     -- I2S Receiver Signals
     signal ws_rec : STD_LOGIC;
@@ -195,6 +199,12 @@ architecture Structural of TOP is
     signal btnR_int     : STD_LOGIC := '0';
     signal btnU_int     : STD_LOGIC := '0';
     
+    -- Debug
+    attribute MARK_DEBUG : STRING;
+    attribute MARK_DEBUG of sd_in_int : signal is "true"; 
+    attribute MARK_DEBUG of sck : signal is "true";
+    
+    
 begin
 
     AC_ADR0         <= '1';
@@ -215,8 +225,8 @@ begin
         port map (
             clk => clk,
             reset => reset,
-            sck => bclk_int,
-            ws => ws_int,
+            sck => sck_del,
+            ws => ws_del,
             sd_in => sd_in_int,
             audio_left => rec_l_transfer,
             audio_right => rec_r_transfer
@@ -227,8 +237,8 @@ begin
         port map (
             clk => clk,
             reset => reset,
-            sck => bclk_int,
-            ws => ws_int,
+            sck => sck_del,
+            ws => ws_del,
             audio_left => trans_l_transfer,
             audio_right => trans_r_transfer,
             sd_out => sd_out_int
@@ -239,8 +249,8 @@ begin
         port map (
             clk => clk,
             reset => reset,
-            sck_in => bclk_int,
-            ws_in => ws_int,
+            sck_in => sck_del,
+            ws_in => ws_del,
             audio_left_in => rec_l_transfer,
             audio_right_in => rec_r_transfer,
             ws_out => ws_trans,
@@ -281,15 +291,18 @@ begin
           T => i2c_sda_t  -- 3-state enable input, high=input, low=output 
        );
         
-
-reset_process : process(clk)
-begin
-    if rising_edge(clk) then
-        if reset = '1' then
-            reset <= '0';
+    reset <= not clk_locked;
+        
+    sync_proc : process(clk)
+    begin
+        if rising_edge(clk) then
+            sck_sync <= bclk_int;
+            sck_del <= sck_sync;
+            
+            ws_sync <= ws_int;
+            ws_del <= ws_sync;
         end if;
-    end if;
-end process reset_process; 
+    end process sync_proc;        
         
 end Structural;
 

@@ -4,7 +4,7 @@
 <!-- Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.                   -->
 <!-- Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.   -->
 
-<Project Product="Vivado" Version="7" Minor="65" Path="C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.xpr">
+<Project Product="Vivado" Version="7" Minor="65" Path="C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="1e5b7251bdda443185ad27b670550720"/>
@@ -46,7 +46,7 @@
     <Option Name="TargetLanguage" Val="VHDL"/>
     <Option Name="SimulatorLanguage" Val="VHDL"/>
     <Option Name="BoardPart" Val="avnet.com:zedboard:part0:1.4"/>
-    <Option Name="BoardPartRepoPaths" Val="$PPRDIR/../../../AppData/Roaming/Xilinx/Vivado/2023.2/xhub/board_store/xilinx_board_store"/>
+    <Option Name="BoardPartRepoPaths" Val="$PPRDIR/../AppData/Roaming/Xilinx/Vivado/2023.2/xhub/board_store/xilinx_board_store"/>
     <Option Name="ActiveSimSet" Val="sim_1"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="ProjectType" Val="Default"/>
@@ -63,7 +63,7 @@
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="zedboard"/>
     <Option Name="FeatureSet" Val="FeatureSet_Classic"/>
-    <Option Name="WTXSimLaunchSim" Val="267"/>
+    <Option Name="WTXSimLaunchSim" Val="272"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -102,7 +102,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/Bachelorarbeit/Audio_Processor.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../Audio_Processor.vhd"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../Hochschule Mannheim/Bachelorarbeit/Audio_Processor.vhd"/>
           <Attr Name="ImportTime" Val="1727448989"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -122,7 +122,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/Bachelorarbeit/I2S_Receiver.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../I2S_Receiver.vhd"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../Hochschule Mannheim/Bachelorarbeit/I2S_Receiver.vhd"/>
           <Attr Name="ImportTime" Val="1727273324"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -130,7 +130,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/Bachelorarbeit/I2S_Transmitter.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../I2S_Transmitter.vhd"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../Hochschule Mannheim/Bachelorarbeit/I2S_Transmitter.vhd"/>
           <Attr Name="ImportTime" Val="1727268800"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -187,6 +187,7 @@
         </FileInfo>
       </File>
       <Config>
+        <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/new/zedboard_audio.xdc"/>
         <Option Name="ConstrsType" Val="XDC"/>
       </Config>
     </FileSet>

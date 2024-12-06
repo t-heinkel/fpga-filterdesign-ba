@@ -67,8 +67,7 @@ begin
         if rising_edge(clk) then
             
             if(btnL_sync_sync = '1') then
-                debounce_counter <= debounce_counter + 1;
-                
+                debounce_counter <= debounce_counter + 1;               
                 if(debounce_counter(21) = '1') then         -- = 2.097.152 => roughly 2ms
                     effects_choice <= "0001";
                     debounce_counter <= (others => '0');

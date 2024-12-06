@@ -252,8 +252,8 @@ begin
         if rising_edge(clk) then
             sine_counter <= STD_LOGIC_VECTOR(unsigned(sine_counter) + 1);
             
---            if(sine_counter = "101110011000110000") then -- 190.000  -> 100MHz / 512  - 2 volle Sinusperiode pro Sekunde
-            if(sine_counter = "000000000000110000") then -- 190.000  -> 100MHz / 512  - 2 volle Sinusperiode pro Sekunde
+            if(sine_counter = "101110011000110000") then -- 190.000  -> 100MHz / 512  - 2 volle Sinusperiode pro Sekunde
+--            if(sine_counter = "000000000000110000") then -- 190.000  -> 100MHz / 512  - 2 volle Sinusperiode pro Sekunde
                 sine_addr <= STD_LOGIC_VECTOR(unsigned(sine_addr) + 1);
                 sine_counter <= (others => '0');
             end if;

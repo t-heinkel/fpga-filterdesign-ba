@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1'
+HD_PWD='C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

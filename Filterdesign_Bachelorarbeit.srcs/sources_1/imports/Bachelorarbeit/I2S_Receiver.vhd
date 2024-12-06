@@ -56,8 +56,8 @@ architecture RTL of I2S_Receiver is
     type state_type is (IDLE, RX_LEFT, RX_RIGHT);
     signal current_state : state_type := IDLE;
     
-    signal bit_counter      : unsigned(4 downto 0) := "00000";                          -- Counter for Bit Position
-    signal shift_register   : STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0) := (others => '0');     -- Shift Register for received data
+    signal bit_counter      : unsigned(4 downto 0) := "00000";                                  -- Counter for Bit Position
+    signal shift_register   : STD_LOGIC_VECTOR(BIT_DEPTH-1 downto 0) := (others => '0');        -- Shift Register for received data
     
     signal sd_in_del        : STD_LOGIC;
     

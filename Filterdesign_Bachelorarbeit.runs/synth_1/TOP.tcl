@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1/TOP.tcl"
+  variable script "C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1/TOP.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,6 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z020clg484-1
 
@@ -77,34 +78,35 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.cache/wt} [current_project]
-set_property parent.project_path {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.xpr} [current_project]
+set_property webtalk.parent_dir C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.cache/wt [current_project]
+set_property parent.project_path C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.xpr [current_project]
 set_property XPM_LIBRARIES XPM_CDC [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property board_part_repo_paths {C:/Users/timoh/AppData/Roaming/Xilinx/Vivado/2023.2/xhub/board_store/xilinx_board_store} [current_project]
 set_property board_part avnet.com:zedboard:part0:1.4 [current_project]
-set_property ip_output_repo {c:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.cache/ip} [current_project]
+set_property ip_output_repo c:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_vhdl -library xil_defaultlib {
-  {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/ADAU1761_Configuration_Data.vhd}
-  {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/Audio_Processor.vhd}
-  {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Controller.vhd}
-  {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Master.vhd}
-  {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Receiver.vhd}
-  {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Transmitter.vhd}
-  {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/overdrive_effect.vhd}
-  {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/sine_lut.vhd}
-  {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/tremolo_effect.vhd}
-  {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/vibrato_effect.vhd}
-  {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd}
+  C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/ADAU1761_Configuration_Data.vhd
+  C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/Audio_Processor.vhd
+  C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Controller.vhd
+  C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Master.vhd
+  C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Receiver.vhd
+  C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Transmitter.vhd
+  C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/btn_handler.vhd
+  C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/overdrive_effect.vhd
+  C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/sine_lut.vhd
+  C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/tremolo_effect.vhd
+  C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/vibrato_effect.vhd
+  C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd
 }
-read_ip -quiet {{C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci}}
-set_property used_in_implementation false [get_files -all {{c:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc}}]
-set_property used_in_implementation false [get_files -all {{c:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc}}]
-set_property used_in_implementation false [get_files -all {{c:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc}}]
+read_ip -quiet C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+set_property used_in_implementation false [get_files -all c:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
+set_property used_in_implementation false [get_files -all c:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -115,12 +117,12 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc {{C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc}}
-set_property used_in_implementation false [get_files {{C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc}}]
+read_xdc C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc
+set_property used_in_implementation false [get_files C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/constrs_1/new/zedboard_audio.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 
-read_checkpoint -auto_incremental -incremental {C:/Users/timoh/Hochschule Mannheim/Bachelorarbeit/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/utils_1/imports/synth_1/TOP.dcp}
+read_checkpoint -auto_incremental -incremental C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/utils_1/imports/synth_1/TOP.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

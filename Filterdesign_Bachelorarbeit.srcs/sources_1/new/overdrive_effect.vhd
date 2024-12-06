@@ -33,8 +33,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity overdrive_effect is
     GENERIC (
-        BIT_DEPTH : positive := 24;
-        OVERDRIVE_GAIN : integer := 50
+        BIT_DEPTH : positive := 24
     );
     Port (
         clk             : in STD_LOGIC;
@@ -55,6 +54,7 @@ architecture Behavioral of overdrive_effect is
     signal overdriven_right : signed(BIT_DEPTH + 2 downto 0);
     constant MAX_VALUE : signed(BIT_DEPTH - 1 downto 0) := (others => '1');
     constant MIN_VALUE : signed(BIT_DEPTH - 1 downto 0) := (others => '0');
+    signal OVERDRIVE_GAIN : signed(5 downto 0) := "100000";
     
     signal ws_del : STD_LOGIC;
     
