@@ -202,7 +202,10 @@ architecture Structural of TOP is
     -- Debug
     attribute MARK_DEBUG : STRING;
     attribute MARK_DEBUG of sd_in_int : signal is "true"; 
-    attribute MARK_DEBUG of sck : signal is "true";
+    attribute MARK_DEBUG of sd_out_int : signal is "true"; 
+    --attribute MARK_DEBUG of AC_SDA : signal is "true";
+
+    --attribute MARK_DEBUG of sck_del : signal is "true";
     
     
 begin

@@ -204,45 +204,30 @@ begin
         );
     
     
-    main_proc : process(clk)
-        variable left_sample : signed(audio_left_in'range);
-        variable right_sample : signed(audio_right_in'range);
-                
+    main_proc : process(clk)               
     begin
         if rising_edge(clk) then
             if reset = '1' then
                 audio_left_out <= (others => '0');
                 audio_right_out <= (others => '0');
-            else
-                               
-                 -- Konvertiere Eingangssignale zu signed
-                left_sample := signed(audio_left_in);
-                right_sample := signed(audio_right_in);
-                
-                
-                -- Wende Overdrive-Effekt an
-                if(btn_choice = "0001") then
-                    audio_left_out <= overdrive_left_out;
-                    audio_right_out <= overdrive_right_out;
-                end if;
-                
-                -- Wende Vibrato-Effekt an
-                if(btn_choice = "0010") then
-                    audio_left_out <= vibrato_left_out;
-                    audio_right_out <= vibrato_right_out;
-                end if;               
-                
-                -- Wende Tremolo-Effekt an
-                if (btn_choice = "0100") then
-                    audio_left_out <= tremolo_left_out;
-                    audio_right_out <= tremolo_right_out;
-                end if;
-                
-                if (btn_choice = "0000") then
-                    audio_left_out <= audio_left_in;
-                    audio_right_out <= audio_right_in;
-                end if;
-
+            else                                              
+                case btn_choice is 
+                    when "0001" => -- overdrive
+                        audio_left_out <= overdrive_left_out;
+                        audio_right_out <= overdrive_right_out;
+                    when "0010" => -- vibrato
+                        audio_left_out <= vibrato_left_out;
+                        audio_right_out <= vibrato_right_out; 
+                    when "0100" => --tremolo
+                        audio_left_out <= tremolo_left_out;
+                        audio_right_out <= tremolo_right_out;                        
+                    when "0000" => -- none
+                        audio_left_out <= audio_left_in;
+                        audio_right_out <= audio_right_in;   
+                    when others =>    
+                        audio_left_out <= audio_left_in;
+                        audio_right_out <= audio_right_in;                      
+                end case;                     
             end if;
         end if;
     end process main_proc;
@@ -260,34 +245,6 @@ begin
         end if;
     end process sine_count;
     
---    tremolo_proc : process(clk)
---        variable result_left    : INTEGER;
---        variable result_right   : INTEGER;
---    begin
---        if rising_edge(clk) then
---            result_left     := (to_integer(unsigned(audio_left_in)) * to_integer(unsigned(sine_data)));
---            result_right    := (to_integer(unsigned(audio_right_in)) * to_integer(unsigned(sine_data)));
-
---            if(result_left = 0) then
---                result_left := 1;
---            else
---                result_left := result_left / 350;
---            end if;
-            
---            if(result_right = 0) then
---                result_right := 1;
---            else
---                result_right := result_right / 350;
---            end if;           
-            
---            tremolo_left_out <= std_logic_vector(to_unsigned(result_left, BIT_DEPTH));
---            tremolo_right_out <= std_logic_vector(to_unsigned(result_right, BIT_DEPTH));
-            
---        end if;
---    end process tremolo_proc;    
-     
-    
-    -- Durchreichen der Timing-Signale
     ws_out <= ws_in;
 end Behavioral;
 

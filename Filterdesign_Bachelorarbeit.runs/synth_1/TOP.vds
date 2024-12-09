@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Fri Dec  6 13:26:23 2024
-# Process ID: 22748
+# Start of session at: Mon Dec  9 21:24:08 2024
+# Process ID: 21956
 # Current directory: C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1
 # Command line: vivado.exe -log TOP.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source TOP.tcl
 # Log file: C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1/TOP.vds
@@ -12,7 +12,7 @@
 # Running On: TABLET-LEUQMGK6, OS: Windows, CPU Frequency: 2419 MHz, CPU Physical cores: 4, Host memory: 17005 MB
 #-----------------------------------------------------------
 source TOP.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 462.988 ; gain = 183.922
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:14 . Memory (MB): peak = 462.918 ; gain = 183.754
 Command: read_checkpoint -auto_incremental -incremental C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/utils_1/imports/synth_1/TOP.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/utils_1/imports/synth_1/TOP.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -25,24 +25,24 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 2768
+INFO: [Synth 8-7075] Helper process launched with PID 14840
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1342.395 ; gain = 440.914
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:10 . Memory (MB): peak = 1340.246 ; gain = 438.566
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'TOP' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:64]
 WARNING: [Synth 8-5640] Port 'ws_out' is missing in component declaration [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:66]
 	Parameter BIT_DEPTH bound to: 24 - type: integer 
-INFO: [Synth 8-3491] module 'I2S_Receiver' declared at 'C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Receiver.vhd:34' bound to instance 'receiver_inst' of component 'i2s_receiver' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:223]
+INFO: [Synth 8-3491] module 'I2S_Receiver' declared at 'C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Receiver.vhd:34' bound to instance 'receiver_inst' of component 'i2s_receiver' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:226]
 INFO: [Synth 8-638] synthesizing module 'I2S_Receiver' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Receiver.vhd:55]
 	Parameter BIT_DEPTH bound to: 24 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'I2S_Receiver' (0#1) [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Receiver.vhd:55]
 	Parameter BIT_DEPTH bound to: 24 - type: integer 
-INFO: [Synth 8-3491] module 'I2S_Transmitter' declared at 'C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Transmitter.vhd:34' bound to instance 'transmitter_inst' of component 'i2s_transmitter' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:235]
+INFO: [Synth 8-3491] module 'I2S_Transmitter' declared at 'C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Transmitter.vhd:34' bound to instance 'transmitter_inst' of component 'i2s_transmitter' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:238]
 INFO: [Synth 8-638] synthesizing module 'I2S_Transmitter' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Transmitter.vhd:56]
 	Parameter BIT_DEPTH bound to: 24 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'I2S_Transmitter' (0#1) [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Transmitter.vhd:56]
 	Parameter BIT_DEPTH bound to: 24 - type: integer 
-INFO: [Synth 8-3491] module 'audio_processor' declared at 'C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/Audio_Processor.vhd:34' bound to instance 'processor_inst' of component 'audio_processor' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:247]
+INFO: [Synth 8-3491] module 'audio_processor' declared at 'C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/Audio_Processor.vhd:34' bound to instance 'processor_inst' of component 'audio_processor' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:250]
 INFO: [Synth 8-638] synthesizing module 'audio_processor' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/Audio_Processor.vhd:68]
 	Parameter BIT_DEPTH bound to: 24 - type: integer 
 INFO: [Synth 8-3491] module 'sine_lut' declared at 'C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/sine_lut.vhd:34' bound to instance 'sine_lut_inst' of component 'sine_lut' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/Audio_Processor.vhd:154]
@@ -61,7 +61,7 @@ INFO: [Synth 8-3491] module 'btn_handler' declared at 'C:/Users/timoh/Filterdesi
 INFO: [Synth 8-638] synthesizing module 'btn_handler' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/btn_handler.vhd:48]
 INFO: [Synth 8-256] done synthesizing module 'btn_handler' (0#1) [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/btn_handler.vhd:48]
 INFO: [Synth 8-256] done synthesizing module 'audio_processor' (0#1) [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/Audio_Processor.vhd:68]
-INFO: [Synth 8-3491] module 'I2C_Master' declared at 'C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Master.vhd:34' bound to instance 'i2c_master_inst' of component 'i2c_master' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:265]
+INFO: [Synth 8-3491] module 'I2C_Master' declared at 'C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Master.vhd:34' bound to instance 'i2c_master_inst' of component 'i2c_master' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:268]
 INFO: [Synth 8-638] synthesizing module 'I2C_Master' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Master.vhd:44]
 INFO: [Synth 8-3491] module 'ADAU1761_Configuration_Data' declared at 'C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/ADAU1761_Configuration_Data.vhd:35' bound to instance 'Inst_adau1761_configuration_data' of component 'ADAU1761_Configuration_Data' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Master.vhd:81]
 INFO: [Synth 8-638] synthesizing module 'ADAU1761_Configuration_Data' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/ADAU1761_Configuration_Data.vhd:41]
@@ -73,34 +73,36 @@ INFO: [Synth 8-638] synthesizing module 'I2C_Controller' [C:/Users/timoh/Filterd
 INFO: [Synth 8-256] done synthesizing module 'I2C_Controller' (0#1) [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Controller.vhd:54]
 INFO: [Synth 8-256] done synthesizing module 'I2C_Master' (0#1) [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/I2C_Master.vhd:44]
 WARNING: [Synth 8-5640] Port 'clk_9_6' is missing in component declaration [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:146]
-INFO: [Synth 8-3491] module 'clk_wiz_0' declared at 'C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1/.Xil/Vivado-22748-TABLET-LEUQMGK6/realtime/clk_wiz_0_stub.vhdl:6' bound to instance 'clk_wizard' of component 'clk_wiz_0' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:276]
-INFO: [Synth 8-638] synthesizing module 'clk_wiz_0' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1/.Xil/Vivado-22748-TABLET-LEUQMGK6/realtime/clk_wiz_0_stub.vhdl:17]
-INFO: [Synth 8-113] binding component instance 'i_i2s_sda_obuf' to cell 'IOBUF' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:286]
+INFO: [Synth 8-3491] module 'clk_wiz_0' declared at 'C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1/.Xil/Vivado-21956-TABLET-LEUQMGK6/realtime/clk_wiz_0_stub.vhdl:6' bound to instance 'clk_wizard' of component 'clk_wiz_0' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:279]
+INFO: [Synth 8-638] synthesizing module 'clk_wiz_0' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1/.Xil/Vivado-21956-TABLET-LEUQMGK6/realtime/clk_wiz_0_stub.vhdl:17]
+INFO: [Synth 8-113] binding component instance 'i_i2s_sda_obuf' to cell 'IOBUF' [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:289]
 INFO: [Synth 8-256] done synthesizing module 'TOP' (0#1) [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:64]
 WARNING: [Synth 8-3848] Net ws_out in module/entity I2S_Receiver does not have driver. [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/imports/Bachelorarbeit/I2S_Receiver.vhd:46]
 WARNING: [Synth 8-5863] Implementing Library version of Mod/Rem due to signed path. This typically leads to poor QOR. Check RTL to see if unsigned path for the operator is possible  [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/vibrato_effect.vhd:77]
 WARNING: [Synth 8-5863] Implementing Library version of Mod/Rem due to signed path. This typically leads to poor QOR. Check RTL to see if unsigned path for the operator is possible  [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/vibrato_effect.vhd:70]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'receiver_inst'. This will prevent further optimization [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:223]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'receiver_inst'. This will prevent further optimization [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:226]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'transmitter_inst'. This will prevent further optimization [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:238]
 WARNING: [Synth 8-3848] Net clk_reset in module/entity TOP does not have driver. [C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.srcs/sources_1/new/TOP.vhd:191]
 WARNING: [Synth 8-3917] design TOP has port AC_ADR0 driven by constant 1
 WARNING: [Synth 8-3917] design TOP has port AC_ADR1 driven by constant 1
 WARNING: [Synth 8-7129] Port ws in module vibrato_effect is either unconnected or has no load
 WARNING: [Synth 8-7129] Port sck_in in module audio_processor is either unconnected or has no load
 WARNING: [Synth 8-7129] Port ws_out in module I2S_Receiver is either unconnected or has no load
+WARNING: [Synth 8-7129] Port sck in module TOP is either unconnected or has no load
 WARNING: [Synth 8-7129] Port ws in module TOP is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1462.570 ; gain = 561.090
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:14 . Memory (MB): peak = 1461.250 ; gain = 559.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 1462.570 ; gain = 561.090
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:14 . Memory (MB): peak = 1461.250 ; gain = 559.570
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 1462.570 ; gain = 561.090
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:14 . Memory (MB): peak = 1461.250 ; gain = 559.570
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.021 . Memory (MB): peak = 1462.570 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.025 . Memory (MB): peak = 1461.250 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -116,23 +118,23 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/TOP_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1559.719 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1555.332 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 1 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1559.719 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 1555.332 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1559.719 ; gain = 658.238
+Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:28 . Memory (MB): peak = 1555.332 ; gain = 653.652
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1559.719 ; gain = 658.238
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:28 . Memory (MB): peak = 1555.332 ; gain = 653.652
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -141,7 +143,7 @@ Applied set_property IO_BUFFER_TYPE = NONE for clk. (constraint file  c:/Users/t
 Applied set_property CLOCK_BUFFER_TYPE = NONE for clk. (constraint file  c:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 5).
 Applied set_property KEEP_HIERARCHY = SOFT for clk_wizard. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 1559.719 ; gain = 658.238
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:28 . Memory (MB): peak = 1555.332 ; gain = 653.652
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'I2S_Receiver'
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'I2S_Transmitter'
@@ -162,7 +164,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using e
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'current_state_reg' using encoding 'sequential' in module 'I2S_Transmitter'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 1559.719 ; gain = 658.238
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:30 . Memory (MB): peak = 1555.332 ; gain = 653.652
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -204,6 +206,7 @@ Detailed RTL Component Info :
 	   2 Input   31 Bit        Muxes := 3     
 	   3 Input   24 Bit        Muxes := 1     
 	   2 Input   24 Bit        Muxes := 6     
+	   4 Input   24 Bit        Muxes := 2     
 	  21 Input   16 Bit        Muxes := 1     
 	   2 Input   16 Bit        Muxes := 2     
 	   6 Input   16 Bit        Muxes := 1     
@@ -226,12 +229,13 @@ Detailed RTL Component Info :
 	   2 Input    3 Bit        Muxes := 2     
 	   3 Input    2 Bit        Muxes := 3     
 	   2 Input    2 Bit        Muxes := 3     
-	   2 Input    1 Bit        Muxes := 43    
+	   5 Input    2 Bit        Muxes := 2     
+	   2 Input    1 Bit        Muxes := 42    
 	   3 Input    1 Bit        Muxes := 7     
-	   5 Input    1 Bit        Muxes := 2     
 	  13 Input    1 Bit        Muxes := 6     
 	   6 Input    1 Bit        Muxes := 17    
 	  14 Input    1 Bit        Muxes := 2     
+	   5 Input    1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -261,9 +265,10 @@ WARNING: [Synth 8-3917] design TOP has port AC_ADR1 driven by constant 1
 WARNING: [Synth 8-7129] Port ws in module vibrato_effect is either unconnected or has no load
 WARNING: [Synth 8-7129] Port sck_in in module audio_processor is either unconnected or has no load
 WARNING: [Synth 8-7129] Port ws_out in module I2S_Receiver is either unconnected or has no load
+WARNING: [Synth 8-7129] Port sck in module TOP is either unconnected or has no load
 WARNING: [Synth 8-7129] Port ws in module TOP is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 1559.719 ; gain = 658.238
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:44 . Memory (MB): peak = 1555.332 ; gain = 653.652
 ---------------------------------------------------------------------------------
  Sort Area is  result_left2_0 : 0 0 : 1402 1402 : Used 1 time 0
  Sort Area is  result_right2_2 : 0 0 : 1402 1402 : Used 1 time 0
@@ -307,13 +312,13 @@ Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-565] redefining clock 'clk'
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 1559.719 ; gain = 658.238
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:38 ; elapsed = 00:00:59 . Memory (MB): peak = 1555.332 ; gain = 653.652
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:36 ; elapsed = 00:00:40 . Memory (MB): peak = 1618.477 ; gain = 716.996
+Finished Timing Optimization : Time (s): cpu = 00:00:46 ; elapsed = 00:01:12 . Memory (MB): peak = 1620.441 ; gain = 718.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -337,7 +342,7 @@ INFO: [Synth 8-7052] The timing for the instance processor_inst/vibrato_effect_i
 INFO: [Synth 8-7052] The timing for the instance processor_inst/vibrato_effect_inst/delay_line_right_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance i2c_master_inst/Inst_adau1761_configuration_data/data_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:37 ; elapsed = 00:00:41 . Memory (MB): peak = 1618.477 ; gain = 716.996
+Finished Technology Mapping : Time (s): cpu = 00:00:48 ; elapsed = 00:01:14 . Memory (MB): peak = 1620.441 ; gain = 718.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -356,37 +361,37 @@ Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 CRITICAL WARNING: [Synth 8-4442] BlackBox module clk_wizard has unconnected pin reset
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:42 ; elapsed = 00:00:46 . Memory (MB): peak = 1618.477 ; gain = 716.996
+Finished IO Insertion : Time (s): cpu = 00:00:54 ; elapsed = 00:01:22 . Memory (MB): peak = 1620.441 ; gain = 718.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:42 ; elapsed = 00:00:46 . Memory (MB): peak = 1618.477 ; gain = 716.996
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:54 ; elapsed = 00:01:22 . Memory (MB): peak = 1620.441 ; gain = 718.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:42 ; elapsed = 00:00:46 . Memory (MB): peak = 1618.477 ; gain = 716.996
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:54 ; elapsed = 00:01:23 . Memory (MB): peak = 1620.441 ; gain = 718.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:42 ; elapsed = 00:00:46 . Memory (MB): peak = 1618.477 ; gain = 716.996
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:54 ; elapsed = 00:01:23 . Memory (MB): peak = 1620.441 ; gain = 718.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:42 ; elapsed = 00:00:46 . Memory (MB): peak = 1618.477 ; gain = 716.996
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:54 ; elapsed = 00:01:23 . Memory (MB): peak = 1620.441 ; gain = 718.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:42 ; elapsed = 00:00:46 . Memory (MB): peak = 1618.477 ; gain = 716.996
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:54 ; elapsed = 00:01:23 . Memory (MB): peak = 1620.441 ; gain = 718.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -417,7 +422,7 @@ Report Cell Usage:
 |3     |DSP48E1        |     2|
 |4     |LUT1           |   152|
 |5     |LUT2           |   156|
-|6     |LUT3           |   492|
+|6     |LUT3           |   445|
 |7     |LUT4           |   112|
 |8     |LUT5           |   371|
 |9     |LUT6           |   790|
@@ -432,32 +437,30 @@ Report Cell Usage:
 |18    |OBUF           |     5|
 +------+---------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:42 ; elapsed = 00:00:46 . Memory (MB): peak = 1618.477 ; gain = 716.996
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:54 ; elapsed = 00:01:23 . Memory (MB): peak = 1620.441 ; gain = 718.762
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 1 critical warnings and 10 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:34 ; elapsed = 00:00:44 . Memory (MB): peak = 1618.477 ; gain = 619.848
-Synthesis Optimization Complete : Time (s): cpu = 00:00:42 ; elapsed = 00:00:46 . Memory (MB): peak = 1618.477 ; gain = 716.996
+Synthesis finished with 0 errors, 1 critical warnings and 11 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:45 ; elapsed = 00:01:19 . Memory (MB): peak = 1620.441 ; gain = 624.680
+Synthesis Optimization Complete : Time (s): cpu = 00:00:55 ; elapsed = 00:01:23 . Memory (MB): peak = 1620.441 ; gain = 718.762
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.030 . Memory (MB): peak = 1618.477 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.059 . Memory (MB): peak = 1620.441 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 295 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
-WARNING: [Opt 31-233] Net with MARK_DEBUG TRUE property was optimized: sck
-Resolution: To prevent optimization apply the following XDC constraint before opt_design: set_property DONT_TOUCH TRUE [get_nets sck]
 INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1618.477 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1620.441 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 1 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
 
-Synth Design complete | Checksum: fa0d9b69
+Synth Design complete | Checksum: 6b73a20
 INFO: [Common 17-83] Releasing license: Synthesis
-70 Infos, 24 Warnings, 1 Critical Warnings and 0 Errors encountered.
+71 Infos, 25 Warnings, 1 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:47 ; elapsed = 00:00:52 . Memory (MB): peak = 1618.477 ; gain = 1136.941
+synth_design: Time (s): cpu = 00:01:00 ; elapsed = 00:01:48 . Memory (MB): peak = 1620.441 ; gain = 1139.578
 INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1618.477 ; gain = 0.000
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 1620.441 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/timoh/Filterdesign_Bachelorarbeit/Filterdesign_Bachelorarbeit.runs/synth_1/TOP.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file TOP_utilization_synth.rpt -pb TOP_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Dec  6 13:27:25 2024...
+INFO: [Common 17-206] Exiting Vivado at Mon Dec  9 21:26:21 2024...
