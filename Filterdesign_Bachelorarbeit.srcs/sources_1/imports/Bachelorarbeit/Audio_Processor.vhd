@@ -71,7 +71,7 @@ architecture Behavioral of audio_processor is
         Port (
           clk       : in  std_logic;
           i_addr    : in  std_logic_vector(7 downto 0);
-          o_data    : out std_logic_vector(8 downto 0)
+          o_data    : out unsigned(7 downto 0)
         );
     end component;
 
@@ -84,7 +84,7 @@ architecture Behavioral of audio_processor is
             audio_right_in  : in STD_LOGIC_VECTOR(23 downto 0);
             audio_left_out  : out STD_LOGIC_VECTOR(23 downto 0);
             audio_right_out : out STD_LOGIC_VECTOR(23 downto 0);
-            sine_value      : in STD_LOGIC_VECTOR(8 downto 0)
+            sine_value      : in unsigned(7 downto 0)
         );
     end component;
     
@@ -107,7 +107,7 @@ architecture Behavioral of audio_processor is
             ws              : in STD_LOGIC;
             audio_left_in   : in STD_LOGIC_VECTOR(BIT_DEPTH - 1 downto 0);
             audio_right_in  : in STD_LOGIC_VECTOR(BIT_DEPTH - 1 downto 0);
-            sine_value      : in STD_LOGIC_VECTOR(8 downto 0);
+            sine_value      : in unsigned(7 downto 0);
             audio_left_out  : out STD_LOGIC_VECTOR(BIT_DEPTH - 1 downto 0);
             audio_right_out : out STD_LOGIC_VECTOR(BIT_DEPTH - 1 downto 0)
         );
@@ -127,7 +127,7 @@ architecture Behavioral of audio_processor is
         );
     end component;
 
-    signal sine_data     : STD_LOGIC_VECTOR(8 downto 0);
+    signal sine_data     : unsigned(7 downto 0);
     signal sine_addr     : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');    
 
     constant MAX_VALUE : signed(BIT_DEPTH-1 downto 0) := (others => '1');

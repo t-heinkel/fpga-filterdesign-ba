@@ -31,43 +31,61 @@ use IEEE.NUMERIC_STD.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
+
 entity sine_lut is
     Port (
       clk       : in  std_logic;
       i_addr    : in  std_logic_vector(7 downto 0);
-      o_data    : out std_logic_vector(8 downto 0)
+      o_data    : out unsigned(7 downto 0)
     );
 end sine_lut;
 
 architecture rtl of sine_lut is
 
-type t_sin_table is array(0 to 255) of integer range 0 to 350;
+
+type t_sin_table is array(0 to 255) of unsigned(7 downto 0);
 constant C_SIN_TABLE : t_sin_table := (
-    175, 179, 184, 188, 192, 196, 201, 205, 209, 213, 218, 222, 226, 230, 234, 238, 242, 246, 250, 254, 257, 261, 265, 269, 272, 276, 279, 283, 286,
-    
-    289, 293, 296, 299, 302, 305, 308, 310, 313, 316, 318, 321, 323, 325, 327, 329, 331, 333, 335, 337, 338, 340, 341, 342, 344, 345, 346, 347, 347,
-    
-    348, 349, 349, 350, 350, 350, 350, 350, 350, 350, 349, 349, 348, 347, 347, 346, 345, 344, 342, 341, 340, 338, 337, 335, 333, 331, 329, 327, 325,
-    
-    323, 321, 318, 316, 313, 310, 308, 305, 302, 299, 296, 293, 289, 286, 283, 279, 276, 272, 269, 265, 261, 257, 254, 250, 246, 242, 238, 234, 230,
-    
-    226, 222, 218, 213, 209, 205, 201, 196, 192, 188, 184, 179, 175, 171, 166, 162, 158, 154, 149, 145, 141, 137, 132, 128, 124, 120, 116, 112, 108,
-    
-    104, 100, 96, 93, 89, 85, 81, 78, 74, 71, 67, 64, 61, 57, 54, 51, 48, 45, 42, 40, 37, 34, 32, 29, 27, 25, 23, 21, 19,
-    
-    17, 15, 13, 12, 10, 9, 8, 6, 5, 4, 3, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 3, 4, 5,
-    
-    6, 8, 9, 10, 12, 13, 15, 17, 19, 21, 23, 25, 27, 29, 32, 34, 37, 40, 42, 45, 48, 51, 54, 57, 61, 64, 67, 71, 74,
-    
-    78, 81, 85, 89, 93, 96, 100, 104, 108, 112, 116, 120, 124, 128, 132, 137, 141, 145, 149, 154, 158, 162, 166, 171
+    to_unsigned(128, 8),  to_unsigned(131, 8),  to_unsigned(134, 8),  to_unsigned(137, 8), to_unsigned(140, 8),  to_unsigned(143, 8),  to_unsigned(146, 8),  to_unsigned(149, 8),
+    to_unsigned(152, 8),  to_unsigned(155, 8),  to_unsigned(158, 8),  to_unsigned(162, 8), to_unsigned(165, 8),  to_unsigned(167, 8),  to_unsigned(170, 8),  to_unsigned(173, 8),
+    to_unsigned(176, 8),  to_unsigned(179, 8),  to_unsigned(182, 8),  to_unsigned(185, 8), to_unsigned(188, 8),  to_unsigned(190, 8),  to_unsigned(193, 8),  to_unsigned(196, 8),     
+    to_unsigned(198, 8),  to_unsigned(201, 8),  to_unsigned(203, 8),  to_unsigned(206, 8), to_unsigned(208, 8),  to_unsigned(211, 8),  to_unsigned(213, 8),  to_unsigned(215, 8),    
+    to_unsigned(218, 8),  to_unsigned(220, 8),  to_unsigned(222, 8),  to_unsigned(224, 8), to_unsigned(226, 8),  to_unsigned(228, 8),  to_unsigned(230, 8),  to_unsigned(232, 8),     
+    to_unsigned(234, 8),  to_unsigned(235, 8),  to_unsigned(237, 8),  to_unsigned(238, 8), to_unsigned(240, 8),  to_unsigned(241, 8),  to_unsigned(243, 8),  to_unsigned(244, 8),     
+    to_unsigned(245, 8),  to_unsigned(246, 8),  to_unsigned(248, 8),  to_unsigned(249, 8), to_unsigned(250, 8),  to_unsigned(250, 8),  to_unsigned(251, 8),  to_unsigned(252, 8),     
+    to_unsigned(253, 8),  to_unsigned(253, 8),  to_unsigned(254, 8),  to_unsigned(254, 8), to_unsigned(254, 8),  to_unsigned(255, 8),  to_unsigned(255, 8),  to_unsigned(255, 8),    
+    to_unsigned(255, 8),  to_unsigned(255, 8),  to_unsigned(255, 8),  to_unsigned(255, 8), to_unsigned(254, 8),  to_unsigned(254, 8),  to_unsigned(254, 8),  to_unsigned(253, 8),   
+    to_unsigned(253, 8),  to_unsigned(252, 8),  to_unsigned(251, 8),  to_unsigned(250, 8), to_unsigned(250, 8),  to_unsigned(249, 8),  to_unsigned(248, 8),  to_unsigned(246, 8),     
+    to_unsigned(245, 8),  to_unsigned(244, 8),  to_unsigned(243, 8),  to_unsigned(241, 8), to_unsigned(240, 8),  to_unsigned(238, 8),  to_unsigned(237, 8),  to_unsigned(235, 8),   
+    to_unsigned(234, 8),  to_unsigned(232, 8),  to_unsigned(230, 8),  to_unsigned(228, 8), to_unsigned(226, 8),  to_unsigned(224, 8),  to_unsigned(222, 8),  to_unsigned(220, 8),    
+    to_unsigned(218, 8),  to_unsigned(215, 8),  to_unsigned(213, 8),  to_unsigned(211, 8), to_unsigned(208, 8),  to_unsigned(206, 8),  to_unsigned(203, 8),  to_unsigned(201, 8),     
+    to_unsigned(198, 8),  to_unsigned(196, 8),  to_unsigned(193, 8),  to_unsigned(190, 8), to_unsigned(188, 8),  to_unsigned(185, 8),  to_unsigned(182, 8),  to_unsigned(179, 8),     
+    to_unsigned(176, 8),  to_unsigned(173, 8),  to_unsigned(170, 8),  to_unsigned(167, 8), to_unsigned(165, 8),  to_unsigned(162, 8),  to_unsigned(158, 8),  to_unsigned(155, 8),     
+    to_unsigned(152, 8),  to_unsigned(149, 8),  to_unsigned(146, 8),  to_unsigned(143, 8), to_unsigned(140, 8),  to_unsigned(137, 8),  to_unsigned(134, 8),  to_unsigned(131, 8),     
+    to_unsigned(128, 8),  to_unsigned(124, 8),  to_unsigned(121, 8),  to_unsigned(118, 8), to_unsigned(115, 8),  to_unsigned(112, 8),  to_unsigned(109, 8),  to_unsigned(106, 8),     
+    to_unsigned(103, 8),  to_unsigned(100, 8),  to_unsigned( 97, 8),  to_unsigned( 93, 8), to_unsigned( 90, 8),  to_unsigned( 88, 8),  to_unsigned( 85, 8),  to_unsigned( 82, 8),     
+    to_unsigned( 79, 8),  to_unsigned( 76, 8),  to_unsigned( 73, 8),  to_unsigned( 70, 8), to_unsigned( 67, 8),  to_unsigned( 65, 8),  to_unsigned( 62, 8),  to_unsigned( 59, 8),     
+    to_unsigned( 57, 8),  to_unsigned( 54, 8),  to_unsigned( 52, 8),  to_unsigned( 49, 8), to_unsigned( 47, 8),  to_unsigned( 44, 8),  to_unsigned( 42, 8),  to_unsigned( 40, 8),     
+    to_unsigned( 37, 8),  to_unsigned( 35, 8),  to_unsigned( 33, 8),  to_unsigned( 31, 8), to_unsigned( 29, 8),  to_unsigned( 27, 8),  to_unsigned( 25, 8),  to_unsigned( 23, 8),     
+    to_unsigned( 21, 8),  to_unsigned( 20, 8),  to_unsigned( 18, 8),  to_unsigned( 17, 8), to_unsigned( 15, 8),  to_unsigned( 14, 8),  to_unsigned( 12, 8),  to_unsigned( 11, 8),     
+    to_unsigned( 10, 8),  to_unsigned(  9, 8),  to_unsigned(  7, 8),  to_unsigned(  6, 8), to_unsigned(  5, 8),  to_unsigned(  5, 8),  to_unsigned(  4, 8),  to_unsigned(  3, 8),     
+    to_unsigned(2, 8),  to_unsigned(2, 8),  to_unsigned(1, 8),  to_unsigned(1, 8), to_unsigned(1, 8),  to_unsigned(1, 8),  to_unsigned(1, 8),  to_unsigned(1, 8),     
+    to_unsigned(1, 8),  to_unsigned(1, 8),  to_unsigned(1, 8),  to_unsigned( 1, 8), to_unsigned( 1, 8),  to_unsigned( 1, 8),  to_unsigned( 1, 8),  to_unsigned( 2, 8),     
+    to_unsigned( 2, 8),  to_unsigned( 3, 8),  to_unsigned( 4, 8),  to_unsigned( 5, 8), to_unsigned( 5, 8),  to_unsigned( 6, 8),  to_unsigned( 7, 8),  to_unsigned( 9, 8),     
+    to_unsigned( 10, 8),  to_unsigned( 11, 8),  to_unsigned( 12, 8),  to_unsigned( 14, 8), to_unsigned( 15, 8),  to_unsigned( 17, 8),  to_unsigned( 18, 8),  to_unsigned( 20, 8),     
+    to_unsigned( 23, 8),  to_unsigned( 23, 8),  to_unsigned( 25, 8),  to_unsigned( 27, 8), to_unsigned( 29, 8),  to_unsigned( 31, 8),  to_unsigned( 33, 8),  to_unsigned( 35, 8),     
+    to_unsigned( 37, 8),  to_unsigned( 40, 8),  to_unsigned( 42, 8),  to_unsigned( 44, 8), to_unsigned( 47, 8),  to_unsigned( 49, 8),  to_unsigned( 52, 8),  to_unsigned( 54, 8),     
+    to_unsigned( 57, 8),  to_unsigned(  59, 8),  to_unsigned(  62, 8),  to_unsigned(  64, 8), to_unsigned(  67, 8),  to_unsigned(  70, 8),  to_unsigned(  73, 8),  to_unsigned(  76, 8), 
+    to_unsigned( 79, 8),  to_unsigned( 82, 8),  to_unsigned( 85, 8),  to_unsigned( 88, 8), to_unsigned( 90, 8),  to_unsigned( 93, 8),  to_unsigned( 97, 8),  to_unsigned( 100, 8),     
+    to_unsigned( 103, 8),  to_unsigned(  106, 8),  to_unsigned(  109, 8),  to_unsigned(  112, 8), to_unsigned(  115, 8),  to_unsigned(  118, 8),  to_unsigned(  121, 8),  to_unsigned(  124, 8)
 );
 
 begin
 
 p_table : process(clk)
 begin
-  if(rising_edge(clk)) then
-    o_data  <= std_logic_vector(to_unsigned(C_SIN_TABLE(to_integer(unsigned(i_addr))), o_data'length));
+  if rising_edge(clk) then
+    o_data <= C_SIN_TABLE(to_integer(unsigned(i_addr)));
   end if;
 end process p_table;
+
 end rtl;

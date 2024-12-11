@@ -35,7 +35,7 @@ entity vibrato_effect is
     GENERIC (
         BIT_DEPTH : positive := 24;
         DELAY_LINE_LENGTH : integer := 1024; -- Länge der Verzögerungsleitung
-        VIBRATO_DEPTH : integer := 10 -- Maximale Modulationstiefe in Samples
+        VIBRATO_DEPTH : unsigned(4 downto 0) := "01000" -- Maximale Modulationstiefe in Samples
     );
     Port (
         clk             : in STD_LOGIC;
@@ -45,7 +45,7 @@ entity vibrato_effect is
         audio_right_in  : in STD_LOGIC_VECTOR(BIT_DEPTH - 1 downto 0);
         audio_left_out  : out STD_LOGIC_VECTOR(BIT_DEPTH - 1 downto 0);
         audio_right_out : out STD_LOGIC_VECTOR(BIT_DEPTH - 1 downto 0);
-        sine_value      : in STD_LOGIC_VECTOR(8 downto 0) -- Sinuswert zur Modulation
+        sine_value      : in unsigned(7 downto 0) -- Sinuswert zur Modulation
     );
 end vibrato_effect;
 
@@ -55,7 +55,7 @@ architecture Behavioral of vibrato_effect is
     signal delay_line_right : delay_line_type := (others => (others => '0'));
     signal write_index : integer := 0;
     signal read_index : integer := 0;
-    signal modulated_delay : integer := 0;
+    signal modulated_delay : unsigned(BIT_DEPTH + 7 downto 0) := (others => '0');
 begin
     process(clk, reset)
     begin
@@ -64,10 +64,15 @@ begin
             read_index <= 0;
         elsif rising_edge(clk) then
             -- Berechne den modulierenden Verzögerungswert basierend auf dem Sinuswert
-            modulated_delay <= VIBRATO_DEPTH * (to_integer(signed(sine_value)) - 128) / 128;
-
+            modulated_delay <= VIBRATO_DEPTH * sine_value;
+            
+            if(modulated_delay = "0") then
+                modulated_delay <= modulated_delay(BIT_DEPTH+7 downto 1) & "1";
+            else
+                modulated_delay <= "000000000" & modulated_delay(BIT_DEPTH - 1 downto 0);
+            end if;
             -- Berechne den Leseindex basierend auf dem modulierenden Verzögerungswert
-            read_index <= (write_index - modulated_delay + DELAY_LINE_LENGTH) mod DELAY_LINE_LENGTH;
+            --read_index <= (write_index - modulated_delay + DELAY_LINE_LENGTH) mod DELAY_LINE_LENGTH;
 
             -- Schreibe aktuelle Samples in die Verzögerungsleitung
             delay_line_left(write_index) <= audio_left_in;

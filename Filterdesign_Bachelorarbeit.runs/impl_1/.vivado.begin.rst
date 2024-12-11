@@ -1,50 +1,10 @@
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="timoh" Host="TABLET-LEUQMGK6" Pid="12864" HostCore="8" HostMemory="017005805568">
+    <Process Command="vivado.bat" Owner="timoh" Host="TABLET-LEUQMGK6" Pid="12544" HostCore="8" HostMemory="017005805568">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="timoh" Host="TABLET-LEUQMGK6" Pid="13372" HostCore="8" HostMemory="017005805568">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="timoh" Host="TABLET-LEUQMGK6" Pid="24404" HostCore="8" HostMemory="017005805568">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="timoh" Host="TABLET-LEUQMGK6" Pid="16664" HostCore="8" HostMemory="017005805568">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="timoh" Host="TABLET-LEUQMGK6" Pid="21820" HostCore="8" HostMemory="017005805568">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="timoh" Host="TABLET-LEUQMGK6" Pid="18520" HostCore="8" HostMemory="017005805568">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="timoh" Host="TABLET-LEUQMGK6" Pid="11060" HostCore="8" HostMemory="017005805568">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="timoh" Host="TABLET-LEUQMGK6" Pid="8252" HostCore="8" HostMemory="017005805568">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="timoh" Host="TABLET-LEUQMGK6" Pid="4836" HostCore="8" HostMemory="017005805568">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="timoh" Host="TABLET-LEUQMGK6" Pid="21864" HostCore="8" HostMemory="017005805568">
+    <Process Command="vivado.bat" Owner="timoh" Host="TABLET-LEUQMGK6" Pid="19328" HostCore="8" HostMemory="017005805568">
     </Process>
 </ProcessHandle>
